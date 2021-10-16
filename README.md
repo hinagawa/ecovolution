@@ -7,7 +7,7 @@ Ecovolution it's a eco social media where you can create own blog, read articles
 # Pages and routes
 ## Pages
 - [] Sign in 
-- [] Sign up
+- [ ] Sign up
 - [] Forgot pass
 - [] Reset pass
 - [] Profile page
