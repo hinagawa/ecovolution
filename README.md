@@ -4,7 +4,7 @@ Ecovolution it's a eco social media where you can create own blog, read articles
 ## Start front-end
 ## Start back-end
 # Tech stack
-MERN
+## MERN
 - MongoDB
 - Express.js
 - React
