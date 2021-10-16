@@ -3,7 +3,16 @@ Ecovolution it's a eco social media where you can create own blog, read articles
 # Getting started
 ## Start front-end
 ## Start back-end
-
+# Tech stack
+MERN
+- MongoDB
+- Express.js
+- React
+- Node.js
+Also
+- ESLint, husky
+- Storybook
+- ...
 # Pages and routes
 ## Pages
 - [ ] Sign in 
