@@ -8,8 +8,8 @@ MERN
 - MongoDB
 - Express.js
 - React
-- Node.js
-Also
+- Node.js<br>
+## Also
 - ESLint, husky
 - Storybook
 - ...
