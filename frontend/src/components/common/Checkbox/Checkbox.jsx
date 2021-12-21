@@ -5,7 +5,7 @@ import './styles.modules.css'
 
 function Checkbox({ text, onChange }) {
   return (
-    <>
+    <div>
       <input
         id="checkbox"
         type="checkbox"
@@ -16,7 +16,7 @@ function Checkbox({ text, onChange }) {
       >
         {text}
       </label>
-    </>
+    </div>
   )
 }
 
