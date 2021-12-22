@@ -1,21 +1,20 @@
 .fieldsetContainer {
   border: 1px solid #beb9b9;
   border-radius: 5px;
-  padding: 40px 20px;
+  padding: 50px;
 }
 
 .legendFont {
   font-size: 30px;
 }
 
-.inlineContainer,
-.inlineContainer div {
+.inlineContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  margin-top: 10px;
 }
 
 .inlineContainer p {
-  margin: inherit;
+  margin: 0;
   padding-right: 10px;
 }

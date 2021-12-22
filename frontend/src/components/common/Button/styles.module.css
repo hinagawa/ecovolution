@@ -1,12 +1,18 @@
+:root {
+  --top-margin: 10px;
+}
+
 .primary {
   background-color: #f68e6f;
   color: white;
   border: none;
   border-radius: 5px;
   height: 30px;
+  margin-top: var(--top-margin);
 }
 
 .link {
   background-color: transparent;
   border: none;
+  margin-top: var(--top-margin);
 }

@@ -1,0 +1,12 @@
+@font-face {
+    font-family: Raleway;
+    src: url('./assets/fonts/Raleway-Regular.ttf');
+}
+
+* {
+    font-family: Raleway;
+}
+
+ body {
+     margin: inherit;
+ }

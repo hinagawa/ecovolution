@@ -7,6 +7,8 @@ import {
 
 import SignInPage from './pages/SignIn/SignInPage'
 
+import './index.module.css'
+
 function App() {
   return (
     <Router>

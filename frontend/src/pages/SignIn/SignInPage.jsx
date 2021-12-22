@@ -1,19 +1,22 @@
 import React from 'react'
 
-import logo from '../../assets/images/logo.png'
 import img from '../../assets/images/img.png'
 
 import Form from '../../components/SignInComponents/SignInForm'
 
+import styles from './styles.module.css'
+
 function SignInPage() {
   return (
-    <>
-      <div>
-        <img src={logo} alt="Logo" />
+    <div className={styles.rowContainer}>
+      <div className={styles.logoContainer}>
+        <h1>Ecovolution</h1>
         <img src={img} alt="Girl with horse" />
       </div>
-      <Form />
-    </>
+      <div className={styles.formContainer}>
+        <Form />
+      </div>
+    </div>
   )
 }
 
