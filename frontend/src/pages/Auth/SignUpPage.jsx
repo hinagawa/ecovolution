@@ -2,7 +2,7 @@ import React from 'react'
 
 import img from '../../assets/images/img.png'
 
-import Form from '../../components/SignInComponents/SignInForm'
+import Form from '../../components/AuthComponents/SignUpComponents/SignUpForm'
 
 import styles from './styles.module.css'
 
