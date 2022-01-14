@@ -1,6 +1,4 @@
-const mongoose = require('mongoose');
-
-const { Schema } = mongoose;
+const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema({
     googleId: String,
@@ -25,9 +23,8 @@ const userSchema = new Schema({
     lastName: String,
     role: {
         type: String,
-        required: [true, 'User must have a role']
+        default: 'User'
     }
-
 });
 
-mongoose.model('users', userSchema);
+model('users', userSchema);

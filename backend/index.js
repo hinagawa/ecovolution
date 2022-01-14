@@ -1,29 +1,42 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const keys = require('./config/keys');
+const config = require('config');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+
+const authRoutes = require('./routes/authRoutes');
+const userRoutes = require('./routes/userRoutes');
+
 require('./models/User');
 require('./services/passport');
 
-const API_PORT = process.env.API_PORT || 5000;
+const PORT = config.get('port') || 5000;
 
-mongoose.connect(keys.mongoURI);
+async function start() {
+    try {
+        await mongoose.connect(config.get('mongoURI'));
+    }
+    catch (e) {
+        console.log('Mongo error', e.message);
+        process.exit(1);
+    }
+}
 
-const authRoutes = require('./routes/authRoutes');
+start();
 
 const app = express();
 
 app.use(
     cookieSession({
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        keys: [keys.cookieKey]
+        keys: [config.get('cookieKey')]
     })
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-authRoutes(app);
+authRoutes(app.router());
+userRoutes(app.router());
 
-app.listen(API_PORT, () => console.log(`The server is running on port ${API_PORT}`));
+app.listen(PORT, () => console.log(`The server is running on port ${PORT}`));

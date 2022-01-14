@@ -1,7 +1,9 @@
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const keys = require('../config/keys');
+const config = require('config');
 const mongoose = require('mongoose');
+
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+// const { JwtStrategy, ExtractJwt } = require('passport-jwt');
 
 const User = mongoose.model('users');
 
@@ -14,12 +16,17 @@ passport.deserializeUser((id, done) => {
     .then(user => {
       done(null, user);
     });
-
 });
 
+// passport.use(new JwtStrategy({
+//   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+//   secretOrKey: config.get('jwt_secret'),
+// }, function (jwt_paylaod, done) {
+// }))
+
 passport.use(new GoogleStrategy({
-  clientID: keys.googleClientID,
-  clientSecret: keys.googleClientSecret,
+  clientID: config.get('googleClientID'),
+  clientSecret: config.get('googleClientSecret'),
   callbackURL: '/auth/google/callback'
 }, (accessToken, refreshToken, profile, done) => {
   User.findOne({ googleId: profile.id })
@@ -32,6 +39,5 @@ passport.use(new GoogleStrategy({
           .then(user => done(null, user));
       }
     });
-}
-)
+})
 );
