@@ -25,7 +25,9 @@ exports.signIn = async (req, res) => {
         const user = await User.findOne({ email }).select('password');
         if (!user) return new Error('User not found');
         const isMatch = await user.comparePasswords(password);
-        isMatch ? 'token' : new Error('Invalid password');
+        const token = await user.createJwtToken(isMatch, user);
+        res.cookie('jwt', token);
+        res.json({ success: true, token });
     }
     catch (e) {
         res.status(500).json({ message: `Something went wrong! ${e.message}` });

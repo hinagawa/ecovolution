@@ -1,4 +1,4 @@
-const {signUp } = require('../controllers/authController');
+const { signUp, signIn } = require('../controllers/authController');
 const passport = require('passport');
 
 module.exports = (app) => {
@@ -19,8 +19,5 @@ module.exports = (app) => {
   });
 
   app.route('/sign-up').post(signUp);
-  // router.post('/sign-in', async (req, res) => {
-
-  // });
-
+  app.route('/sign-in').post(signIn);
 };
