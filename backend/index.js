@@ -1,4 +1,5 @@
 const express = require('express');
+var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('config');
 const cookieSession = require('cookie-session');
@@ -26,6 +27,10 @@ start();
 
 const app = express();
 
+app.use(bodyParser.urlencoded({
+    extended: true
+  }));
+
 app.use(
     cookieSession({
         maxAge: 30 * 24 * 60 * 60 * 1000,
@@ -36,7 +41,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-authRoutes(app.router());
-userRoutes(app.router());
+authRoutes(app);
+userRoutes(app);
 
 app.listen(PORT, () => console.log(`The server is running on port ${PORT}`));

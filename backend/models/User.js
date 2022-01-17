@@ -1,12 +1,13 @@
+const bcrypt = require('bcrypt');
+const config = require('config');
+const jwt = require('jsonwebtoken');
+
 const { Schema, model } = require('mongoose');
 
-const userSchema = new Schema({
+const issuer = config.domen;
+
+const UserSchema = new Schema({
     googleId: String,
-    username: {
-        type: String,
-        required: [true, 'You should provide an username'],
-        unique: true
-    },
     email: {
         type: String,
         required: [true, 'You should provide an email'],
@@ -20,11 +21,30 @@ const userSchema = new Schema({
         select: false
     },
     name: String,
-    lastName: String,
+    lastname: String,
     role: {
         type: String,
         default: 'User'
     }
 });
 
-model('users', userSchema);
+UserSchema.methods.comparePasswords = async function (password) {
+    return await bcrypt.compare(password, this.password);
+};
+
+UserSchema.methods.createJwtToken = async function (isMatch, user) {
+    if (isMatch) {
+        const claims = {
+            sub: user.id,
+            email: user.email,
+            iss: issuer,
+            permissions: user.role
+        };
+
+        return jwt.sign(claims, config.jwt_secret, {
+            expiresIn: 60 * 15
+        });
+    }
+};
+
+module.exports = model('users', UserSchema);
