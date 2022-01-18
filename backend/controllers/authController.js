@@ -49,7 +49,8 @@ exports.forgotPassword = async (req, res) => {
                 token: crypto.randomBytes(32).toString('hex'),
             }).save();
         }
-        const link = `${config.route}/password-reset/${user._id}/${token.token}`;
+        const link = `${config.host}/password-reset/${user._id}/${token.token}`;
+        console.log(link);
         await sendEmail(user.email, 'Password reset', link);
         res.send('Password reset link sent to your email');
     }

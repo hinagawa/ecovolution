@@ -7,9 +7,8 @@ const sendEmail = async (email, subject, text) => {
             service: config.service,
             auth: {
                 user: config.mailUser,
-                password: config.mailPassword
-            },
-            secure: true
+                pass: config.mailPassword
+            }
         });
         await transporter.sendMail({
             from: config.mailUser,
