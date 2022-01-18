@@ -1,4 +1,4 @@
-const { signUp, signIn } = require('../controllers/authController');
+const { signUp, signIn, forgotPassword, resetPassword } = require('../controllers/authController');
 const passport = require('passport');
 
 module.exports = (app) => {
@@ -21,4 +21,6 @@ module.exports = (app) => {
 
   app.route('/api/sign-up').post(signUp);
   app.route('/api/sign-in').post(signIn);
+  app.route('/api/forgot-password').post(forgotPassword);
+  app.route('/:userId/:token').post(resetPassword);
 };

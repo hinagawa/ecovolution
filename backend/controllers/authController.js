@@ -1,6 +1,9 @@
 const User = require('../models/User.js');
+const Token = require('../models/Token.js');
 const bcrypt = require('bcrypt');
 const config = require('config');
+const crypto = require('crypto');
+const sendEmail = require('../utils/sendEmail.js');
 
 const SALT = config.get('salt');
 
@@ -34,4 +37,43 @@ exports.signIn = async (req, res) => {
     }
 };
 
-// TODO forgotPass, resetPass
+exports.forgotPassword = async (req, res) => {
+    const { email } = req.body;
+    try {
+        const user = await User.findOne({ email });
+        if (!user) return res.status(400).send('User with this email does not exist');
+        let token = await Token.findOne({ userId: user._id });
+        if (!token) {
+            token = await new Token({
+                userId: user._id,
+                token: crypto.randomBytes(32).toString('hex'),
+            }).save();
+        }
+        const link = `${config.route}/password-reset/${user._id}/${token.token}`;
+        await sendEmail(user.email, 'Password reset', link);
+        res.send('Password reset link sent to your email');
+    }
+    catch (e) {
+        res.status(400).send(e.message);
+    }
+};
+
+exports.resetPassword = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.userId);
+        if (!user) return res.status(400).send('User does not exist');
+        const token = await Token.findOne({
+            userId: user._id,
+            token: req.params.token
+        });
+        if (!token) return res.status(400).send('Invalid link or expired');
+        user.password = req.body.password;
+        await user.save();
+        await token.delete();
+        res.send('Password reset successfully');
+    }
+    catch (e) {
+        res.send('An error occured');
+        console.log(new Error(e.message));
+    }
+};

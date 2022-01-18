@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 const { Schema, model } = require('mongoose');
 
-const issuer = config.domen;
+const issuer = config.host;
 
 const UserSchema = new Schema({
     googleId: String,
