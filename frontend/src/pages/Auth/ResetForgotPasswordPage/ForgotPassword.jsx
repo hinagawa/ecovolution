@@ -6,7 +6,7 @@ import Button from '../../../components/common/Button/Button'
 import Link from '../../../components/common/Link/Link'
 
 import styles from './styles.module.css'
-
+// TODO button size
 function ResetPassword() {
   return (
     <div className={styles.gridContainer}>
@@ -15,7 +15,7 @@ function ResetPassword() {
         <Form>
           <h5> Enter your email to reset password</h5>
           <Input id="email" placeholder="Email" />
-          <div className={styles.resetFooter}>
+          <div className={styles.forgotFooter}>
             <Button text="Send" />
             <Link text="Back to sign in" href="/sign-in" />
           </div>
