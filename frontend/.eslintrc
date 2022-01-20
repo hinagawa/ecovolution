@@ -18,13 +18,18 @@
         "react"
     ],
     "rules": {
+        "linebreak-style": 0,
         "react/jsx-props-no-spreading": 0,
-        "semi":["error", "never"],
+        "semi": [
+            "error",
+            "never"
+        ],
         "react/function-component-definition": [
             2,
             {
-              "namedComponents": "function-declaration",
+                "namedComponents": "function-declaration"
             }
-          ]
+        ],
+        "jsx-a11y/label-has-associated-control" : 0
     }
 }

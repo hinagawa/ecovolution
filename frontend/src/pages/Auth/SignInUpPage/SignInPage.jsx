@@ -1,12 +1,12 @@
 import React from 'react'
 
-import img from '../../assets/images/img.png'
+import img from '../../../assets/images/img.png'
 
-import Form from '../../components/AuthComponents/SignUpComponents/SignUpForm'
+import Form from '../../../components/AuthComponents/SignInComponents/SignInForm'
 
 import styles from './styles.module.css'
 
-function SignUpPage() {
+function SignInPage() {
   return (
     <div className={styles.rowContainer}>
       <div className={styles.logoContainer}>
@@ -20,4 +20,4 @@ function SignUpPage() {
   )
 }
 
-export default SignUpPage
+export default SignInPage
