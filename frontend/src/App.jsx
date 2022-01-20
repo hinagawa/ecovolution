@@ -8,6 +8,7 @@ import {
 import SignInPage from './pages/Auth/SignInUpPage/SignInPage'
 import SignUpPage from './pages/Auth/SignInUpPage/SignUpPage'
 import ResetPassword from './pages/Auth/ResetForgotPasswordPage/ResetPassword'
+import ForgotPassword from './pages/Auth/ResetForgotPasswordPage/ForgotPassword'
 
 import './index.module.css'
 
@@ -20,26 +21,20 @@ function App() {
           path="/sign-in"
           element={<SignInPage />}
         />
-      </Routes>
-      <Routes>
         <Route
           exaсt
           path="/sign-up"
           element={<SignUpPage />}
         />
-      </Routes>
-      <Routes>
         <Route
           exaсt
           path="/reset-password"
           element={<ResetPassword />}
         />
-      </Routes>
-      <Routes>
         <Route
           exaсt
           path="/forgot-password"
-          element={<SignUpPage />}
+          element={<ForgotPassword />}
         />
       </Routes>
     </Router>
