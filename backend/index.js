@@ -4,9 +4,12 @@ const mongoose = require('mongoose');
 const config = require('config');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const swaggerUI = require('swagger-ui-express');
 
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
+
+import swDocument from './openapi';
 
 require('./models/User');
 require('./services/passport');
@@ -41,6 +44,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(swDocument));
 authRoutes(app);
 userRoutes(app);
 
