@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 const config = require('config');
 const jwt = require('jsonwebtoken');
 
@@ -25,7 +26,9 @@ const UserSchema = new Schema({
     role: {
         type: String,
         default: 'User'
-    }
+    },
+    resetPasswordToken: String,
+    resetPasswordExpire : Date
 });
 
 UserSchema.methods.comparePasswords = async function (password) {
@@ -47,4 +50,12 @@ UserSchema.methods.createJwtToken = async function (isMatch, user) {
     }
 };
 
+UserSchema.methods.getResetPasswordToken = async function () {
+    const resetToken = crypto.randomBytes(20).toString('hex');
+    const resetPasswordToken = await crypto.createHash('sha256').update(resetToken).digest('hex');
+    const resetPasswordExpire = Date.now() + 10 * 60 * 1000;
+    this.resetPasswordToken = resetPasswordToken;
+    this.resetPasswordExpire = resetPasswordExpire;
+    return  this.resetPasswordToken;
+};
 module.exports = model('users', UserSchema);

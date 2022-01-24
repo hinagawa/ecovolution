@@ -1,8 +1,6 @@
 const User = require('../models/User.js');
-const Token = require('../models/Token.js');
 const bcrypt = require('bcrypt');
 const config = require('config');
-const crypto = require('crypto');
 const sendEmail = require('../utils/sendEmail.js');
 
 const SALT = config.get('salt');
@@ -42,17 +40,14 @@ exports.forgotPassword = async (req, res) => {
     try {
         const user = await User.findOne({ email });
         if (!user) return res.status(400).send('User with this email does not exist');
-        let token = await Token.findOne({ userId: user._id });
-        if (!token) {
-            token = await new Token({
-                userId: user._id,
-                token: crypto.randomBytes(32).toString('hex'),
-            }).save();
-        }
-        const link = `${config.host}/password-reset/${user._id}/${token.token}`;
-        console.log(link);
-        await sendEmail(user.email, 'Password reset', link);
-        res.send('Password reset link sent to your email');
+        const resetToken = await user.getResetPasswordToken();
+        await user.save();
+        const link = `${config.host}/api/reset-password?userId=${user._id}&resetToken=${resetToken}`;
+        const text = `
+        You have requested a password reset
+        Please go to this link to reset your password ${link}`;
+        await sendEmail(user.email, 'Password reset', text);
+        res.status(200).json({ success: true, data: 'Reset link sent' });
     }
     catch (e) {
         res.status(400).send(e.message);
@@ -60,21 +55,21 @@ exports.forgotPassword = async (req, res) => {
 };
 
 exports.resetPassword = async (req, res) => {
+    const resetToken = req.params.resetToken;
     try {
-        const user = await User.findById(req.params.userId);
-        if (!user) return res.status(400).send('User does not exist');
-        const token = await Token.findOne({
-            userId: user._id,
-            token: req.params.token
+        const user = await User.findOne({
+            resetToken,
+            resetPasswordExpire: { $gt: Date.now() }
         });
-        if (!token) return res.status(400).send('Invalid link or expired');
+        if (!user) return res.status(400).send('Invalid reset Token');
         user.password = req.body.password;
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpire = undefined;
         await user.save();
-        await token.delete();
-        res.send('Password reset successfully');
+        res.status(200).send('Password reset successfully');
     }
     catch (e) {
-        res.send('An error occured');
+        res.status(500).send('An error occured');
         console.log(new Error(e.message));
     }
 };
