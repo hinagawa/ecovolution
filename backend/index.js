@@ -5,16 +5,19 @@ const config = require('config');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const swaggerUI = require('swagger-ui-express');
+const swaggerJsDoc = require('swagger-jsdoc');
+
+const { swaggerOptions } = require('./config/swaggerOpions');
 
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
-
-import swDocument from './openapi';
 
 require('./models/User');
 require('./services/passport');
 
 const PORT = config.get('port') || 5000;
+
+const specs = swaggerJsDoc(swaggerOptions);
 
 async function start() {
     try {
@@ -32,7 +35,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({
     extended: true
-  }));
+}));
 
 app.use(
     cookieSession({
@@ -44,7 +47,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(swDocument));
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specs));
 authRoutes(app);
 userRoutes(app);
 
