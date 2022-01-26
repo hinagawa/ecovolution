@@ -39,6 +39,41 @@
  *         application/json:
  *          schema:
  *           $ref: '#/components/schemas/ResponseString'
+ * /api/sign-in:
+ *   post:
+ *    tags:
+ *     - "Authorization"
+ *    summary: "Authentication on web-application"
+ *    consumes:
+ *     - application/x-www-form-urlencoded
+ *    produces:
+ *     - application/json
+ *    parameters:
+ *    - in: "body"
+ *      name: "body"
+ *      description: "Data for authorization"
+ *      required: true
+ *      schema:
+ *       $ref: '#/components/schemas/SignInInput'
+ *    responses:
+ *      200:
+ *        description: A succcessful response
+ *        content: 
+ *         application/json:
+ *          schema:
+ *           $ref: '#/components/schemas/ResponseString'
+ *      404:
+ *       description: User not found
+ *       content: 
+ *        application/json:
+ *         schema:
+ *          $ref: '#/components/schemas/ResponseString'
+ *      500:
+ *        description: Internal Server Error
+ *        content: 
+ *         application/json:
+ *          schema:
+ *           $ref: '#/components/schemas/ResponseString'
  */
 
 /**
@@ -63,5 +98,15 @@
  *     ResponseString:
  *      properties:
  *        message: 
- *         type: string      
+ *         type: string
+ *     SignInInput:
+ *       required:
+ *       - email
+ *       - password
+ *       properties:
+ *         email:
+ *           type: string
+ *         password: 
+ *           type: string   
+ *  
  */

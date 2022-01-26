@@ -44,7 +44,7 @@ UserSchema.methods.createJwtToken = async function (isMatch, user) {
             permissions: user.role
         };
 
-        return jwt.sign(claims, config.jwt_secret, {
+        return await jwt.sign(claims, config.jwt_secret, {
             expiresIn: 60 * 15
         });
     }
