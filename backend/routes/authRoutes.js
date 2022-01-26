@@ -18,7 +18,6 @@ module.exports = (app) => {
   app.route('/api/current_user').get((req, res) => {
     res.send(req.session);
   });
-
   app.route('/api/sign-up').post(signUp);
   app.route('/api/sign-in').post(signIn);
   app.route('/api/forgot-password').post(forgotPassword);
