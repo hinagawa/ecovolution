@@ -5,9 +5,9 @@ const config = require('config');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const swaggerUI = require('swagger-ui-express');
-const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerJsdoc = require('swagger-jsdoc');
 
-const { swaggerOptions } = require('./config/swaggerOpions');
+const swaggerDocument = require('./swagger/basicInfo');
 
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
@@ -17,7 +17,7 @@ require('./services/passport');
 
 const PORT = config.get('port') || 5000;
 
-const specs = swaggerJsDoc(swaggerOptions);
+const spec = swaggerJsdoc(swaggerDocument);
 
 async function start() {
     try {
@@ -46,8 +46,8 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(spec));
 
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specs));
 authRoutes(app);
 userRoutes(app);
 

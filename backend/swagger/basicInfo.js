@@ -1,4 +1,4 @@
-exports.swaggerOptions = {
+module.exports = {
     definition: {
         openapi: '3.0.0',
         info: {
@@ -10,7 +10,7 @@ exports.swaggerOptions = {
             {
                 url: 'http://localhost:5000'
             }
-        ],
-        apis: ['../routes/*.js']
-    }
+        ]
+    },
+    apis: ['../routes/*.js'],
 };
