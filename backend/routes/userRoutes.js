@@ -1,5 +1,5 @@
 module.exports = (app) => {
     app.get('/api/user', function (req, res) {
-        res.send('asdas');
+        res.send('User profile');
     });
 };

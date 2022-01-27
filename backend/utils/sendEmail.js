@@ -1,17 +1,18 @@
 const nodemailer = require('nodemailer');
-const config = require('config');
+
+const keys = require('../config/keys');
 
 const sendEmail = async (email, subject, text) => {
     try {
         const transporter = nodemailer.createTransport({
-            service: config.service,
+            service: keys.service,
             auth: {
-                user: config.mailUser,
-                pass: config.mailPassword
+                user: keys.mailUser,
+                pass: keys.mailPassword
             }
         });
         await transporter.sendMail({
-            from: config.mailUser,
+            from: keys.mailUser,
             to: email,
             subject: subject,
             text: text

@@ -1,9 +1,10 @@
 const User = require('../models/User.js');
 const bcrypt = require('bcrypt');
-const config = require('config');
 const sendEmail = require('../utils/sendEmail.js');
 
-const SALT = config.get('salt');
+const keys = require('../config/keys');
+
+const SALT = keys.salt;
 
 exports.signUp = async (req, res) => {
     try {
@@ -42,7 +43,7 @@ exports.forgotPassword = async (req, res) => {
         if (!user) return res.status(400).send('User with this email does not exist');
         const resetToken = await user.getResetPasswordToken();
         await user.save();
-        const link = `${config.host}/api/reset-password?userId=${user._id}&resetToken=${resetToken}`;
+        const link = `${keys.host}/api/reset-password?userId=${user._id}&resetToken=${resetToken}`;
         const text = `
         You have requested a password reset
         Please go to this link to reset your password ${link}`;

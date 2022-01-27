@@ -1,21 +1,21 @@
 const express = require('express');
 var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const config = require('config');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 
+const keys = require('./config/keys');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 
 require('./models/User');
 require('./services/passport');
 
-const PORT = config.get('port') || 5000;
+const PORT = keys.port || 5000;
 
 async function start() {
     try {
-        await mongoose.connect(config.get('mongoURI'));
+        await mongoose.connect(keys.mongoURI);
     }
     catch (e) {
         console.log('Mongo error', e.message);
@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({
 app.use(
     cookieSession({
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        keys: [config.get('cookieKey')]
+        keys: keys.cookieKey
     })
 );
 
