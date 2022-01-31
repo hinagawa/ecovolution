@@ -1,6 +1,6 @@
 import React from 'react'
 
-import img from '../../assets/images/img.png'
+import img from '../../assets/images/Img.png'
 
 import Form from '../../components/AuthComponents/SignUpComponents/SignUpForm'
 
