@@ -1,9 +1,10 @@
-const User = require('../models/User.js');
 const bcrypt = require('bcrypt');
-const config = require('config');
+
+const User = require('../models/User.js');
+const config = require('../config/dev');
 const sendEmail = require('../utils/sendEmail.js');
 
-const SALT = config.get('salt');
+const SALT = config.salt;
 
 exports.signUp = async (req, res) => {
     try {

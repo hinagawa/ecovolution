@@ -1,7 +1,8 @@
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
-const config = require('config');
 const jwt = require('jsonwebtoken');
+
+const config = require('../config/dev');
 
 const { Schema, model } = require('mongoose');
 

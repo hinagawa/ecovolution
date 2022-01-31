@@ -1,5 +1,6 @@
-const config = require('config');
-const routeDirectory = config['swaggerRouteDirectory'];
+const config = require('../config/dev');
+
+const routeDirectory = config.swaggerRouteDirectory;
 module.exports = {
     definition: {
         openapi: '3.0.0',
