@@ -28,7 +28,6 @@ exports.signIn = async (req, res) => {
         if (!user) return res.status(404).json({ success: false, message: 'User not found' });
         const isMatch = await user.comparePasswords(password);
         const token = await user.createJwtToken(isMatch, user);
-        console.log(token);
         res.cookie('Token', 'Bearer ' + token);
         res.json({ success: true, message: 'Token created' });
     }

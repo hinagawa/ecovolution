@@ -13,13 +13,21 @@
  *     - application/x-www-form-urlencoded
  *    produces:
  *     - application/json
- *    parameters:
- *    - in: "body"
- *      name: "body"
- *      description: "Data for account creation"
- *      required: true
- *      schema:
- *       $ref: '#/components/schemas/SignUpInput'
+ *    requestBody:
+ *     content:
+ *       application/x-www-form-urlencoded:
+ *        required: true
+ *        schema:
+ *         type: object
+ *         properties:
+ *          name:
+ *           type: string
+ *          lastname:
+ *           type: string
+ *          email:
+ *           type: string
+ *          password:
+ *           type: string
  *    responses:
  *      200:
  *        description: A succcessful response
@@ -48,13 +56,17 @@
  *     - application/x-www-form-urlencoded
  *    produces:
  *     - application/json
- *    parameters:
- *    - in: "body"
- *      name: "body"
- *      description: "Data for authorization"
- *      required: true
- *      schema:
- *       $ref: '#/components/schemas/SignInInput'
+ *    requestBody:
+ *     content:
+ *       application/x-www-form-urlencoded:
+ *        required: true
+ *        schema:
+ *         type: object
+ *         properties:
+ *          email:
+ *           type: string
+ *          password:
+ *           type: string
  *    responses:
  *      200:
  *        description: A succcessful response
@@ -83,13 +95,15 @@
  *     - application/x-www-form-urlencoded
  *    produces:
  *     - application/json
- *    parameters:
- *    - in: "body"
- *      name: "body"
- *      description: "User email"
- *      required: true
- *      schema:
- *       $ref: '#/components/schemas/ForgotPassword'
+ *    requestBody:
+ *     content:
+ *       application/x-www-form-urlencoded:
+ *        required: true
+ *        schema:
+ *         type: object
+ *         properties:
+ *          email:
+ *           type: string
  *    responses:
  *      200:
  *        description: A succcessful response
@@ -124,13 +138,15 @@
  *    - application/x-www-form-urlencoded
  *   produces:
  *    - application/json
- *   parameters:
- *   - in: "body"
- *     name: "body"
- *     description: "New user's password"
- *     required: true
- *     schema:
- *      $ref: '#/components/schemas/ResetPassword'
+ *   requestBody:
+ *     content:
+ *       application/x-www-form-urlencoded:
+ *        required: true
+ *        schema:
+ *         type: object
+ *         properties:
+ *          password:
+ *           type: string
  *   responses:
  *     200:
  *       description: A succcessful response
@@ -156,47 +172,10 @@
  * @swagger
  * components:
  *   schemas:
- *     SignUpInput:
- *       required:
- *       - name
- *       - lastname
- *       - email
- *       - password
- *       properties:
- *         name:
- *           type: string
- *         lastname:
- *           type: string
- *         email:
- *           type: string
- *         password: 
- *           type: string 
  *     ResponseString:
  *      properties:
  *        success:
  *         type: boolean
  *        message: 
  *         type: string
- *     SignInInput:
- *       required:
- *       - email
- *       - password
- *       properties:
- *         email:
- *           type: string
- *         password: 
- *           type: string   
- *     ForgotPassword:
- *      required:
- *      - email
- *      properties:
- *       email:
- *        type: string
- *      ResetPassword:
- *       required:
- *       - newPassword
- *       properties:
- *        newPassword:
- *         type: string
- *  
  */
