@@ -13,9 +13,15 @@ function ResetPassword() {
         <h1>Ecovolution</h1>
         <Form>
           <h5> Reset password</h5>
-          <Input id="new_password" placeholder="New password" />
-          <Input id="confirm_password" placeholder="Confirm password" />
-          <Button text="Reset pasword" />
+          <Input
+            id='new_password'
+            placeholder='New password'
+          />
+          <Input
+            id='confirm_password'
+            placeholder='Confirm password'
+          />
+          <Button text='Reset pasword' />
         </Form>
       </div>
     </div>

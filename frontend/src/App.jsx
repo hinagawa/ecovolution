@@ -18,22 +18,22 @@ function App() {
       <Routes>
         <Route
           exaсt
-          path="/sign-in"
+          path='/sign-in'
           element={<SignInPage />}
         />
         <Route
           exaсt
-          path="/sign-up"
+          path='/sign-up'
           element={<SignUpPage />}
         />
         <Route
           exaсt
-          path="/reset-password"
+          path='/reset-password'
           element={<ResetPassword />}
         />
         <Route
           exaсt
-          path="/forgot-password"
+          path='/forgot-password'
           element={<ForgotPassword />}
         />
       </Routes>

@@ -3,11 +3,7 @@ import PropTypes from 'prop-types'
 
 import styles from './styles.module.css'
 
-function Form({
-  children,
-  className,
-  onSubmit,
-}) {
+function Form({ children, className, onSubmit }) {
   return (
     <form
       className={`${styles.container} ${className}`}

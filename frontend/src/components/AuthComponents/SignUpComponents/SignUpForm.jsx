@@ -9,15 +9,13 @@ import styles from '../styles.module.css'
 function SignUpForm() {
   return (
     <fieldset className={styles.fieldsetContainer}>
-      <legend className={styles.legendFont}>
-        Sign Up
-      </legend>
+      <legend className={styles.legendFont}>Sign Up</legend>
       <Form>
-        <Input placeholder="Name" />
-        <Input placeholder="E-mail" />
-        <Input placeholder="Password" />
-        <Input placeholder="Confirm password" />
-        <Button text="Sign Up" />
+        <Input placeholder='Name' />
+        <Input placeholder='E-mail' />
+        <Input placeholder='Password' />
+        <Input placeholder='Confirm password' />
+        <Button text='Sign Up' />
       </Form>
     </fieldset>
   )

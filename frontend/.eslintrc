@@ -24,12 +24,20 @@
             "error",
             "never"
         ],
+        "quotes": [
+            "error",
+            "single"
+        ],
         "react/function-component-definition": [
             2,
             {
                 "namedComponents": "function-declaration"
             }
         ],
-        "jsx-a11y/label-has-associated-control" : 0
+        "jsx-a11y/label-has-associated-control": 0,
+        "jsx-quotes": [
+            "error",
+            "prefer-single"
+        ]
     }
 }

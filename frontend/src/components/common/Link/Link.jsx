@@ -5,10 +5,7 @@ import styles from './styles.module.css'
 
 function Link({ text, href }) {
   return (
-    <a
-      href={href}
-      className={styles.link}
-    >
+    <a href={href} className={styles.link}>
       {text}
     </a>
   )

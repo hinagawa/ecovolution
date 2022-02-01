@@ -11,7 +11,7 @@ function SignInPage() {
     <div className={styles.rowContainer}>
       <div className={styles.logoContainer}>
         <h1>Ecovolution</h1>
-        <img src={img} alt="Girl with horse" />
+        <img src={img} alt='Girl with horse' />
       </div>
       <div className={styles.formContainer}>
         <Form />

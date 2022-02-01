@@ -14,10 +14,15 @@ function ResetPassword() {
         <h1>Ecovolution</h1>
         <Form>
           <h5> Enter your email to reset password</h5>
-          <Input id="email" placeholder="Email" />
+          <Input id='email' placeholder='Email' />
           <div className={styles.forgotFooter}>
-            <Button text="Send" />
-            <Link text="Back to sign in" href="/sign-in" />
+            <Button text='Send reset link' />
+            <div>
+              <Link
+                text='Back to Sign In'
+                href='/sign-in'
+              />
+            </div>
           </div>
         </Form>
       </div>
