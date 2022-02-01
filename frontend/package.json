@@ -5,6 +5,7 @@
   "proxy": "http://localhost:5000",
   "dependencies": {
     "classnames": "^2.3.1",
+    "eslint-config-airbnb": "^19.0.2",
     "babel-loader": "^8.1.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
@@ -62,7 +63,6 @@
     "@testing-library/user-event": "^12.8.3",
     "classnames": "^2.3.1",
     "eslint": "^7.32.0",
-    "eslint-config-airbnb": "^19.0.2",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.27.1",
