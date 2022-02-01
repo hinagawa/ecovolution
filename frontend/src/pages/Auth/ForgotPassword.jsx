@@ -16,13 +16,8 @@ function ResetPassword() {
           <h5> Enter your email to reset password</h5>
           <Input id='email' placeholder='Email' />
           <div className={styles.forgotFooter}>
-            <Button text='Send reset link' />
-            <div>
-              <Link
-                text='Back to Sign In'
-                href='/sign-in'
-              />
-            </div>
+            <Button text='Send link' />
+            <Link text='Back to Sign In' href='/sign-in' />
           </div>
         </Form>
       </div>
