@@ -6,7 +6,7 @@ function SignInFormFooter() {
   return (
     <div className={styles.inlineContainer}>
       <p>Do not have an account?</p>
-      <a href="/sign-up">Sign Up</a>
+      <a href='/sign-up'>Sign Up</a>
     </div>
   )
 }
