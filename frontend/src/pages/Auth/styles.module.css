@@ -1,0 +1,70 @@
+.rowContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.logoContainer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #039c52;
+  border-radius: 0 20px 20px 0;
+  flex: 1;
+}
+
+.logoContainer img {
+  height: auto;
+}
+
+.logoContainer h1 {
+  color: white;
+  font-size: 50px;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  flex: 1;
+}
+
+.fieldsetContainer {
+  border: 1px solid #beb9b9;
+  border-radius: 5px;
+  padding: 50px;
+}
+
+.legendFont {
+  font-size: 30px;
+}
+
+body {
+  background-color: #039c52;
+}
+.gridContainer {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.formContainer {
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
+  background-color: white;
+  border-radius: 10px;
+  padding: 50px;
+  width: 100%;
+  box-shadow: 10px 5px #f68e6f;
+}
+h1 {
+  font-size: 50px;
+}
+.forgotFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

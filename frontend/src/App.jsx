@@ -5,10 +5,10 @@ import {
   Routes,
 } from 'react-router-dom'
 
-import SignInPage from './pages/Auth/SignInUpPage/SignInPage'
-import SignUpPage from './pages/Auth/SignInUpPage/SignUpPage'
-import ResetPassword from './pages/Auth/ResetForgotPasswordPage/ResetPassword'
-import ForgotPassword from './pages/Auth/ResetForgotPasswordPage/ForgotPassword'
+import SignInPage from './pages/Auth/SignInPage'
+import SignUpPage from './pages/Auth/SignUpPage'
+import ResetPassword from './pages/Auth/ResetPassword'
+import ForgotPassword from './pages/Auth/ForgotPassword'
 
 import './index.module.css'
 

@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Form from '../../../components/common/Form/Form'
-import Input from '../../../components/common/Input/Input'
-import Button from '../../../components/common/Button/Button'
+import Form from '../../components/Form/Form'
+import Input from '../../components/Input/Input'
+import Button from '../../components/Button/Button'
 
 import styles from './styles.module.css'
 
