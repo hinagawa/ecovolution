@@ -23,7 +23,13 @@ export default {
 }
 
 export function Button({ variant, ...rest }) {
-  return <ButtonComponent {...rest} variant={variant} text={`${variant} button`} />
+  return (
+    <ButtonComponent
+      {...rest}
+      variant={variant}
+      text={`${variant} button`}
+    />
+  )
 }
 
 Button.args = {

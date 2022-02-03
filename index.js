@@ -4,6 +4,12 @@ var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const swaggerUI = require('swagger-ui-express');
+const swaggerJsdoc = require('swagger-jsdoc');
+
+const config = require('./config/dev');
+
+const swaggerDocument = require('./swagger/basicInfo');
 
 const keys = require('./config/keys');
 const authRoutes = require('./routes/authRoutes');
@@ -13,6 +19,7 @@ require('./models/User');
 require('./services/passport');
 
 const PORT = keys.port || 5000;
+const spec = swaggerJsdoc(swaggerDocument);
 
 async function start() {
     try {
@@ -48,6 +55,7 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(spec));
 
 authRoutes(app);
 userRoutes(app);

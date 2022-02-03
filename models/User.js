@@ -2,6 +2,8 @@ const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 
+const config = require('../config/dev');
+
 const { Schema, model } = require('mongoose');
 
 const keys = require('../config/keys');
@@ -29,7 +31,7 @@ const UserSchema = new Schema({
         default: 'User'
     },
     resetPasswordToken: String,
-    resetPasswordExpire : Date
+    resetPasswordExpire: Date
 });
 
 UserSchema.methods.comparePasswords = async function (password) {
@@ -57,6 +59,6 @@ UserSchema.methods.getResetPasswordToken = async function () {
     const resetPasswordExpire = Date.now() + 10 * 60 * 1000;
     this.resetPasswordToken = resetPasswordToken;
     this.resetPasswordExpire = resetPasswordExpire;
-    return  this.resetPasswordToken;
+    return this.resetPasswordToken;
 };
 module.exports = model('users', UserSchema);

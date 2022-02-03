@@ -25,10 +25,10 @@ export default {
 export function Form({ args }) {
   return (
     <FormComponent {...args}>
-      <InputComponent placeholder="Login" />
-      <InputComponent placeholder="Password" />
-      <CheckboxComponent text="Remember me" />
-      <ButtonComponent text="Sign In" />
+      <InputComponent placeholder='Login' />
+      <InputComponent placeholder='Password' />
+      <CheckboxComponent text='Remember me' />
+      <ButtonComponent text='Sign In' />
     </FormComponent>
   )
 }

@@ -5,13 +5,24 @@
     },
     "extends": "eslint:recommended",
     "parserOptions": {
-        "ecmaVersion": 13,
+        "ecmaVersion": 12,
         "sourceType": "module"
     },
     "rules": {
-        "semi": ["error", "always"],
-        "quotes": ["warn", "single"],
-        "no-multiple-empty-lines" : ["error", {"max": 2}]
+        "semi": [
+            "error",
+            "always"
+        ],
+        "quotes": [
+            "warn",
+            "single"
+        ],
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 2
+            }
+        ]
     },
     "globals": {
         "require": true
