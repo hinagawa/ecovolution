@@ -1,6 +1,3 @@
-const keys = require('../config/keys');
-
-const host = keys.host;
 module.exports = {
     definition: {
         openapi: '3.0.0',
@@ -11,7 +8,7 @@ module.exports = {
         },
         servers: [
             {
-                url: host
+                url: 'https://ecovolution.herokuapp.com',
             }
         ]
     },
