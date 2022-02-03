@@ -1,6 +1,6 @@
 import React from 'react'
 
-import img from '../../assets/images/img.png'
+import img from '../../assets/images/Img.png'
 
 import Input from '../../components/Input/Input'
 import Form from '../../components/Form/Form'
