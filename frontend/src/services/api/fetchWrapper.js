@@ -1,4 +1,4 @@
-import baseURL from '../../../const/index'
+import baseURL from '../../const/index'
 
 function fetchWrapper({
   method,

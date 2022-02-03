@@ -37,7 +37,7 @@ function SignUpPage() {
       }
 
     }
-    }
+    
 
     console.log(data.lastName)
   }
