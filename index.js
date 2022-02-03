@@ -7,8 +7,6 @@ const passport = require('passport');
 const swaggerUI = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 
-const config = require('./config/dev');
-
 const swaggerDocument = require('./swagger/basicInfo');
 
 const keys = require('./config/keys');
