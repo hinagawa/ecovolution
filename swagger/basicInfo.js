@@ -1,6 +1,5 @@
 const keys = require('../config/keys');
 
-const routeDirectory = keys.swaggerRouteDirectory;
 const host = keys.host;
 module.exports = {
     definition: {
@@ -16,5 +15,6 @@ module.exports = {
             }
         ]
     },
-    apis: [routeDirectory + '*.js'],
+    apis: ['swagger\\routes\\authRoutesInfo.js']
+
 };
