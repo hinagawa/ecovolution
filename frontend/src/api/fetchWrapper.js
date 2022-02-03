@@ -1,14 +1,12 @@
-import baseURL from '../../const/index'
+import baseURL from '../../../const/index'
 
 function fetchWrapper({
   method,
   endpoint,
-  header,
+  headers,
   bodyData,
 }) {
-  const headers = new Headers()
   headers.append('Content-Type', 'application/x-www-urlencoded')
-  headers.append(header)
   if (method === 'GET' || method === 'DELETE') {
     return fetch(`${baseURL}${endpoint}`, {
       method,

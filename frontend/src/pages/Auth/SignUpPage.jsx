@@ -1,5 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+
+import customFetch from '../../services/api/fetchWrapper'
 
 import img from '../../assets/images/img.png'
 
@@ -16,10 +19,24 @@ function SignUpPage() {
     setValue,
     formState: { errors },
   } = useForm()
+  const [error, setError] = useState()
+  const history = useHistory()
   // TODO fetch
-  const onSubmit = (data) => {
-    if(data.password !== data.confirmPassword) {
-      return 
+  const onSubmit = async (data) => {
+    const header = new Headers()
+    if(data.password === data.confirmPassword) { 
+      const res = await customFetch.post({
+        data.name, data.lastName, data.email, data.password
+      }, 'api/sign-up', header)
+      if(res.siSuccess) {
+        setError('')
+        history.push('sign-in')
+        window.location.reload()
+      } else {
+        console.log(res)
+      }
+
+    }
     }
 
     console.log(data.lastName)
