@@ -1,17 +1,15 @@
 import baseURL from '../../const/index'
 
-function fetchWrapper({
+function fetchWrapper(
   method,
   endpoint,
   bodyData,
   headers,
-}) {
+) {
   const newHeader = {
     ...headers,
     'Content- Type': 'application/x-www-urlencoded',
   }
-  console.log(endpoint)
-
   if (method === 'GET' || method === 'DELETE') {
     return fetch(`${baseURL}${endpoint}`, {
       method,
@@ -25,7 +23,7 @@ function fetchWrapper({
   }).then((response) => (
     response.ok
       ? response.json()
-      : response.status
+      : response
   ))
 }
 const api = {

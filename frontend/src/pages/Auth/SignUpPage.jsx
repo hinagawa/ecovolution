@@ -22,16 +22,12 @@ function SignUpPage() {
     const { name, lastName, email, password } = data
     if (data.password === data.confirmPassword) {
       setError('')
-      const res = await customFetch.post(
-        'api/sign-up',
-        {
-          name,
-          lastName,
-          email,
-          password,
-        },
-      )
-      console.log(res, 'dsfdf')
+      const res = await customFetch.post('api/sign-up', {
+        name,
+        lastName,
+        email,
+        password,
+      })
       if (res.success) {
         setError('')
         navigate('sign-in')
@@ -41,7 +37,6 @@ function SignUpPage() {
       }
     } else {
       setError('Password and confirm password do not match')
-      console.log(error, 'sadsads')
     }
   }
   useEffect(() => {
