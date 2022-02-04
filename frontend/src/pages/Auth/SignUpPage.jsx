@@ -17,21 +17,21 @@ function SignUpPage() {
   const { register, handleSubmit, setValue } = useForm()
   const [error, setError] = useState('')
   const navigate = useNavigate()
-  // TODO fetch
+  // TODO check password onChange
   const onSubmit = async (data) => {
-    const header = new Headers()
     const { name, lastName, email, password } = data
     if (data.password === data.confirmPassword) {
+      setError('')
       const res = await customFetch.post(
+        'api/sign-up',
         {
           name,
           lastName,
           email,
           password,
         },
-        'api/sign-up',
-        header,
       )
+      console.log(res, 'dsfdf')
       if (res.success) {
         setError('')
         navigate('sign-in')
