@@ -1,51 +1,57 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
 import customFetch from '../../services/api/fetchWrapper'
 
-import img from '../../assets/images/img.png'
+import img from '../../assets/images/Img.png'
 
 import Input from '../../components/Input/Input'
 import Form from '../../components/Form/Form'
 import Button from '../../components/Button/Button'
+import Error from '../../components/Error/Error'
 
 import styles from './styles.module.css'
 
 function SignUpPage() {
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-  } = useForm()
-  const [error, setError] = useState()
-  const history = useHistory()
+  const { register, handleSubmit, setValue } = useForm()
+  const [error, setError] = useState('')
+  const navigate = useNavigate()
   // TODO fetch
   const onSubmit = async (data) => {
     const header = new Headers()
-    if(data.password === data.confirmPassword) { 
-      const res = await customFetch.post({
-        data.name, data.lastName, data.email, data.password
-      }, 'api/sign-up', header)
-      if(res.siSuccess) {
+    const { name, lastName, email, password } = data
+    if (data.password === data.confirmPassword) {
+      const res = await customFetch.post(
+        {
+          name,
+          lastName,
+          email,
+          password,
+        },
+        'api/sign-up',
+        header,
+      )
+      if (res.success) {
         setError('')
-        history.push('sign-in')
+        navigate('sign-in')
         window.location.reload()
       } else {
         console.log(res)
       }
-
+    } else {
+      setError('Password and confirm password do not match')
+      console.log(error, 'sadsads')
     }
-    
-
-    console.log(data.lastName)
   }
   useEffect(() => {
     register('name', { required: true })
     register('lastName')
     register('email')
-    register('password', { required: true, minLength: 8 })
+    register('password', {
+      required: true,
+      minLength: 8,
+    })
     register('confirmPassword', {
       required: true,
       minLength: 8,
@@ -96,7 +102,6 @@ function SignUpPage() {
                 setValue('password', e.target.value)
               }}
             />
-            {errors.password && errors.password.message}
             <Input
               type='password'
               placeholder='Confirm password'
@@ -105,7 +110,8 @@ function SignUpPage() {
                 setValue('confirmPassword', e.target.value)
               }}
             />
-            <Button>Submit</Button>
+            <Button text='Sign Up'>Submit</Button>
+            {error && <Error message={error} />}
           </Form>
         </fieldset>
       </div>

@@ -7,7 +7,5 @@ function Error({ message }) {
   return <p className={styles.error}>{message}</p>
 }
 
-Error.propTypes = {
-  message: PropTypes.string.isRequired,
-}
+Error.propTypes = { message: PropTypes.string.isRequired }
 export default Error
