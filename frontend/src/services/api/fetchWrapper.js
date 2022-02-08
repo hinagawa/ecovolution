@@ -8,27 +8,24 @@ function fetchWrapper(
 ) {
   const newHeader = {
     ...headers,
-    'Content- Type': 'application/x-www-urlencoded',
+    'Content-Type': 'application/json',
   }
   if (method === 'GET' || method === 'DELETE') {
     return fetch(`${baseURL}${endpoint}`, {
       method,
-      newHeader,
+      headers: newHeader,
     }).then((res) => res.json()).catch((e) => e)
   }
   return fetch(`${baseURL}${endpoint}`, {
     method,
-    body: bodyData != null ? JSON.stringify(bodyData) : undefined,
-    headers,
-  }).then((response) => (
-    response.ok
-      ? response.json()
-      : response
-  ))
+    mode: 'cors',
+    body: JSON.stringify(bodyData),
+    headers: newHeader,
+  }).then((res) => res).catch((e) => e)
 }
 const api = {
   post(endpoint, data, headers) {
-    return fetchWrapper('POST', endpoint, data, headers)
+    return fetchWrapper('POST', endpoint, data, headers).catch((e) => e)
   },
   get(endpoint, headers) { return fetchWrapper('GET', endpoint, headers) },
   delete(endpoint, headers) { return fetchWrapper('DELETE', endpoint, headers) },
