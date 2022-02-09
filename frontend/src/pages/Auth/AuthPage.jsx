@@ -17,11 +17,11 @@ function AuthPage() {
       </div>
       <div className={styles.formContainer}>
         <fieldset className={styles.fieldsetContainer}>
-          <legend className={styles.legendFont}>
-            Sign In
-          </legend>
           <Routes>
-            <Route path='/sign-up' element={<SignUpForm />} />
+            <Route
+              path='/sign-up'
+              element={<SignUpForm />}
+            />
             <Route
               path='/sign-in'
               element={<SignInForm />}

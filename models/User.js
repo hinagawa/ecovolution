@@ -29,27 +29,26 @@ const UserSchema = new Schema({
         default: 'User'
     },
     resetPasswordToken: String,
-    resetPasswordExpire : Date
+    resetPasswordExpire: Date
 });
 
 UserSchema.methods.comparePasswords = async function (password) {
     return await bcrypt.compare(password, this.password);
 };
 
-UserSchema.methods.createJwtToken = async function (isMatch, user) {
-    if (isMatch) {
-        const claims = {
-            sub: user.id,
-            email: user.email,
-            iss: issuer,
-            permissions: user.role
-        };
+UserSchema.methods.createJwtToken = async function (user) {
+    const claims = {
+        sub: user.id,
+        email: user.email,
+        iss: issuer,
+        permissions: user.role
+    };
+    return await jwt.sign(claims, config.jwt_secret, {
+        expiresIn: 60 * 15
+    });
 
-        return await jwt.sign(claims, config.jwt_secret, {
-            expiresIn: 60 * 15
-        });
-    }
 };
+
 
 UserSchema.methods.getResetPasswordToken = async function () {
     const resetToken = crypto.randomBytes(20).toString('hex');
@@ -57,6 +56,6 @@ UserSchema.methods.getResetPasswordToken = async function () {
     const resetPasswordExpire = Date.now() + 10 * 60 * 1000;
     this.resetPasswordToken = resetPasswordToken;
     this.resetPasswordExpire = resetPasswordExpire;
-    return  this.resetPasswordToken;
+    return this.resetPasswordToken;
 };
 module.exports = model('users', UserSchema);

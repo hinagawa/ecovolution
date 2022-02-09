@@ -9,12 +9,13 @@ import Button from '../../components/Button/Button'
 import Form from '../../components/Form/Form'
 import Error from '../../components/Error/Error'
 
+import styles from './styles.module.css'
+
 function SignUpForm() {
   const { register, handleSubmit, setValue } = useForm()
   const [error, setError] = useState('')
   const navigate = useNavigate()
   // TODO check password onChange
-  // eslint-disable-next-line consistent-return
   const onSubmit = (data) => {
     const { name, lastName, email, password } = data
     if (data.password !== data.confirmPassword) {
@@ -36,64 +37,75 @@ function SignUpForm() {
   }
 
   useEffect(() => {
-    register('name', { required: true })
+    register('name', {
+      required: 'Please, provide your name',
+    })
     register('lastName')
-    register('email')
+    register('email', {
+      required: 'Please, provide your email',
+    })
     register('password', {
-      required: true,
+      required: 'Please, provide your password',
       minLength: 8,
     })
     register('confirmPassword', {
-      required: true,
+      required: 'Please, confirm your password',
       minLength: 8,
     })
   }, [])
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <Input
-        type='text'
-        placeholder='Name'
-        name='name'
-        onChange={(e) => {
-          setValue('name', e.target.value)
-        }}
-      />
-      <Input
-        type='text'
-        placeholder='Last Name'
-        name='lastName'
-        onChange={(e) => {
-          setValue('lastName', e.target.value)
-        }}
-      />
-      <Input
-        type='email'
-        placeholder='E-mail'
-        name='email'
-        onChange={(e) => {
-          setValue('email', e.target.value)
-        }}
-      />
-      <Input
-        type='password'
-        placeholder='Password'
-        name='password'
-        onChange={(e) => {
-          setValue('password', e.target.value)
-        }}
-      />
-      <Input
-        type='password'
-        placeholder='Confirm password'
-        name='confirmPassword'
-        onChange={(e) => {
-          setValue('confirmPassword', e.target.value)
-        }}
-      />
-      <Button text='Sign Up'>Submit</Button>
-      {error && <Error message={error} />}
-    </Form>
+    <>
+      <legend className={styles.legendFont}>Sign Up</legend>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Input
+          type='text'
+          placeholder='Name'
+          name='name'
+          onChange={(e) => {
+            setValue('name', e.target.value)
+          }}
+        />
+        <Input
+          type='text'
+          placeholder='Last Name'
+          name='lastName'
+          onChange={(e) => {
+            setValue('lastName', e.target.value)
+          }}
+        />
+        <Input
+          type='email'
+          placeholder='E-mail'
+          name='email'
+          onChange={(e) => {
+            setValue('email', e.target.value)
+          }}
+        />
+        <Input
+          type='password'
+          placeholder='Password'
+          name='password'
+          onChange={(e) => {
+            setValue('password', e.target.value)
+          }}
+        />
+        <Input
+          type='password'
+          placeholder='Confirm password'
+          name='confirmPassword'
+          onChange={(e) => {
+            setValue('confirmPassword', e.target.value)
+          }}
+        />
+        <Button text='Sign Up' />
+        {error && <Error message={error} />}
+      </Form>
+      <div className={styles.inlineContainer}>
+        <p>Already have an account?</p>
+        <a href='/sign-in'>Sign In</a>
+      </div>
+    </>
   )
 }
 

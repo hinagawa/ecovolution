@@ -5,7 +5,8 @@ const config = require('../config/dev');
 const sendEmail = async (email, subject, text) => {
     try {
         const transporter = nodemailer.createTransport({
-            service: config.service,
+            service: config.mailService,
+            port: 465,
             auth: {
                 user: config.mailUser,
                 pass: config.mailPassword
@@ -17,10 +18,10 @@ const sendEmail = async (email, subject, text) => {
             subject: subject,
             text: text
         });
-        console.log('Email sent successfully');
     }
     catch (e) {
-        console.log('Send email error ', e.message);
+        console.log(e.message);
+        throw new Error(`Send email error ${e.message}`);
     }
 };
 

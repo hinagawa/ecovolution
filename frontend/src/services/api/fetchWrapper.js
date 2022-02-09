@@ -25,7 +25,7 @@ function fetchWrapper(
 }
 const api = {
   post(endpoint, data, headers) {
-    return fetchWrapper('POST', endpoint, data, headers).catch((e) => e)
+    return fetchWrapper('POST', endpoint, data, headers)
   },
   get(endpoint, headers) { return fetchWrapper('GET', endpoint, headers) },
   delete(endpoint, headers) { return fetchWrapper('DELETE', endpoint, headers) },
