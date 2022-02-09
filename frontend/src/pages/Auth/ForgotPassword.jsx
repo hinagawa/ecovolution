@@ -10,6 +10,7 @@ import Link from '../../components/Link/Link'
 import Error from '../../components/Error/Error'
 
 import styles from './styles.module.css'
+
 function ResetPassword() {
   const { register, handleSubmit, setValue } = useForm()
   const [error, setError] = useState('')
@@ -24,7 +25,7 @@ function ResetPassword() {
   }
   useEffect(() => {
     register('email', {
-      required: 'Please, provide your name',
+      required: 'Please, provide your email',
     })
   }, [])
   return (

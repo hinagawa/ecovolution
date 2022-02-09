@@ -74,13 +74,15 @@ exports.forgotPassword = async (req, res) => {
 
 exports.resetPassword = async (req, res) => {
     const resetToken = req.params.resetToken;
+    console.log(req.body);
     try {
         const user = await User.findOne({
             resetToken,
             resetPasswordExpire: { $gt: Date.now() }
         });
+        const hashedPassword = await bcrypt.hash(req.body.newPassword, +SALT);
         if (!user) throw new Error('Invalid Reset token');
-        user.password = req.body.password;
+        user.password = hashedPassword;
         user.resetPasswordToken = undefined;
         user.resetPasswordExpire = undefined;
         await user.save();
