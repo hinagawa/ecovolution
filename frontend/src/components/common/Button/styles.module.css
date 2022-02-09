@@ -9,9 +9,4 @@
 .link {
   background-color: transparent;
   border: none;
-  margin-top: 10px;
-}
-
-.button:hover {
-  box-shadow: 1px 1px 4px black;
 }

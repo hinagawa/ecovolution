@@ -36,20 +36,18 @@ UserSchema.methods.comparePasswords = async function (password) {
     return await bcrypt.compare(password, this.password);
 };
 
-UserSchema.methods.createJwtToken = async function (isMatch, user) {
-    if (isMatch) {
-        const claims = {
-            sub: user.id,
-            email: user.email,
-            iss: issuer,
-            permissions: user.role
-        };
-
-        return jwt.sign(claims, keys.jwt_secret, {
+UserSchema.methods.createJwtToken = async function (user) {
+    const claims = {
+        sub: user.id,
+        email: user.email,
+        iss: issuer,
+        permissions: user.role
+    };
+    return jwt.sign(claims, keys.jwt_secret, {
             expiresIn: 60 * 15
         });
-    }
-};
+    };
+
 
 UserSchema.methods.getResetPasswordToken = async function () {
     const resetToken = crypto.randomBytes(20).toString('hex');

@@ -38,6 +38,13 @@
         "jsx-quotes": [
             "error",
             "prefer-single"
-        ]
+        ],
+        "object-curly-newline": [
+            "error",
+            {
+                "ImportDeclaration": "never"
+            }
+        ],
+        "consistent-return": "off"
     }
 }

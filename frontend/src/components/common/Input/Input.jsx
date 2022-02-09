@@ -9,15 +9,11 @@ function Input({
   value,
   className,
   onChange,
-  type,
-  name,
 }) {
   return (
     <input
       id={id}
       placeholder={placeholder}
-      type={type}
-      name={name}
       value={value}
       className={`${styles.input} ${className}`}
       onChange={onChange}
@@ -26,21 +22,16 @@ function Input({
 }
 
 Input.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-  type: PropTypes.string,
   value: PropTypes.string,
-  name: PropTypes.string,
   className: PropTypes.string,
   onChange: PropTypes.func,
 }
 
 Input.defaultProps = {
-  id: undefined,
   value: undefined,
-  type: undefined,
   className: undefined,
-  name: undefined,
   onChange: null,
 }
 export default Input

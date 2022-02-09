@@ -1,0 +1,10 @@
+.input {
+  height: 30px;
+  border: 1px solid #beb9b9;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.input::placeholder {
+  opacity: 50%;
+}

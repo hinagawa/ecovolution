@@ -1,19 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
 
 import styles from './styles.module.css'
 
-function Button({ text, variant, onClick }) {
-  const resStyle = classNames({
-    [styles.button]: true,
-    [styles.primary]: variant === 'primary',
-    [styles.link]: variant === 'link',
-  })
+function Button({
+  text,
+  variant,
+  onClick,
+}) {
   return (
     <button
-      type={onClick ? 'button' : 'submit'}
-      className={resStyle}
+      type="button"
+      className={styles[variant]}
       onClick={onClick}
     >
       {text}
@@ -24,12 +22,11 @@ function Button({ text, variant, onClick }) {
 Button.propTypes = {
   text: PropTypes.string.isRequired,
   variant: PropTypes.oneOf(['primary', 'link']),
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
 }
 
 Button.defaultProps = {
   variant: 'primary',
-  onClick: null,
 }
 
 export default Button

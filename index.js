@@ -1,9 +1,9 @@
 const path = require('path');
 const express = require('express');
-var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const cors = require('cors');
 const swaggerUI = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 
@@ -32,10 +32,8 @@ async function start() {
 start();
 
 const app = express();
-
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+app.use(cors());
+app.use(express.json());
 
 app.use(
     cookieSession({

@@ -5,7 +5,7 @@ const keys = require('../config/keys');
 const sendEmail = async (email, subject, text) => {
     try {
         const transporter = nodemailer.createTransport({
-            service: keys.service,
+            service: keys.mailService,
             auth: {
                 user: keys.mailUser,
                 pass: keys.mailPassword
@@ -17,10 +17,10 @@ const sendEmail = async (email, subject, text) => {
             subject: subject,
             text: text
         });
-        console.log('Email sent successfully');
     }
     catch (e) {
-        console.log('Send email error ', e.message);
+        console.log(e.message);
+        throw new Error(`Send email error ${e.message}`);
     }
 };
 
