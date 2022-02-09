@@ -41,12 +41,14 @@
 body {
   background-color: #039c52;
 }
+
 .gridContainer {
   height: 100vh;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
 }
+
 .formContainer {
   grid-row: 2 / 3;
   grid-column: 2 / 3;
@@ -56,9 +58,11 @@ body {
   width: 100%;
   box-shadow: 10px 5px #f68e6f;
 }
+
 h1 {
   font-size: 50px;
 }
+
 .forgotFooter {
   display: flex;
   flex-direction: row;

@@ -2,11 +2,11 @@ const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 
-const config = require('../config/dev');
-
 const { Schema, model } = require('mongoose');
 
-const issuer = config.host;
+const keys = require('../config/keys');
+
+const issuer = keys.host;
 
 const UserSchema = new Schema({
     googleId: String,
@@ -43,10 +43,10 @@ UserSchema.methods.createJwtToken = async function (user) {
         iss: issuer,
         permissions: user.role
     };
-    return await jwt.sign(claims, config.jwt_secret, {
-        expiresIn: 60 * 15
-    });
-
+    return jwt.sign(claims, keys.jwt_secret, {
+            expiresIn: 60 * 15
+        });
+    }
 };
 
 

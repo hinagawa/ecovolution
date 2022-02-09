@@ -6,6 +6,7 @@
 /package-lock.json
 # testing
 /coverage
+/process.env
 
 # production
 /build

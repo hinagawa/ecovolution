@@ -1,6 +1,3 @@
-const config = require('../config/dev');
-
-const routeDirectory = config.swaggerRouteDirectory;
 module.exports = {
     definition: {
         openapi: '3.0.0',
@@ -11,9 +8,10 @@ module.exports = {
         },
         servers: [
             {
-                url: 'http://localhost:5000'
+                url: 'https://ecovolution.herokuapp.com',
             }
         ]
     },
-    apis: [routeDirectory + '*.js'],
+    apis: ['swagger\\routes\\authRoutesInfo.js']
+
 };
