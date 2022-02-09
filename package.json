@@ -25,7 +25,7 @@
   "scripts": {
     "frontend": "cd frontend && npm start",
     "api": "nodemon index.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run backend\" \"npm run frontend\"",
+    "dev": "concurrently --kill-others-on-fail \"npm run api\" \"npm run frontend\"",
     "heroku-postbuild": "cd frontend && npm install && npm run build"
   },
   "author": "Polina Salimullina",

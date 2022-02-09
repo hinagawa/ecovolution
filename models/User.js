@@ -46,8 +46,7 @@ UserSchema.methods.createJwtToken = async function (user) {
     return jwt.sign(claims, keys.jwt_secret, {
             expiresIn: 60 * 15
         });
-    }
-};
+    };
 
 
 UserSchema.methods.getResetPasswordToken = async function () {
