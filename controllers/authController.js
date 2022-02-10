@@ -53,7 +53,7 @@ exports.forgotPassword = async (req, res) => {
         if (!user) throw new Error('User with this email not found');
         const resetToken = await user.getResetPasswordToken();
         await user.save();
-        const link = `${keys.host}/api/reset-password?userId=${user._id}&resetToken=${resetToken}`;
+        const link = `${keys.host_url}/api/reset-password?userId=${user._id}&resetToken=${resetToken}`;
         const text = `
         You have requested a password reset
         Please go to this link to reset your password ${link}`;

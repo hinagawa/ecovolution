@@ -6,7 +6,7 @@ const { Schema, model } = require('mongoose');
 
 const keys = require('../config/keys');
 
-const issuer = keys.host;
+const issuer = keys.host_url;
 
 const UserSchema = new Schema({
     googleId: String,
