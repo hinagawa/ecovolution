@@ -61,7 +61,7 @@ function SignInForm() {
       </Form>
       <div className={styles.inlineContainer}>
         <p>Do not have an account?</p>
-        <a href='/sign-up'>Sign Up</a>
+        <a href='/auth/sign-up'>Sign Up</a>
       </div>
       <a href='/forgot-password'>Forgot password?</a>
     </>

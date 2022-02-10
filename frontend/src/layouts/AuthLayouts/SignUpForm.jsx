@@ -103,7 +103,7 @@ function SignUpForm() {
       </Form>
       <div className={styles.inlineContainer}>
         <p>Already have an account?</p>
-        <a href='/sign-in'>Sign In</a>
+        <a href='/auth/sign-in'>Sign In</a>
       </div>
     </>
   )
