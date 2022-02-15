@@ -10,7 +10,7 @@ const disabled = {
   },
 }
 export default {
-  title: 'Components/Article/ShortArticle',
+  title: 'Layouts/Article/ShortArticle',
   component: ShortArticleComponent,
   argTypes: {
     src: disabled,

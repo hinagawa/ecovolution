@@ -1,0 +1,11 @@
+.header {
+  background-color: #039c52;
+}
+.linkGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.linkGroup p {
+  color: white;
+}

@@ -8,17 +8,17 @@
   height: 20px;
 }
 .recipe {
-  background-color: red;
+  background-color: #ff0000;
 }
 .tutorial {
-  background-color: green;
+  background-color: #008000;
 }
 .places {
-  background-color: blue;
+  background-color: #0000ff;
 }
 .events {
-  background-color: purple;
+  background-color: #800080;
 }
 .lifehack {
-  background-color: coral;
+  background-color: #ff7f50;
 }

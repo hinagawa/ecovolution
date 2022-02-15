@@ -1,6 +1,6 @@
 .primary {
   background-color: #f68e6f;
-  color: white;
+  color: #ffffff;
   border: none;
   border-radius: 5px;
   height: 30px;
@@ -13,5 +13,5 @@
 }
 
 .button:hover {
-  box-shadow: 1px 1px 4px black;
+  box-shadow: 1px 1px 4px #000000;
 }
