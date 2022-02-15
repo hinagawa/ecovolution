@@ -5,3 +5,12 @@ body {
   width: 100%;
   margin: inherit;
 }
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('./fonts/Raleway-Regular.ttf');
+}
+
+* {
+ font-family: 'Raleway';
+}

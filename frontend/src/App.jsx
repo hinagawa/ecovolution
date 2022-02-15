@@ -7,8 +7,6 @@ import AuthPage from './pages/Auth/AuthPage'
 import ResetPassword from './pages/Auth/ResetPassword'
 import ForgotPassword from './pages/Auth/ForgotPassword'
 
-import './index.module.css'
-
 function App() {
   return (
     <Router>

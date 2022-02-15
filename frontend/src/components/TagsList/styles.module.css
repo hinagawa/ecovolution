@@ -1,0 +1,11 @@
+.tagsList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-left: 10px;
+}
+.tagsList > p {
+  opacity: 50%;
+  margin-right: 10px;
+}

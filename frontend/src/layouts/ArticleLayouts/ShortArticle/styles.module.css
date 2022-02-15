@@ -1,0 +1,21 @@
+.article {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  border: 1px solid;
+  border-radius: 5px;
+}
+.mainContent {
+  display: flex;
+  flex-direction: row;
+}
+
+.articleText {
+  display: flex;
+  flex-direction: column;
+}
+
+.articleImg {
+  width: 30%;
+  padding: 10px;
+}
