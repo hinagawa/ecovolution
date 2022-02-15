@@ -13,6 +13,7 @@ import styles from './styles.module.css'
 function Header() {
   return (
     <div className={styles.header}>
+      <h1 className={styles.headerLogo}>Ecovolution</h1>
       <div className={styles.linkGroup}>
         <Link href='/'>
           <img src={star} alt='Favourite' />
