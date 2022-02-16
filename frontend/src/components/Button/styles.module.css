@@ -12,6 +12,6 @@
   margin-top: 10px;
 }
 
-.button:hover {
+.primary:hover {
   box-shadow: 1px 1px 4px #000000;
 }

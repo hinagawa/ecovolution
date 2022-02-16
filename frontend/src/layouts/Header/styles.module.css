@@ -25,3 +25,19 @@
   color: white;
   margin-left: 10px;
 }
+
+.profileInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.profileInfo img {
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 500px) {
+  .profileInfo p {
+    display: none;
+  }
+}

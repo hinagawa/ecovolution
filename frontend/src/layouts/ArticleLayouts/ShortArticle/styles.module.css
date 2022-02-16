@@ -1,10 +1,11 @@
 .article {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  align-items: flex-start;
   border: 1px solid;
   border-radius: 5px;
 }
+
 .mainContent {
   display: flex;
   flex-direction: row;
@@ -18,4 +19,10 @@
 .articleImg {
   width: 30%;
   padding: 10px;
+}
+.likeButton {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
 }

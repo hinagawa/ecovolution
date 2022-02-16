@@ -1,10 +1,10 @@
 import React from 'react'
 
-import star from '../../assets/images/star.svg'
+import heart from '../../assets/images/heart.svg'
 import compass from '../../assets/images/compass.svg'
 import news from '../../assets/images/news.svg'
-import chat from '../../assets/images/chat.svg'
 import users from '../../assets/images/users.svg'
+import avatar from '../../assets/images/avatar.png'
 
 import Link from '../../components/Link/Link'
 
@@ -16,7 +16,7 @@ function Header() {
       <h1 className={styles.headerLogo}>Ecovolution</h1>
       <div className={styles.linkGroup}>
         <Link href='/'>
-          <img src={star} alt='Favourite' />
+          <img src={heart} alt='Favourite' />
           <p>Favourite</p>
         </Link>
         <Link href='/'>
@@ -32,8 +32,10 @@ function Header() {
           <p>Places</p>
         </Link>
         <Link href='/'>
-          <img src={chat} alt='Messages' />
-          <p>Messages</p>
+          <div className={styles.profileInfo}>
+            <img src={avatar} alt='User avatar' />
+            <p>Username</p>
+          </div>
         </Link>
       </div>
     </div>
