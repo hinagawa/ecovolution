@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border: 1px solid;
+  box-shadow: 1px 1px 10px #000000;
   border-radius: 5px;
 }
 
@@ -11,15 +11,22 @@
   flex-direction: row;
 }
 
-.articleText {
+.articleText a {
   display: flex;
   flex-direction: column;
+  font-size: 30px;
+  margin: 0;
+}
+
+.articleText p {
+  font-size: 20px;
 }
 
 .articleImg {
   width: 30%;
-  padding: 10px;
+  padding: 0 10px 30px;
 }
+
 .likeButton {
   width: 100%;
   display: flex;

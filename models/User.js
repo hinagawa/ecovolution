@@ -29,7 +29,8 @@ const UserSchema = new Schema({
         default: 'User'
     },
     resetPasswordToken: String,
-    resetPasswordExpire: Date
+    resetPasswordExpire: Date,
+    likedPosts: Array,
 });
 
 UserSchema.methods.comparePasswords = async function (password) {
@@ -44,9 +45,9 @@ UserSchema.methods.createJwtToken = async function (user) {
         permissions: user.role
     };
     return jwt.sign(claims, keys.jwt_secret, {
-            expiresIn: 60 * 15
-        });
-    };
+        expiresIn: 60 * 15
+    });
+};
 
 
 UserSchema.methods.getResetPasswordToken = async function () {

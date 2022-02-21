@@ -22,20 +22,19 @@ export default {
   },
 }
 
-export function Button({ variant, ...rest }) {
+export function Button({ variant, children, ...rest }) {
   return (
-    <ButtonComponent
-      {...rest}
-      variant={variant}
-      text={`${variant} button`}
-    />
+    <ButtonComponent {...rest} variant={variant}>
+      {children}
+    </ButtonComponent>
   )
 }
 
 Button.args = {
-  text: 'Primary button',
+  children: 'Primary button',
 }
 
 Button.propTypes = {
   variant: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
 }

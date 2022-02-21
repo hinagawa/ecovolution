@@ -6,6 +6,7 @@ import { BrowserRouter as Router,
 import AuthPage from './pages/Auth/AuthPage'
 import ResetPassword from './pages/Auth/ResetPassword'
 import ForgotPassword from './pages/Auth/ForgotPassword'
+import Profile from './pages/Profile/Profile'
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
         <Route
           path='/forgot-password'
           element={<ForgotPassword />}
+        />
+        <Route
+          path='/profile/*'
+          element={<Profile />}
         />
       </Routes>
     </Router>

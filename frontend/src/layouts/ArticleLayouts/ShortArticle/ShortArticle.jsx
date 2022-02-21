@@ -35,9 +35,9 @@ function ShortArticle({
         <div className={styles.articleText}>
           <Link href='/'>{headerText}</Link>
           <p>{text}</p>
+          <TagsList tagsArray={tagsArray} />
         </div>
       </div>
-      <TagsList tagsArray={tagsArray} />
     </div>
   )
 }

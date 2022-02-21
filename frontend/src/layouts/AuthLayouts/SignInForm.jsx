@@ -56,7 +56,7 @@ function SignInForm() {
             setValue('password', e.target.value)
           }}
         />
-        <Button text='Sign In' />
+        <Button> Sign In </Button>
         {error && <Error message={error} />}
       </Form>
       <div className={styles.inlineContainer}>

@@ -98,7 +98,9 @@ function SignUpForm() {
             setValue('confirmPassword', e.target.value)
           }}
         />
-        <Button text='Sign Up' />
+        <Button>
+          Sign Up
+        </Button>
         {error && <Error message={error} />}
       </Form>
       <div className={styles.inlineContainer}>
