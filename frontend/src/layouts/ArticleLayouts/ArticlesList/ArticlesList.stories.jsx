@@ -2,7 +2,7 @@ import React from 'react'
 
 import templateImg from '../../../assets/images/rat.jpg'
 
-import ShortArticleComponent from './ShortArticle'
+import ArticlesListComponent from './ArticlesList'
 
 const disabled = {
   table: {
@@ -10,8 +10,8 @@ const disabled = {
   },
 }
 export default {
-  title: 'Layouts/Article/ShortArticle',
-  component: ShortArticleComponent,
+  title: 'Layouts/Article/ArticlesList',
+  component: ArticlesListComponent,
   argTypes: {
     src: disabled,
     tagsArray: {
@@ -29,11 +29,11 @@ export default {
   },
 }
 
-export function ShortArticle({ ...args }) {
-  return <ShortArticleComponent {...args} />
+export function ArticlesList({ ...args }) {
+  return <ArticlesListComponent {...args} />
 }
 
-ShortArticle.args = {
+ArticlesList.args = {
   src: templateImg,
   text: 'Lorem ipsum',
   headerText: 'Lorem ipsum',

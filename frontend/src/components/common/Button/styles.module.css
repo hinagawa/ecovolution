@@ -1,0 +1,12 @@
+.primary {
+  background-color: #f68e6f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+}
+
+.link {
+  background-color: transparent;
+  border: none;
+}

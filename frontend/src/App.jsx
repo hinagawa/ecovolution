@@ -7,6 +7,7 @@ import AuthPage from './pages/Auth/AuthPage'
 import ResetPassword from './pages/Auth/ResetPassword'
 import ForgotPassword from './pages/Auth/ForgotPassword'
 import Profile from './pages/Profile/Profile'
+import Main from './pages/Main/Main'
 
 function App() {
   return (
@@ -24,6 +25,10 @@ function App() {
         <Route
           path='/profile/*'
           element={<Profile />}
+        />
+        <Route
+          path='/places'
+          element={<Main />}
         />
       </Routes>
     </Router>
