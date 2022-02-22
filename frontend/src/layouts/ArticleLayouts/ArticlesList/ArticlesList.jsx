@@ -3,19 +3,19 @@ import PropTypes from 'prop-types'
 
 import Article from '../ShortArticle/ShortArticle'
 
-// import styles from './styles.module.css'
+import styles from './styles.module.css'
 
 function ArticlesList({ articles, articlesCount }) {
   return (
-    <div>
-      {articlesCount}
-      <div>
-        {Object.keys(articles).map((article) => (
+    <div className={styles.containerOfArticles}>
+      {`${articlesCount} articles`}
+      <div className={styles.listOfArticles}>
+        {Object.keys(articles).map((key) => (
           <Article
-            headerText={article.header}
-            text={article.text}
-            src={article.img}
-            tagsArray={article.tags}
+            headerText={articles[key].header}
+            text={articles[key].text}
+            src={articles[key].img}
+            tagsArray={articles[key].tags}
           />
         ))}
       </div>

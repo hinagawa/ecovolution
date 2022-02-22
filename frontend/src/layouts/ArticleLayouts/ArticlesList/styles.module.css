@@ -1,0 +1,11 @@
+.containerOfArticles {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 50px;
+  padding-left: 10px;
+}
+
+.listOfArticles {
+  overflow-y: auto;
+}
