@@ -1,0 +1,8 @@
+.sideContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  width: 30%;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
