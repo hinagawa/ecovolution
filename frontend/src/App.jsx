@@ -7,7 +7,8 @@ import AuthPage from './pages/Auth/AuthPage'
 import ResetPassword from './pages/Auth/ResetPassword'
 import ForgotPassword from './pages/Auth/ForgotPassword'
 import Profile from './pages/Profile/Profile'
-import Place from './pages/Place/Place'
+import Places from './pages/Places/Places'
+import Articles from './pages/Articles/Articles'
 
 function App() {
   return (
@@ -22,14 +23,9 @@ function App() {
           path='/forgot-password'
           element={<ForgotPassword />}
         />
-        <Route
-          path='/profile/*'
-          element={<Profile />}
-        />
-        <Route
-          path='/places'
-          element={<Place />}
-        />
+        <Route path='/profile/*' element={<Profile />} />
+        <Route path='/places' element={<Places />} />
+        <Route path='/articles' element={<Articles />} />
       </Routes>
     </Router>
   )

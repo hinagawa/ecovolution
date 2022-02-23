@@ -2,7 +2,7 @@ import React from 'react'
 
 import heart from '../../assets/images/heart.svg'
 import compass from '../../assets/images/compass.svg'
-import news from '../../assets/images/news.svg'
+import article from '../../assets/images/news.svg'
 import users from '../../assets/images/users.svg'
 import avatar from '../../assets/images/avatar.png'
 
@@ -24,8 +24,8 @@ function Header() {
           <p>Friends</p>
         </Link>
         <Link href='/'>
-          <img src={news} alt='News' />
-          <p>News</p>
+          <img src={article} alt='Articles' />
+          <p>Articles</p>
         </Link>
         <Link href='/'>
           <img src={compass} alt='Places' />

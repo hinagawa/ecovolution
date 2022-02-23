@@ -1,5 +1,6 @@
 import React from 'react'
 
+import SearchBar from '../../layouts/SearchBar/SearchBar'
 import Header from '../../layouts/Header/Header'
 import PlaceList from '../../layouts/PlaceLayouts/PlaceList/PlaceList'
 
@@ -23,13 +24,16 @@ const placesArray = {
     location: 'Баумана 39',
   },
 }
-function Place() {
+function Places() {
   return (
     <>
       <Header />
-      <PlaceList places={placesArray} />
+      <div>
+        <SearchBar />
+        <PlaceList places={placesArray} />
+      </div>
     </>
   )
 }
 
-export default Place
+export default Places
