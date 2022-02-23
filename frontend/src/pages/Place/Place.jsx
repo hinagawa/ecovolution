@@ -23,7 +23,7 @@ const placesArray = {
     location: 'Баумана 39',
   },
 }
-function Main() {
+function Place() {
   return (
     <>
       <Header />
@@ -32,4 +32,4 @@ function Main() {
   )
 }
 
-export default Main
+export default Place
