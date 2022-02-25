@@ -15,7 +15,7 @@ function Header() {
     <div className={styles.header}>
       <h1 className={styles.headerLogo}>Ecovolution</h1>
       <div className={styles.linkGroup}>
-        <Link href='/'>
+        <Link href='/profile/liked-articles'>
           <img src={heart} alt='Favourite' />
           <p>Favourite</p>
         </Link>
@@ -23,15 +23,15 @@ function Header() {
           <img src={users} alt='Friends' />
           <p>Friends</p>
         </Link>
-        <Link href='/'>
+        <Link href='/articles'>
           <img src={article} alt='Articles' />
           <p>Articles</p>
         </Link>
-        <Link href='/'>
+        <Link href='/places'>
           <img src={compass} alt='Places' />
           <p>Places</p>
         </Link>
-        <Link href='/'>
+        <Link href='/profile/user-articles'>
           <div className={styles.profileInfo}>
             <img src={avatar} alt='User avatar' />
             <p>Username</p>

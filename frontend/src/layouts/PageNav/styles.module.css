@@ -13,7 +13,18 @@
   justify-content: center;
 }
 
+.navElement a {
+  text-decoration: none;
+  color: #039c52;
+}
+
 .navElement:hover {
+  padding-bottom: 10px;
+  color: #039c52;
+  font-weight: bold;
+}
+
+.activeLink {
   padding-bottom: 10px;
   color: #039c52;
   font-weight: bold;

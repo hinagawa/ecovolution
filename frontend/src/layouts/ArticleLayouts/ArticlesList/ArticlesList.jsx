@@ -10,12 +10,12 @@ function ArticlesList({ articles, articlesCount }) {
     <div className={styles.containerOfArticles}>
       {`${articlesCount} articles`}
       <div className={styles.listOfArticles}>
-        {Object.keys(articles).map((key) => (
+        {articles.map((article) => (
           <Article
-            headerText={articles[key].header}
-            text={articles[key].text}
-            src={articles[key].img}
-            tagsArray={articles[key].tags}
+            headerText={article.header}
+            text={article.text}
+            src={article.img}
+            tagsArray={article.tags}
           />
         ))}
       </div>

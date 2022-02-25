@@ -4,7 +4,8 @@ body {
   height: 100vh;
   width: 100%;
   margin: inherit;
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
+  font-family: 'Raleway';
 }
 
 @font-face {
@@ -13,5 +14,5 @@ body {
 }
 
 * {
- font-family: 'Raleway';
+  font-family: 'Raleway';
 }

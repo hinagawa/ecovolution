@@ -10,7 +10,7 @@ import styles from './styles.module.css'
 function ProfileInfo() {
   return (
     <div className={styles.profileInfoContainer}>
-      <img src={userAvatar} alt='user avatar' />
+      <img src={userAvatar} alt='user avatar' className={styles.userAvatar} />
       <h3>Polina Salimullina</h3>
       <div className={styles.locationInfo}>
         <img src={mapPin} alt='map pin' />

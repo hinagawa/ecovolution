@@ -9,8 +9,8 @@ function ProfileSidebar() {
   return (
     <div className={styles.sideContainer}>
       <ProfileInfo />
-      <ShortInfoList />
-      <ShortInfoList />
+      <ShortInfoList type='Friends' count='10' />
+      <ShortInfoList type='Places' count='10' />
     </div>
   )
 }

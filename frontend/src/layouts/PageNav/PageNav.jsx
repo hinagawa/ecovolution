@@ -1,23 +1,36 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-
-import Link from '../../components/Link/Link'
+import { NavLink } from 'react-router-dom'
 
 import styles from './styles.module.css'
 
-function PageNav({ navArray }) {
+function PageNav() {
   return (
     <div className={styles.navContainer}>
-      {navArray.map((navElement) => (
-        <div className={styles.navElement}>
-          <Link href='/'>{navElement}</Link>
-        </div>
-      ))}
+      <div className={styles.navElement}>
+        <NavLink
+          to='/profile/user-articles'
+          className={({ isActive }) => (isActive ? styles.activeLink : undefined)}
+        >
+          User articles
+        </NavLink>
+      </div>
+      <div className={styles.navElement}>
+        <NavLink
+          to='/profile/liked-articles'
+          className={({ isActive }) => (isActive ? styles.activeLink : undefined)}
+        >
+          Liked articles
+        </NavLink>
+      </div>
+      <div className={styles.navElement}>
+        <NavLink
+          to='/profile/events'
+          className={({ isActive }) => (isActive ? styles.activeLink : undefined)}
+        >
+          Events
+        </NavLink>
+      </div>
     </div>
   )
-}
-
-PageNav.propTypes = {
-  navArray: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 export default PageNav
