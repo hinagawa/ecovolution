@@ -1,6 +1,8 @@
-const { createPlace, getPlaces } = require('../controllers/articleController');
+const { createPlace, getPlaces, getPlaceById, deletePlaceById} = require('../controllers/placeController');
 
 module.exports = (app) => {
     app.route('/api/place/create').post(createPlace);
-    app.route('/api/place/getAll').get(getPlaces);
+    app.route('/api/place/getPlaces').get(getPlaces);
+    app.route('/api/place/getPlaceById').get(getPlaceById);
+    app.route('/api/place/deletePlaceById').delete(deletePlaceById);
 };

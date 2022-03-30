@@ -12,6 +12,6 @@ module.exports = {
             }
         ]
     },
-    apis: ['swagger\\routes\\authRoutesInfo.js']
+    apis: ['swagger\\routes\\authRoutesInfo.js', 'swagger\\routes\\articleRoutesInfo.js']
 
 };

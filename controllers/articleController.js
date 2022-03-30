@@ -11,15 +11,53 @@ exports.createArticle = async (req, res) => {
         return res.status(500).json({ success: false, message: `Something went wrong! ${e.message}` });
     }
 };
+// TODO check if article with this id exist -> 404
 
 exports.getArticles = async (req, res) => {
-    Article.find({}).then(function (article) {
-        res.send(article);
-    });
+    try {
+        Article.find({}, function (err, articles) {
+            var articleMap = {};
+            articles.forEach(function (article) {
+                articleMap[article._id] = article;
+            });
+            return res.status(200).json(articleMap);
+        });
+    }
+    catch (e) {
+        return res.status(500).json({ success: false, message: `Something went wrong! ${e.message}` });
+    }
+
 };
 
 exports.getArticleById = async (req, res) => {
-    const { articleId } = req.body;
-    const article = await Article.findById(articleId);
-    res.json({ success: true, message: article });
+    try {
+        const { articleId } = req.query.articleId;
+        const article = await Article.findById(articleId);
+        res.json({ success: true, message: article });
+    }
+    catch (e) {
+        return res.status(500).json({ success: false, message: `Something went wrong! ${e.message}` });
+    }
+};
+
+exports.getArticlesByAuthorId = async (req, res) => {
+    try {
+        const { authorId } = req.query.authorId;
+        const article = await Article.select({ 'authorId': authorId });
+        res.json({ success: true, message: article });
+    }
+    catch (e) {
+        return res.status(500).json({ success: false, message: `Something went wrong! ${e.message}` });
+    }
+};
+
+exports.deleteArticleById = async (req, res) => {
+    try {
+        const { articleId } = req.query.articleId;
+        await Article.deleteOne({'_id':articleId});
+        res.json({ success: true, message: 'Article has been deleted' });
+    }
+    catch (e) {
+        return res.status(500).json({ success: false, message: `Something went wrong! ${e.message}` });
+    }
 };

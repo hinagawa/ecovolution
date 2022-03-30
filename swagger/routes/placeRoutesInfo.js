@@ -1,14 +1,14 @@
 /**
  * @swagger
  * tags:
- * - name: "Articles"
- *   description: "Create, Delete, Edit, Get articles."
+ * - name: "Places"
+ *   description: "Create, Delete, Edit, Get places."
  * paths:
- *  /api/article/create:
+ *  /api/placee/create:
  *   post:
  *    tags:
- *     - "Articles"
- *    summary: "Create new article"
+ *     - "Places"
+ *    summary: "Create new place"
  *    consumes:
  *     - application/x-www-form-urlencoded
  *    produces:
@@ -20,14 +20,16 @@
  *        schema:
  *         type: object
  *         properties:
- *          articleName:
+ *          placeName:
  *           type: string
- *          articleText:
+ *          placeDescription:
  *           type: string
- *          articleImg:
+ *          placeLocation:
  *           type: string
- *          articleAuthorId:
+ *          placeImg:
  *           type: string
+ *          placeTags:
+ *           type: array
  *    responses:
  *      200:
  *        description: A succcessful response
@@ -41,11 +43,11 @@
  *         application/json:
  *          schema:
  *           $ref: '#/components/schemas/ResponseString'
- * /api/article/getArticles:
+ * /api/place/getPlaces:
  *   get:
  *    tags:
- *     - "Articles"
- *    summary: "Get all articles"
+ *     - "Places"
+ *    summary: "Get all places"
  *    consumes:
  *     - application/x-www-form-urlencoded
  *    produces:
@@ -63,11 +65,12 @@
  *         application/json:
  *          schema:
  *           $ref: '#/components/schemas/ResponseString'
- * /api/article/getArticleById:
+ * 
+ * /api/place/getPlaceById:
  *   get:
  *    tags:
- *     - "Articles"
- *    summary: "Get article by article Id"
+ *     - "Places"
+ *    summary: "Get place by place Id"
  *    consumes:
  *     - application/x-www-form-urlencoded
  *    produces:
@@ -79,7 +82,7 @@
  *        schema:
  *         type: object
  *         properties:
- *          articleId:
+ *          placeId:
  *           type: string
  *    responses:
  *      200:
@@ -89,7 +92,7 @@
  *          schema:
  *           $ref: '#/components/schemas/ResponseString'
  *      404:
- *       description: Article with this Id does not exist
+ *       description: Place with this Id does not exist
  *       content: 
  *        application/json:
  *         schema:
@@ -100,49 +103,14 @@
  *         application/json:
  *          schema:
  *           $ref: '#/components/schemas/ResponseString'
- * /api/article/getArticlesByAuthorId:
- *  get:
- *   tags:
- *    - "Articles"
- *   summary: "Get articles by author Id"
- *   consumes:
- *    - application/x-www-form-urlencoded
- *   produces:
- *    - application/json
- *   requestBody:
- *     content:
- *       application/x-www-form-urlencoded:
- *        required: true
- *        schema:
- *         type: object
- *         properties:
- *          authorId:
- *           type: string
- *   responses:
- *     200:
- *       description: A succcessful response
- *       content: 
- *        application/json:
- *         schema:
- *          $ref: '#/components/schemas/ResponseString'
- *     404:
- *      description: Articles or user doesn't exist
- *      content: 
- *       application/json:
- *        schema:
- *         $ref: '#/components/schemas/ResponseString'
- *     500:
- *       description: Internal Server Error
- *       content: 
- *        application/json:
- *         schema:
+ * 
  *          $ref: '#/components/schemas/ResponseString'
  * 
- * /api/article/deleteArticleById:
+ * /api/place/deletePlaceById:
  *   delete:
  *    tags:
- *     - "Articles"
- *    summary: "Delete article by article Id"
+ *     - "Places"
+ *    summary: "Delete place by place Id"
  *    consumes:
  *     - application/x-www-form-urlencoded
  *    produces:
@@ -154,7 +122,7 @@
  *        schema:
  *         type: object
  *         properties:
- *          articleId:
+ *          placeId:
  *           type: string
  *    responses:
  *      200:
