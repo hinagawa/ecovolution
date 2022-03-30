@@ -12,6 +12,11 @@ module.exports = {
             }
         ]
     },
-    apis: ['swagger\\routes\\authRoutesInfo.js', 'swagger\\routes\\articleRoutesInfo.js']
+    apis: [
+        'swagger\\routes\\authRoutesInfo.js',
+        'swagger\\routes\\articleRoutesInfo.js',
+        'swagger\\routes\\placeRoutesInfo.js',
+        'swagger\\routes\\userRoutesInfo.js',
+    ]
 
 };

@@ -4,7 +4,7 @@
  * - name: "Places"
  *   description: "Create, Delete, Edit, Get places."
  * paths:
- *  /api/placee/create:
+ *  /api/place/create:
  *   post:
  *    tags:
  *     - "Places"

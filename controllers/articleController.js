@@ -1,3 +1,4 @@
+const { findByIdAndUpdate } = require('../models/Article.js');
 const Article = require('../models/Article.js');
 
 exports.createArticle = async (req, res) => {
@@ -54,10 +55,20 @@ exports.getArticlesByAuthorId = async (req, res) => {
 exports.deleteArticleById = async (req, res) => {
     try {
         const { articleId } = req.query.articleId;
-        await Article.deleteOne({'_id':articleId});
+        await Article.deleteOne({ '_id': articleId });
         res.json({ success: true, message: 'Article has been deleted' });
     }
     catch (e) {
         return res.status(500).json({ success: false, message: `Something went wrong! ${e.message}` });
     }
+};
+
+exports.updateArticle = (req, res) => {
+    const { articleId } = req.query.articleId;
+    Article.findById(articleId).then(doc =>
+        Article.updateOne({ _id: doc._id }, req.query.updateQuery))
+        .then(
+            res.status(200).send({ success: true, message: 'Article has been updated' }))
+        .catch((e) =>
+            res.status(500).json({ success: false, message: `Something went wrong! ${e.message}` }));
 };
