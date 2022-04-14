@@ -1,8 +1,20 @@
 .searchBarContainer {
+  width: 100%;
   margin: 20px;
   padding: 10px;
+  display: inline-grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  background-color: #ffffff;
+  column-gap: 10px;
+}
+.searchInput {
+  border: none;
+  border-bottom: 1px solid #000000;
+  border-radius: 0;
+}
+
+.imgContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  background-color: #ffffff;
+  justify-content: center;
 }

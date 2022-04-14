@@ -12,11 +12,11 @@ function SearchBar() {
   return (
     <div className={styles.searchBarContainer}>
       <Select optionArray={['Места', 'Статьи', 'Карта']} />
-      <div className={styles.searchInput}>
-        <Input placeholder='Type to search' />
+      <div className={styles.imgContainer}>
+        <Input className={styles.searchInput} placeholder='Type to search' />
         <img src={search} alt='Search' />
       </div>
-      <div>
+      <div className={styles.imgContainer}>
         <Select
           optionArray={['Сначала новые', 'Сначала старые']}
         />
