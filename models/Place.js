@@ -4,7 +4,7 @@ const PlaceSchema = new Schema({
     placeName: String,
     placeDescription: String,
     placeLocation: String,
-    placeImg: Buffer,
+    firebasePath: String,
     placeTags: Array
 });
 

@@ -1,9 +1,12 @@
 const Place = require('../models/Place.js');
 
+const firebaseService = require('../services/firebase');
+
 exports.createPlace = async (req, res) => {
     try {
-        const { placeName, placeDescription, placeLocation, placeImg, placeTags } = req.body;
-        const place = new Place({ placeName, placeDescription, placeLocation, placeImg, placeTags });
+        const { placeName, placeDescription, placeLocation, placeImgPath, placeTags } = req.body;
+        const firebasePath = await firebaseService.uploadFile(placeImgPath);
+        const place = new Place({ placeName, placeDescription, placeLocation, firebasePath, placeTags });
         await place.save();
         res.status(200).json({ success: true, message: 'Place has been created' });
     }
