@@ -15,30 +15,30 @@ Ecovolution it's a eco social media where you can create own blog, read articles
 - ...
 # Pages and routes
 ## Pages
-- [ ] Sign in 
-- [ ] Sign up
-- [ ] Forgot pass
-- [ ] Reset pass
-- [ ] Profile page
-- [ ] Main page(with new articles, user's recommendation  etc.)
-- [ ] Page with places which stand by ecology principals
+- [x] Sign in 
+- [x] Sign up
+- [x] Forgot pass
+- [x] Reset pass
+- [x] Profile page
+- [x] Main page(with new articles, user's recommendation  etc.)
+- [x] Page with places which stand by ecology principals
 - [ ] Page where users can swap their stuff
 - [ ] Stuff page
 - [ ] Messages
 
 ## API routes
-- [ ] Sign in
-- [ ] Sign up
+- [x] Sign in
+- [x] Sign up
 - [ ] Update password
 - [ ] Update/set profile info
-- [ ] Create article
-- [ ] Delete article
+- [x] Create article
+- [x] Delete article
 - [ ] Update article
 - [ ] Create comments
 - [ ] Get user's subscriptions
-- [ ] Get users
-- [ ] Create place
-- [ ] Delete place
-- [ ] Upgrade place info
+- [x] Get users
+- [x] Create place
+- [x] Delete place
+- [ ] Update place info
 ...
 
