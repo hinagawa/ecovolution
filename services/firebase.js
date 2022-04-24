@@ -1,6 +1,7 @@
 var admin = require('firebase-admin');
 const uuid = require('uuid-v4');
 
+
 const keys = require('../config/keys');
 
 
@@ -24,8 +25,13 @@ admin.initializeApp({
 
 var bucket = admin.storage().bucket();
 
+const createPersistentDownloadUrl = (bucket, pathToFile, downloadToken) => {
+    return `https://firebasestorage.googleapis.com/v0/b/${bucket}/o/${encodeURIComponent(
+        pathToFile
+    )}?alt=media&token=${downloadToken}`;
+};
 
-async function uploadFile(filename) {
+async function uploadFile(filePath) {
 
     const metadata = {
         metadata: {
@@ -34,15 +40,22 @@ async function uploadFile(filename) {
         },
         contentType: 'image/png',
         cacheControl: 'public, max-age=31536000',
+        rules: {
+            '.read': true,
+            '.write': true
+        }
+
+
     };
+    const filename = uuid();
     // Uploads a local file to the bucket
-    const url = await bucket.upload(filename, {
+    const url = await bucket.upload(filePath, {
         // Support for HTTP requests made with `Accept-Encoding: gzip`
         gzip: true,
         metadata: metadata,
     });
-    return url[1].mediaLink;
-
+    const refUrl = createPersistentDownloadUrl(keys.storageBucket, filename, url[1].metadata.firebaseStorageDownloadTokens);
+    return refUrl;
 }
 
 module.exports = { uploadFile };
