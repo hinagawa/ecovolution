@@ -1,9 +1,6 @@
 import React from 'react'
 
-import { HeartOutlined,
-  TeamOutlined,
-  ReadOutlined,
-  CompassOutlined } from '@ant-design/icons'
+import { HeartOutlined, TeamOutlined, ReadOutlined, CompassOutlined } from '@ant-design/icons'
 
 import avatar from '../../assets/images/avatar.png'
 
@@ -17,20 +14,19 @@ function Header() {
       <h1 className={styles.headerLogo}>Ecovolution</h1>
       <div className={styles.linkGroup}>
         <Link href='/profile/liked-articles'>
-          <HeartOutlined />
-
+          <HeartOutlined style={{ color: '#ffffff' }} />
           <p>Favourite</p>
         </Link>
         <Link href='/'>
-          <TeamOutlined />
+          <TeamOutlined style={{ color: '#ffffff' }} />
           <p>Friends</p>
         </Link>
         <Link href='/articles'>
-          <ReadOutlined />
+          <ReadOutlined style={{ color: '#ffffff' }} />
           <p>Articles</p>
         </Link>
         <Link href='/places'>
-          <CompassOutlined />
+          <CompassOutlined style={{ color: '#ffffff' }} />
           <p>Places</p>
         </Link>
         <Link href='/profile/user-articles'>

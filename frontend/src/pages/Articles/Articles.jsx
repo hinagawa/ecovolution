@@ -6,6 +6,8 @@ import Header from '../../layouts/Header/Header'
 
 import api from '../../services/api/fetchWrapper'
 
+import styles from './styles.module.css'
+
 function Articles() {
   const [articles, setArticles] = useState('')
   useEffect(() => {
@@ -16,7 +18,7 @@ function Articles() {
   return (
     <>
       <Header />
-      <div>
+      <div className={styles.articlesContainer}>
         <SearchBar />
         <ArticlesList
           articles={articles}

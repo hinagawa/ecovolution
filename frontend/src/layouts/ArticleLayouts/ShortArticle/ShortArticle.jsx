@@ -14,8 +14,6 @@ function ShortArticle({
   src,
   tagsArray,
 }) {
-  // const [like, setLike] = useState(false)
-  // const handleClick = () => setLike(!like)
   return (
     <div className={styles.article}>
       <div className={styles.likeButton}>
