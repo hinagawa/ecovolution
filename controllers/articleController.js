@@ -1,10 +1,13 @@
-const { findByIdAndUpdate } = require('../models/Article.js');
+// const { findByIdAndUpdate } = require('../models/Article.js');
 const Article = require('../models/Article.js');
+
+const firebaseService = require('../services/firebase');
 
 exports.createArticle = async (req, res) => {
     try {
-        const { articleName, articleText, articleImg, articleAuthorId } = req.body;
-        const article = new Article({ articleName, articleText, articleImg, articleAuthorId });
+        const { articleName, articleText, articleImgPath, articleTags, articleAuthorId } = req.body;
+        const firebasePath = await firebaseService.uploadFile(articleImgPath);
+        const article = new Article({ articleName, articleText, firebasePath, articleTags, articleAuthorId });
         await article.save();
         res.status(200).json({ success: true, message: 'Article has been created' });
     }

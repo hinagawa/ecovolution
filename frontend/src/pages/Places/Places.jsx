@@ -1,36 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import SearchBar from '../../layouts/SearchBar/SearchBar'
 import Header from '../../layouts/Header/Header'
 import PlaceList from '../../layouts/PlaceLayouts/PlaceList/PlaceList'
+import NoData from '../../components/Error/NoData'
 
-// import styles from './styles.module.css'
+import api from '../../services/api/fetchWrapper'
 
-const placesArray = {
-  0: {
-    name: 'Place name',
-    location: 'Баумана 39',
-  },
-  1: {
-    name: 'Place name',
-    location: 'Баумана 39',
-  },
-  2: {
-    name: 'Place name',
-    location: 'Баумана 39',
-  },
-  3: {
-    name: 'Place name',
-    location: 'Баумана 39',
-  },
-}
+import styles from './styles.module.css'
+
 function Places() {
+  const [places, setPlaces] = useState('')
+  useEffect(() => {
+    api
+      .get('api/place/getPlaces')
+      .then((data) => setPlaces(data))
+  })
   return (
     <>
       <Header />
-      <div>
+      <div className={styles.pageContainer}>
         <SearchBar />
-        <PlaceList places={placesArray} />
+        {Object.keys(places).length !== 0 ? (
+          <PlaceList places={places} />
+        ) : (
+          <NoData />
+        )}
       </div>
     </>
   )

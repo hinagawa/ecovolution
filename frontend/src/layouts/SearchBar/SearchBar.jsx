@@ -1,7 +1,6 @@
 import React from 'react'
 
-import search from '../../assets/images/search.svg'
-import filter from '../../assets/images/filter.svg'
+import { FilterOutlined, SearchOutlined } from '@ant-design/icons'
 
 import Select from '../../components/Select/Select'
 import Input from '../../components/Input/Input'
@@ -13,14 +12,17 @@ function SearchBar() {
     <div className={styles.searchBarContainer}>
       <Select optionArray={['Места', 'Статьи', 'Карта']} />
       <div className={styles.imgContainer}>
-        <Input className={styles.searchInput} placeholder='Type to search' />
-        <img src={search} alt='Search' />
+        <Input
+          className={styles.searchInput}
+          placeholder='Type to search'
+        />
+        <SearchOutlined />
       </div>
       <div className={styles.imgContainer}>
         <Select
           optionArray={['Сначала новые', 'Сначала старые']}
         />
-        <img src={filter} alt='Filter' />
+        <FilterOutlined />
       </div>
     </div>
   )

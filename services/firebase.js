@@ -1,7 +1,6 @@
 var admin = require('firebase-admin');
 const uuid = require('uuid-v4');
 
-
 const keys = require('../config/keys');
 
 
@@ -40,17 +39,10 @@ async function uploadFile(filePath) {
         },
         contentType: 'image/png',
         cacheControl: 'public, max-age=31536000',
-        rules: {
-            '.read': true,
-            '.write': true
-        }
-
-
     };
-    const filename = uuid();
-    // Uploads a local file to the bucket
+
+    const filename = filePath.split('//').slice(-1)[0];
     const url = await bucket.upload(filePath, {
-        // Support for HTTP requests made with `Accept-Encoding: gzip`
         gzip: true,
         metadata: metadata,
     });

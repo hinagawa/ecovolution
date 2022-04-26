@@ -10,8 +10,10 @@ function PlaceList({ places }) {
     <div className={styles.placeContainer}>
       {Object.keys(places).map((key) => (
         <Place
-          placeName={places[key].name}
-          placeLocation={places[key].location}
+          placeName={places[key].placeName}
+          placeDescription={places[key].placeDescription}
+          placeLocation={places[key].placeLocation}
+          placeImgPath={places[key].firebasePath}
         />
       ))}
     </div>

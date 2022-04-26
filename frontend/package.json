@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:5000",
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "babel-loader": "8.1.0",
     "classnames": "^2.3.1",
     "eslint-config-airbnb": "^19.0.2",

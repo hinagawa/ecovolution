@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-import blackHeart from '../../../assets/images/heartBlack.svg'
-import pinkHeart from '../../../assets/images/heartPink.svg'
+import { HeartOutlined } from '@ant-design/icons'
 
 import Link from '../../../components/Link/Link'
-import Button from '../../../components/Button/Button'
 import TagsList from '../../../components/TagsList/TagsList'
 
 import styles from './styles.module.css'
@@ -16,15 +14,12 @@ function ShortArticle({
   src,
   tagsArray,
 }) {
-  const [like, setLike] = useState(false)
-  const handleClick = () => setLike(!like)
+  // const [like, setLike] = useState(false)
+  // const handleClick = () => setLike(!like)
   return (
     <div className={styles.article}>
       <div className={styles.likeButton}>
-        <Button onClick={handleClick} variant='link'>
-          {!like && <img src={blackHeart} alt='Like' />}
-          {like && <img src={pinkHeart} alt='Like' />}
-        </Button>
+        <HeartOutlined />
       </div>
       <div className={styles.mainContent}>
         <img

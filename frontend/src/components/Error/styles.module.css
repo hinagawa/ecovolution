@@ -1,3 +1,14 @@
 .error {
   color: red;
 }
+
+.noDataText {
+  color: rgba(0, 0, 0, 0.627);
+}
+
+.imgPosition {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

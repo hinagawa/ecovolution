@@ -7,15 +7,11 @@ function Checkbox({ text, onChange }) {
   return (
     <>
       <input
-        id="checkbox"
-        type="checkbox"
+        id='checkbox'
+        type='checkbox'
         onChange={onChange}
       />
-      <label
-        htmlFor="checkbox"
-      >
-        {text}
-      </label>
+      <label htmlFor='checkbox'>{text}</label>
     </>
   )
 }

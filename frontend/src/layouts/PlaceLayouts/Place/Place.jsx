@@ -1,40 +1,52 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-import heart from '../../../assets/images/heartBlack.svg'
-import mapPin from '../../../assets/images/mapPin.svg'
+import { HeartOutlined, EnvironmentOutlined } from '@ant-design/icons'
+
+import Link from '../../../components/Link/Link'
+
 import defaultImage from '../../../assets/images/placeImg.jpg'
 
 import styles from './styles.module.css'
 
-function Place({ placeImg, placeName, placeLocation }) {
+function Place({
+  placeName,
+  placeDescription,
+  placeLocation,
+  placeImgPath,
+}) {
+  useEffect(() => {})
   return (
     <div className={styles.placeContainer}>
       <img
-        src={placeImg}
+        src={placeImgPath}
         alt='Place'
         className={styles.imgPlace}
       />
-      <h1>{placeName}</h1>
+      <Link href='/'>
+        <h1>{placeName}</h1>
+      </Link>
+      <p>{placeDescription}</p>
       <div className={styles.placeFooter}>
         <div className={styles.locationContainer}>
-          <img src={mapPin} alt='Map pin' />
+          <EnvironmentOutlined />
           <p>{placeLocation}</p>
         </div>
-        <img src={heart} alt='Like' />
+        <HeartOutlined />
       </div>
     </div>
   )
 }
 
 Place.propTypes = {
-  placeImg: PropTypes.string,
+  placeDescription: PropTypes.string.isRequired,
+  placeImgPath: PropTypes.string,
   placeName: PropTypes.string.isRequired,
   placeLocation: PropTypes.string.isRequired,
 }
 
 Place.defaultProps = {
-  placeImg: defaultImage,
+  placeImgPath: defaultImage,
 }
 
 export default Place

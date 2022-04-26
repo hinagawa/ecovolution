@@ -1,41 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import ArticlesList from '../../layouts/ArticleLayouts/ArticlesList/ArticlesList'
 import SearchBar from '../../layouts/SearchBar/SearchBar'
 import Header from '../../layouts/Header/Header'
 
-// import styles from './styles.module.css'
-
-const articlesArray = [
-  {
-    headerText: 'Header text',
-    text: 'Text',
-    src: undefined,
-    tagsArray: ['recipe'],
-  },
-  {
-    headerText: 'Header text',
-    text: 'Text',
-    src: undefined,
-    tagsArray: ['recipe'],
-  },
-  {
-    headerText: 'Header text',
-    text: 'Text',
-    src: undefined,
-    tagsArray: ['recipe'],
-  },
-]
+import api from '../../services/api/fetchWrapper'
 
 function Articles() {
+  const [articles, setArticles] = useState('')
+  useEffect(() => {
+    api
+      .get('api/article/getArticles')
+      .then((data) => setArticles(data))
+  })
   return (
     <>
       <Header />
       <div>
         <SearchBar />
         <ArticlesList
-          articles={articlesArray}
-          articlesCount='3'
+          articles={articles}
         />
       </div>
     </>

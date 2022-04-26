@@ -5,17 +5,16 @@ import Article from '../ShortArticle/ShortArticle'
 
 import styles from './styles.module.css'
 
-function ArticlesList({ articles, articlesCount }) {
+function ArticlesList({ articles }) {
   return (
     <div className={styles.containerOfArticles}>
-      {`${articlesCount} articles`}
       <div className={styles.listOfArticles}>
-        {articles.map((article) => (
+        {Object.keys(articles).map((key) => (
           <Article
-            headerText={article.header}
-            text={article.text}
-            src={article.img}
-            tagsArray={article.tags}
+            headerText={articles[key].articleName}
+            text={articles[key].articleText}
+            src={articles[key].firebasePath}
+            tagsArray={articles[key].tagsArray}
           />
         ))}
       </div>
@@ -24,8 +23,7 @@ function ArticlesList({ articles, articlesCount }) {
 }
 
 ArticlesList.propTypes = {
-  articles: PropTypes.arrayOf(PropTypes.object).isRequired,
-  articlesCount: PropTypes.number.isRequired,
+  articles: PropTypes.objectOf(PropTypes.object).isRequired,
 }
 
 export default ArticlesList

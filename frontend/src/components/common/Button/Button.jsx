@@ -3,14 +3,10 @@ import PropTypes from 'prop-types'
 
 import styles from './styles.module.css'
 
-function Button({
-  text,
-  variant,
-  onClick,
-}) {
+function Button({ text, variant, onClick }) {
   return (
     <button
-      type="button"
+      type='button'
       className={styles[variant]}
       onClick={onClick}
     >
