@@ -2,6 +2,6 @@
   display: grid;
   grid-template-columns: repeat(
     auto-fill,
-    minmax(400px, 1fr)
+    minmax(550px, 1fr)
   );
 }

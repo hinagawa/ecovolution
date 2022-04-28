@@ -28,6 +28,7 @@ const UserSchema = new Schema({
         type: String,
         default: 'User'
     },
+    firebasePath: String,
     resetPasswordToken: String,
     resetPasswordExpire: Date,
     likedPosts: Array,

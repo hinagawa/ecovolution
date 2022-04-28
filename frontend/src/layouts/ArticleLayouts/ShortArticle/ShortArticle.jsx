@@ -16,9 +16,6 @@ function ShortArticle({
 }) {
   return (
     <div className={styles.article}>
-      <div className={styles.likeButton}>
-        <HeartOutlined />
-      </div>
       <div className={styles.mainContent}>
         <img
           src={src}
@@ -26,8 +23,13 @@ function ShortArticle({
           className={styles.articleImg}
         />
         <div className={styles.articleText}>
-          <Link href='/'>{headerText}</Link>
-          <p>{text}</p>
+          <div className={styles.textGroup}>
+            <div className={styles.articleHeader}>
+              <Link href='/'>{headerText}</Link>
+              <HeartOutlined />
+            </div>
+            <p>{text}</p>
+          </div>
           <TagsList tagsArray={tagsArray} />
         </div>
       </div>

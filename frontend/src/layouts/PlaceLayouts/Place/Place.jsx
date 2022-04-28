@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import { HeartOutlined, EnvironmentOutlined } from '@ant-design/icons'
 
+import Button from '../../../components/Button/Button'
 import Link from '../../../components/Link/Link'
 
 import defaultImage from '../../../assets/images/placeImg.jpg'
@@ -18,11 +19,13 @@ function Place({
   useEffect(() => {})
   return (
     <div className={styles.placeContainer}>
-      <img
-        src={placeImgPath}
-        alt='Place'
-        className={styles.imgPlace}
-      />
+      <Button variant='link' onClick={console.log('click')}>
+        <img
+          src={placeImgPath}
+          alt='Place'
+          className={styles.imgPlace}
+        />
+      </Button>
       <Link href='/'>
         <h1>{placeName}</h1>
       </Link>
