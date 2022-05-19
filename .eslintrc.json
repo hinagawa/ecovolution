@@ -1,7 +1,8 @@
 {
     "env": {
         "node": true,
-        "es2021": true
+        "es2021": true,
+        "mocha": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
@@ -9,9 +10,20 @@
         "sourceType": "module"
     },
     "rules": {
-        "semi": ["error", "always"],
-        "quotes": ["warn", "single"],
-        "no-multiple-empty-lines" : ["error", {"max": 2}]
+        "semi": [
+            "error",
+            "always"
+        ],
+        "quotes": [
+            "warn",
+            "single"
+        ],
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 2
+            }
+        ]
     },
     "globals": {
         "require": true
