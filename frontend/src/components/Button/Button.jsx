@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 import styles from './styles.module.css'
 
-function Button({ text, variant, onClick }) {
+function Button({ children, variant, onClick }) {
   const resStyle = classNames({
     [styles.button]: true,
     [styles.primary]: variant === 'primary',
@@ -16,13 +16,13 @@ function Button({ text, variant, onClick }) {
       className={resStyle}
       onClick={onClick}
     >
-      {text}
+      {children}
     </button>
   )
 }
 
 Button.propTypes = {
-  text: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   variant: PropTypes.oneOf(['primary', 'link']),
   onClick: PropTypes.func,
 }

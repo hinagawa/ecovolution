@@ -4,4 +4,15 @@ body {
   height: 100vh;
   width: 100%;
   margin: inherit;
+  background-color: #c4c4c4;
+  font-family: 'Raleway';
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('./fonts/Raleway-Regular.ttf');
+}
+
+* {
+  font-family: 'Raleway';
 }

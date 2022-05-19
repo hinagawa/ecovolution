@@ -3,16 +3,16 @@ import PropTypes from 'prop-types'
 
 import styles from './styles.module.css'
 
-function Link({ text, href }) {
+function Link({ href, children }) {
   return (
     <a href={href} className={styles.link}>
-      {text}
+      {children}
     </a>
   )
 }
 
 Link.propTypes = {
-  text: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   href: PropTypes.string.isRequired,
 }
 

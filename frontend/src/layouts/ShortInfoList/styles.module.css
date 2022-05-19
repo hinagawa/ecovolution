@@ -1,0 +1,22 @@
+.listOfCircles {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+  padding-top: 30px;
+}
+
+.listOfCircles a {
+  width: 100%;
+}
+
+.listOfCircles a > img {
+  border-radius: 80%;
+  width: 80%;
+}
+
+.otherFriends p {
+  color: #039c52;
+  font-size: 20px;
+  font-weight: bold;
+}

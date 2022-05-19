@@ -34,8 +34,7 @@ exports.signIn = async (req, res) => {
         const isMatch = await user.comparePasswords(password);
         if (!isMatch) throw new Error('Wrong password');
         const token = await user.createJwtToken(isMatch, user, res);
-        res.cookie('Token', 'Bearer ' + token);
-        res.json({ success: true, message: 'Token created' });
+        res.json({ success: true, message: 'Token created', token: 'Bearer ' + token });
     }
     catch (e) {
         if (e.message.includes('not found' || 'Wrong')) {
@@ -53,7 +52,7 @@ exports.forgotPassword = async (req, res) => {
         if (!user) throw new Error('User with this email not found');
         const resetToken = await user.getResetPasswordToken();
         await user.save();
-        const link = `${keys.host}/api/reset-password?userId=${user._id}&resetToken=${resetToken}`;
+        const link = `${keys.host_url}/api/reset-password?userId=${user._id}&resetToken=${resetToken}`;
         const text = `
         You have requested a password reset
         Please go to this link to reset your password ${link}`;

@@ -1,0 +1,56 @@
+.article {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin: 20px;
+}
+
+.article:hover {
+  box-shadow: 1px 1px 10px hsla(0, 0%, 0%, 0.435);
+}
+
+.articleText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.articleText a {
+  display: flex;
+  flex-direction: column;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.articleText p {
+  font-size: 15px;
+}
+
+.articleImg {
+  width: 200px;
+  padding: 10px;
+}
+
+.likeButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.articleHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  /* width: 100%; */
+  margin-right: 10px;
+}

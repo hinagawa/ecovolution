@@ -6,7 +6,7 @@ const { Schema, model } = require('mongoose');
 
 const keys = require('../config/keys');
 
-const issuer = keys.host;
+const issuer = keys.host_url;
 
 const UserSchema = new Schema({
     googleId: String,
@@ -28,8 +28,10 @@ const UserSchema = new Schema({
         type: String,
         default: 'User'
     },
+    firebasePath: String,
     resetPasswordToken: String,
-    resetPasswordExpire: Date
+    resetPasswordExpire: Date,
+    likedPosts: Array,
 });
 
 UserSchema.methods.comparePasswords = async function (password) {
@@ -44,9 +46,9 @@ UserSchema.methods.createJwtToken = async function (user) {
         permissions: user.role
     };
     return jwt.sign(claims, keys.jwt_secret, {
-            expiresIn: 60 * 15
-        });
-    };
+        expiresIn: 60 * 15
+    });
+};
 
 
 UserSchema.methods.getResetPasswordToken = async function () {

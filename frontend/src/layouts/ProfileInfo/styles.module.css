@@ -1,0 +1,15 @@
+.profileInfoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.locationInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.userAvatar {
+  width: 30%;
+}

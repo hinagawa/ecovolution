@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
 
 import customFetch from '../../services/api/fetchWrapper'
 
@@ -14,8 +13,7 @@ import styles from './styles.module.css'
 function SignInForm() {
   const { register, handleSubmit, setValue } = useForm()
   const [error, setError] = useState('')
-  const navigate = useNavigate()
-  // TODO check password onChange
+
   const onSubmit = (data) => {
     const { email, password } = data
     customFetch
@@ -25,7 +23,7 @@ function SignInForm() {
       })
       .then((res) => res.json())
       .then((resJson) => (resJson.success
-        ? navigate('/')
+        ? localStorage.setItem('Authorization', resJson.token)
         : setError(resJson.message)))
   }
 
@@ -56,12 +54,12 @@ function SignInForm() {
             setValue('password', e.target.value)
           }}
         />
-        <Button text='Sign In' />
+        <Button> Sign In </Button>
         {error && <Error message={error} />}
       </Form>
       <div className={styles.inlineContainer}>
         <p>Do not have an account?</p>
-        <a href='/sign-up'>Sign Up</a>
+        <a href='/auth/sign-up'>Sign Up</a>
       </div>
       <a href='/forgot-password'>Forgot password?</a>
     </>

@@ -1,0 +1,24 @@
+.label {
+  opacity: 50%;
+  color: white;
+  border-radius: 5px;
+  padding: 0 10px;
+  margin: 5px;
+  display: inline-block;
+  height: 20px;
+}
+.recipe {
+  background-color: #ff0000;
+}
+.tutorial {
+  background-color: #008000;
+}
+.places {
+  background-color: #0000ff;
+}
+.events {
+  background-color: #800080;
+}
+.lifehack {
+  background-color: #ff7f50;
+}

@@ -98,12 +98,14 @@ function SignUpForm() {
             setValue('confirmPassword', e.target.value)
           }}
         />
-        <Button text='Sign Up' />
+        <Button>
+          Sign Up
+        </Button>
         {error && <Error message={error} />}
       </Form>
       <div className={styles.inlineContainer}>
         <p>Already have an account?</p>
-        <a href='/sign-in'>Sign In</a>
+        <a href='/auth/sign-in'>Sign In</a>
       </div>
     </>
   )

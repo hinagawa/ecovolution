@@ -10,7 +10,6 @@
   align-items: center;
   justify-content: space-around;
   background-color: #039c52;
-  border-radius: 0 20px 20px 0;
   flex: 1;
 }
 
@@ -19,7 +18,7 @@
 }
 
 .logoContainer h1 {
-  color: white;
+  color: #ffffff;
   font-size: 50px;
 }
 
@@ -28,7 +27,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: #ffffff;
   flex: 1;
 }
 
@@ -52,11 +51,10 @@ body {
 .formContainer {
   grid-row: 2 / 3;
   grid-column: 2 / 3;
-  background-color: white;
+  background-color: #ffffff;
   border-radius: 10px;
   padding: 50px;
   width: 100%;
-  box-shadow: 10px 5px #f68e6f;
 }
 
 h1 {

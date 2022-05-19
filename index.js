@@ -12,6 +12,8 @@ const swaggerDocument = require('./swagger/basicInfo');
 const keys = require('./config/keys');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
+const articleRoutes = require('./routes/articleRoutes');
+const placeRoutes = require('./routes/placeRoutes');
 
 require('./models/User');
 require('./services/passport');
@@ -55,5 +57,7 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(spec));
 
 authRoutes(app);
 userRoutes(app);
+articleRoutes(app);
+placeRoutes(app);
 
 app.listen(PORT, () => console.log(`The server is running on port ${PORT}`));

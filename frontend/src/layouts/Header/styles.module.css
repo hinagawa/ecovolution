@@ -1,0 +1,40 @@
+.header {
+  background-color: #039c52;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.linkGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.linkGroup p {
+  color: white;
+  margin: 0;
+}
+
+.headerLogo {
+  color: white;
+  font-size: 30px;
+  margin-left: 10px;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.profileInfo img {
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 700px) {
+  .profileInfo p {
+    display: none;
+  }
+}

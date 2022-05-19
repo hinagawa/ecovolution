@@ -1,0 +1,20 @@
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #c4c4c4;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: row;
+  margin: 50px;
+  border-radius: 10px;
+  justify-content: space-around;
+}
+
+.articlesContainer {
+  background-color: white;
+  border-radius: 10px;
+  margin-left: 20px;
+  width: 100%;
+}
