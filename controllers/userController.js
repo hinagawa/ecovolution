@@ -18,7 +18,7 @@ exports.getUsers = async (req, res) => {
 
 exports.getUserById = async (req, res) => {
     try {
-        const { userId } = req.body;
+        const userId = req.query.userId;
         const user = await User.findById(userId);
         res.status(200).json({ success: true, message: user });
     }

@@ -1,4 +1,4 @@
-const server = require('../placeController.js');
+const server = 'http://localhost:5000';
 const fs = require('fs');
 
 const chai = require('chai'),
@@ -8,55 +8,56 @@ const chai = require('chai'),
 
 chai.use(chaiHttp);
 
-describe('Places API', () => {
-    it('should get all places', (done) => {
+describe('Articles API', () => {
+    it('should get all articles', (done) => {
         chai
             .request(server)
-            .get('/api/place/getPlaces')
+            .get('/api/article/getArticles')
             .end((err, res) => {
                 expect(err).to.be.null;
                 expect(res).to.have.status(200);
-                expect(res.body).to.haveOwnProperty('data');
+                expect(res.body).to.not.be.null;
 
                 done();
             });
     });
 
-    it('should get place by id', (done) => {
+    it('should get article by id', (done) => {
         chai
             .request(server)
-            .get('/api/place/getPlaceById')
-            .query({ id: '62666e53e93cf1dcd9920f03' })
+            .get('/api/article/getArticleById?articleId=6266ea7a9a71ffa53db82484')
             .end((err, res) => {
                 expect(err).to.be.null;
                 expect(res).to.have.status(200);
-                expect(res.body).to.haveOwnProperty('data');
-                expect(res.body.data.id).to.equal('62666e53e93cf1dcd9920f03');
+                expect(res.body).to.haveOwnProperty('message');
+                expect(res.body.message._id).to.equal('6266ea7a9a71ffa53db82484');
 
                 done();
             });
     });
 
-    it('should not get non-existing place', (done) => {
+    it('should not get non-existing article', (done) => {
         chai
             .request(server)
-            .get('/api/place/getPlaceById')
-            .query({ id: 4 })
+            .get('/api/article/getArticleById?articleId=4')
             .end((err, res) => {
                 expect(err).to.be.null;
-                expect(res).to.have.status(404);
+                expect(res).to.have.status(500);
                 expect(res.body).to.haveOwnProperty('message');
 
                 done();
             });
     });
 
-    it('should create place', (done) => {
+    it('should create article', (done) => {
         chai
             .request(server)
-            .post('/api/place/create')
+            .post('/api/article/create')
             .send({
-                place: { placeName: 'placeName1', placeDescription: 'placeDescription1', placeLocation: '54 32', placeTags: ['placeTag1'] },
+                articleName: 'articleName1',
+                articleText: 'articleText1',
+                articleTags: ['articleTag1', 'articleTag2'],
+                articleAuthorId: 'id1'
             })
             .end((err, res) => {
                 expect(err).to.be.null;

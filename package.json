@@ -18,9 +18,6 @@
     "express": "^4.17.1",
     "firebase-admin": "^10.0.2",
     "jsonwebtoken": "^8.5.1",
-    "mocha": "^10.0.0",
-    "mocha-junit-reporter": "^2.0.2",
-    "mongoose": "^6.0.11",
     "nodemailer": "^6.7.2",
     "passport": "^0.5.2",
     "passport-google-oauth20": "^2.0.0",
@@ -34,12 +31,15 @@
     "api": "nodemon index.js",
     "dev": "concurrently --kill-others-on-fail \"npm run api\" \"npm run frontend\"",
     "heroku-postbuild": "cd frontend && npm install && npm run build",
-    "test": "mocha './controllers/test/*.js' --recursive --reporter mocha-junit-reporter --timeout 60000 --exit"
+    "test": "mocha './test/*.test.js' --recursive --reporter mocha-junit-reporter --timeout 60000 --exit"
   },
   "author": "Polina Salimullina",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^6.3.0",
+    "mocha": "^10.0.0",
+    "mocha-junit-reporter": "^2.0.2",
+    "mongoose": "^6.0.11",
     "eslint": "^7.11.0",
     "eslint-config-airbnb": "^19.0.4",
     "nodemon": "^2.0.13"

@@ -6,7 +6,10 @@ const firebaseService = require('../services/firebase');
 exports.createArticle = async (req, res) => {
     try {
         const { articleName, articleText, articleImgPath, articleTags, articleAuthorId } = req.body;
-        const firebasePath = await firebaseService.uploadFile(articleImgPath);
+        let firebasePath = '';
+        if (articleImgPath) {
+            firebasePath = await firebaseService.uploadFile(articleImgPath);
+        }
         const article = new Article({ articleName, articleText, firebasePath, articleTags, articleAuthorId });
         await article.save();
         res.status(200).json({ success: true, message: 'Article has been created' });
@@ -35,7 +38,7 @@ exports.getArticles = async (req, res) => {
 
 exports.getArticleById = async (req, res) => {
     try {
-        const { articleId } = req.query.articleId;
+        const articleId = req.query.articleId;
         const article = await Article.findById(articleId);
         res.json({ success: true, message: article });
     }
@@ -46,7 +49,7 @@ exports.getArticleById = async (req, res) => {
 
 exports.getArticlesByAuthorId = async (req, res) => {
     try {
-        const { authorId } = req.query.authorId;
+        const authorId = req.query.authorId;
         const article = await Article.select({ 'authorId': authorId });
         res.json({ success: true, message: article });
     }
@@ -57,7 +60,7 @@ exports.getArticlesByAuthorId = async (req, res) => {
 
 exports.deleteArticleById = async (req, res) => {
     try {
-        const { articleId } = req.query.articleId;
+        const articleId = req.query.articleId;
         await Article.deleteOne({ '_id': articleId });
         res.json({ success: true, message: 'Article has been deleted' });
     }
@@ -67,7 +70,7 @@ exports.deleteArticleById = async (req, res) => {
 };
 
 exports.updateArticle = (req, res) => {
-    const { articleId } = req.query.articleId;
+    const articleId = req.query.articleId;
     Article.findById(articleId).then(doc =>
         Article.updateOne({ _id: doc._id }, req.query.updateQuery))
         .then(

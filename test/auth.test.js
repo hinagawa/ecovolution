@@ -1,4 +1,4 @@
-const server = require('../authController.js');
+const server = 'http://localhost:5000';
 const fs = require('fs');
 
 const chai = require('chai'),
@@ -9,13 +9,15 @@ const chai = require('chai'),
 chai.use(chaiHttp);
 
 describe('Auth API', () => {
-    
     it('should create user', (done) => {
         chai
             .request(server)
             .post('/api/sign-up')
             .send({
-                user: { name: 'name1', lastname:'lastname1', email: 'email@test.com', password:'testtesttest'  },
+                name: 'name1',
+                lastname: 'lastname1',
+                email: 'email@test.com',
+                password: 'testtesttest'
             })
             .end((err, res) => {
                 expect(err).to.be.null;
@@ -30,7 +32,10 @@ describe('Auth API', () => {
             .request(server)
             .post('/api/sign-in')
             .send({
-                user: { name: 'name1', lastname:'lastname1', email: 'email@test.com', password:'testtesttest'  },
+                name: 'name1',
+                lastname: 'lastname1',
+                email: 'email@test.com',
+                password: 'testtesttest'
             })
             .end((err, res) => {
                 expect(err).to.be.null;

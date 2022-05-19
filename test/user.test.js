@@ -1,4 +1,4 @@
-const server = require('../userController.js');
+const server = 'http://localhost:5000';
 const fs = require('fs');
 
 const chai = require('chai'),
@@ -16,7 +16,7 @@ describe('Users API', () => {
             .end((err, res) => {
                 expect(err).to.be.null;
                 expect(res).to.have.status(200);
-                expect(res.body).to.haveOwnProperty('data');
+                expect(res.body).to.not.be.null;
 
                 done();
             });
@@ -25,13 +25,12 @@ describe('Users API', () => {
     it('should get user by id', (done) => {
         chai
             .request(server)
-            .get('/api/user/getById')
-            .query({ id: '61ee7f441597e80ab21f2abf' })
+            .get('/api/user/getById?userId=61ee7f441597e80ab21f2abf')
             .end((err, res) => {
                 expect(err).to.be.null;
                 expect(res).to.have.status(200);
-                expect(res.body).to.haveOwnProperty('data');
-                expect(res.body.data.id).to.equal('61ee7f441597e80ab21f2abf');
+                expect(res.body).to.haveOwnProperty('message');
+                expect(res.body.message._id).to.equal('61ee7f441597e80ab21f2abf');
 
                 done();
             });
