@@ -34,8 +34,7 @@ exports.signIn = async (req, res) => {
         const isMatch = await user.comparePasswords(password);
         if (!isMatch) throw new Error('Wrong password');
         const token = await user.createJwtToken(isMatch, user, res);
-        res.cookie('Token', 'Bearer ' + token);
-        res.json({ success: true, message: 'Token created' });
+        res.json({ success: true, message: 'Token created', token: 'Bearer ' + token });
     }
     catch (e) {
         if (e.message.includes('not found' || 'Wrong')) {
