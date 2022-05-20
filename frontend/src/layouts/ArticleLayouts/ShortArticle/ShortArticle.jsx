@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -8,29 +9,24 @@ import TagsList from '../../../components/TagsList/TagsList'
 
 import styles from './styles.module.css'
 
-function ShortArticle({
-  headerText,
-  text,
-  src,
-  tagsArray,
-}) {
+function ShortArticle({ article }) {
   return (
     <div className={styles.article}>
       <div className={styles.mainContent}>
         <img
-          src={src}
+          src={article.firebasePath}
           alt='article_preview'
           className={styles.articleImg}
         />
         <div className={styles.articleText}>
           <div className={styles.textGroup}>
             <div className={styles.articleHeader}>
-              <Link href='/'>{headerText}</Link>
+              <Link href={`articles/${article._id}`}>{article.articleName}</Link>
               <HeartOutlined />
             </div>
-            <p>{text}</p>
+            <p>{article.text}</p>
           </div>
-          <TagsList tagsArray={tagsArray} />
+          <TagsList tagsArray={article.tagsArray} />
         </div>
       </div>
     </div>
@@ -38,10 +34,13 @@ function ShortArticle({
 }
 
 ShortArticle.propTypes = {
-  src: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-  headerText: PropTypes.string.isRequired,
-  tagsArray: PropTypes.arrayOf(PropTypes.string).isRequired,
+  article: PropTypes.shape({
+    _id: PropTypes.string,
+    articleName: PropTypes.string,
+    text: PropTypes.string,
+    firebasePath: PropTypes.string,
+    tagsArray: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
 }
 
 export default ShortArticle

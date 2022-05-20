@@ -51,6 +51,5 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  /* width: 100%; */
-  margin-right: 10px;
+  margin: 10px;
 }

@@ -18,6 +18,14 @@
             "warn",
             "single"
         ],
+        "no-underscore-dangle": [
+            "error",
+            {
+                "allow": [
+                    "_id"
+                ]
+            }
+        ],
         "no-multiple-empty-lines": [
             "error",
             {

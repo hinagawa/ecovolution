@@ -9,12 +9,7 @@ function ArticlesList({ articles }) {
   return (
     <div className={styles.listOfArticles}>
       {Object.keys(articles).map((key) => (
-        <Article
-          headerText={articles[key].articleName}
-          text={articles[key].articleText}
-          src={articles[key].firebasePath}
-          tagsArray={articles[key].tagsArray}
-        />
+        <Article article={articles[key]} />
       ))}
     </div>
   )

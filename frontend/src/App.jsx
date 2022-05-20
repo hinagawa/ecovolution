@@ -1,7 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router,
   Route,
-  Routes } from 'react-router-dom'
+  Routes,
+  Navigate } from 'react-router-dom'
 
 import AuthPage from './pages/Auth/AuthPage'
 import ResetPassword from './pages/Auth/ResetPassword'
@@ -15,6 +16,10 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route
+          path='/'
+          element={<Navigate to='/auth/sign-in' replace />}
+        />
         <Route exact element={<PrivateRoute isAuthPage />}>
           <Route path='/auth/*' element={<AuthPage />} />
         </Route>
@@ -30,7 +35,6 @@ function App() {
             element={<ForgotPassword />}
           />
         </Route>
-
         <Route exact element={<PrivateRoute />}>
           <Route
             exact

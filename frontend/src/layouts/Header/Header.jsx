@@ -29,10 +29,10 @@ function Header() {
           <CompassOutlined style={{ color: '#ffffff' }} />
           <p>Places</p>
         </Link>
-        <Link href='/profile/user-articles'>
+        <Link href='/profile'>
           <div className={styles.profileInfo}>
             <img src={avatar} alt='User avatar' />
-            <p>Username</p>
+            <p>Polina</p>
           </div>
         </Link>
       </div>
