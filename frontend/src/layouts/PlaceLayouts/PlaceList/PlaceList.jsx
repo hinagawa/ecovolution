@@ -1,11 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import { React } from 'react'
+import { useSelector } from 'react-redux'
 
 import Place from '../Place/Place'
 
 import styles from './styles.module.css'
 
-function PlaceList({ places }) {
+function PlaceList() {
+  const places = useSelector(
+    (state) => state.places.places[0],
+  )
   return (
     <div className={styles.placeContainer}>
       {Object.keys(places).map((key) => (
@@ -13,10 +16,6 @@ function PlaceList({ places }) {
       ))}
     </div>
   )
-}
-
-PlaceList.propTypes = {
-  places: PropTypes.objectOf(PropTypes.object).isRequired,
 }
 
 export default PlaceList

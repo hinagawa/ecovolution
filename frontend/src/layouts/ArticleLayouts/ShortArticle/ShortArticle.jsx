@@ -11,7 +11,7 @@ import styles from './styles.module.css'
 
 function ShortArticle({ article }) {
   return (
-    <div className={styles.article}>
+    <div className={styles.article} key={article._id}>
       <div className={styles.mainContent}>
         <img
           src={article.firebasePath}
@@ -21,7 +21,9 @@ function ShortArticle({ article }) {
         <div className={styles.articleText}>
           <div className={styles.textGroup}>
             <div className={styles.articleHeader}>
-              <Link href={`articles/${article._id}`}>{article.articleName}</Link>
+              <Link href={`articles/${article._id}`}>
+                {article.articleName}
+              </Link>
               <HeartOutlined />
             </div>
             <p>{article.text}</p>

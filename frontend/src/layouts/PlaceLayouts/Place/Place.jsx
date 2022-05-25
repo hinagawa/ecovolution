@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import { HeartOutlined,
@@ -10,9 +10,8 @@ import Link from '../../../components/Link/Link'
 import styles from './styles.module.css'
 
 function Place({ place }) {
-  useEffect(() => {})
   return (
-    <div className={styles.placeContainer}>
+    <div className={styles.placeContainer} key={place._id}>
       <img
         src={place.firebasePath}
         alt='Place'

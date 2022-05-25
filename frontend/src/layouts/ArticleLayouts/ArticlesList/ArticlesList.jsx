@@ -1,11 +1,14 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { useSelector } from 'react-redux'
 
 import Article from '../ShortArticle/ShortArticle'
 
 import styles from './styles.module.css'
 
-function ArticlesList({ articles }) {
+function ArticlesList() {
+  const articles = useSelector(
+    (state) => state.articles.articles[0],
+  )
   return (
     <div className={styles.listOfArticles}>
       {Object.keys(articles).map((key) => (
@@ -13,10 +16,6 @@ function ArticlesList({ articles }) {
       ))}
     </div>
   )
-}
-
-ArticlesList.propTypes = {
-  articles: PropTypes.objectOf(PropTypes.object).isRequired,
 }
 
 export default ArticlesList
