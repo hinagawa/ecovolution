@@ -10,11 +10,13 @@ function ArticlesList() {
     (state) => state.articles.articles[0],
   )
   return (
-    <div className={styles.listOfArticles}>
-      {Object.keys(articles).map((key) => (
-        <Article article={articles[key]} />
-      ))}
-    </div>
+    !!articles && (
+      <div className={styles.listOfArticles}>
+        {Object.keys(articles).map((key) => (
+          <Article article={articles[key]} />
+        ))}
+      </div>
+    )
   )
 }
 

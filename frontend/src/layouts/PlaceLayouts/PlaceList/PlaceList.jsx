@@ -10,11 +10,13 @@ function PlaceList() {
     (state) => state.places.places[0],
   )
   return (
-    <div className={styles.placeContainer}>
-      {Object.keys(places).map((key) => (
-        <Place place={places[key]} />
-      ))}
-    </div>
+    !!places && (
+      <div className={styles.placeContainer}>
+        {Object.keys(places).map((key) => (
+          <Place place={places[key]} />
+        ))}
+      </div>
+    )
   )
 }
 

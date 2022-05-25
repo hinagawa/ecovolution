@@ -34,7 +34,7 @@ exports.signIn = async (req, res) => {
         if (!user) throw new Error('User with this email not found');
         const isMatch = await user.comparePasswords(password);
         if (!isMatch) throw new Error('Wrong password');
-        const token = await user.createJwtToken(isMatch, user, res);
+        const token = await user.createJwtToken();
         res.json({ success: true, message: 'Token created', token: 'Bearer ' + token });
     }
     catch (e) {
