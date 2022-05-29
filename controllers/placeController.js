@@ -32,6 +32,21 @@ exports.getPlaces = async (req, res) => {
         return res.status(500).json({ success: false, message: `Something went wrong! ${e.message}` });
     }
 };
+
+exports.getCoordinates = async (req, res) => {
+    try {
+        Place.find({}, { placeName: 1, placeLocation: 1 }, function (err, places) {
+            var placeMap = {};
+            places.forEach(function (place) {
+                placeMap[place._id] = place;
+            });
+            return res.status(200).json(placeMap);
+        });
+    }
+    catch (e) {
+        return res.status(500).json({ success: false, message: `Something went wrong! ${e.message}` });
+    }
+};
 // TODO check if place with this id exist -> 404
 
 exports.getPlaceById = async (req, res) => {
