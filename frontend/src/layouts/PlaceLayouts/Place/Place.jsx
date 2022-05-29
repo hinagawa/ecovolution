@@ -1,39 +1,30 @@
-import React, { useEffect } from 'react'
+/* eslint-disable no-underscore-dangle */
+import React from 'react'
 import PropTypes from 'prop-types'
 
-import { HeartOutlined, EnvironmentOutlined } from '@ant-design/icons'
+import { HeartOutlined,
+  EnvironmentOutlined } from '@ant-design/icons'
 
-import Button from '../../../components/Button/Button'
 import Link from '../../../components/Link/Link'
-
-import defaultImage from '../../../assets/images/placeImg.jpg'
 
 import styles from './styles.module.css'
 
-function Place({
-  placeName,
-  placeDescription,
-  placeLocation,
-  placeImgPath,
-}) {
-  useEffect(() => {})
+function Place({ place }) {
   return (
-    <div className={styles.placeContainer}>
-      <Button variant='link' onClick={console.log('click')}>
-        <img
-          src={placeImgPath}
-          alt='Place'
-          className={styles.imgPlace}
-        />
-      </Button>
-      <Link href='/'>
-        <h1>{placeName}</h1>
+    <div className={styles.placeContainer} key={place._id}>
+      <img
+        src={place.firebasePath}
+        alt='Place'
+        className={styles.imgPlace}
+      />
+      <Link href={`places/${place._id}`}>
+        <h1>{place.placeName}</h1>
       </Link>
-      <p>{placeDescription}</p>
+      <p>{place.placeDescription}</p>
       <div className={styles.placeFooter}>
         <div className={styles.locationContainer}>
           <EnvironmentOutlined />
-          <p>{placeLocation}</p>
+          <p>{place.placeLocation}</p>
         </div>
         <HeartOutlined />
       </div>
@@ -42,14 +33,13 @@ function Place({
 }
 
 Place.propTypes = {
-  placeDescription: PropTypes.string.isRequired,
-  placeImgPath: PropTypes.string,
-  placeName: PropTypes.string.isRequired,
-  placeLocation: PropTypes.string.isRequired,
-}
-
-Place.defaultProps = {
-  placeImgPath: defaultImage,
+  place: PropTypes.shape({
+    _id: PropTypes.string,
+    placeDescription: PropTypes.string,
+    firebasePath: PropTypes.string,
+    placeName: PropTypes.string,
+    placeLocation: PropTypes.string,
+  }).isRequired,
 }
 
 export default Place

@@ -1,27 +1,23 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { useSelector } from 'react-redux'
 
 import Article from '../ShortArticle/ShortArticle'
 
 import styles from './styles.module.css'
 
-function ArticlesList({ articles }) {
-  return (
-    <div className={styles.listOfArticles}>
-      {Object.keys(articles).map((key) => (
-        <Article
-          headerText={articles[key].articleName}
-          text={articles[key].articleText}
-          src={articles[key].firebasePath}
-          tagsArray={articles[key].tagsArray}
-        />
-      ))}
-    </div>
+function ArticlesList() {
+  const articles = useSelector(
+    (state) => state.articles.articles[0],
   )
-}
-
-ArticlesList.propTypes = {
-  articles: PropTypes.objectOf(PropTypes.object).isRequired,
+  return (
+    !!articles && (
+      <div className={styles.listOfArticles}>
+        {Object.keys(articles).map((key) => (
+          <Article article={articles[key]} />
+        ))}
+      </div>
+    )
+  )
 }
 
 export default ArticlesList

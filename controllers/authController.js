@@ -15,6 +15,7 @@ exports.signUp = async (req, res) => {
         }
         const hashedPassword = await bcrypt.hash(password, +SALT);
         const user = new User({ name, lastname, email, password: hashedPassword });
+        console.log(user);
         await user.save();
         res.status(200).json({ success: true, message: 'User has been created' });
     }
@@ -33,7 +34,7 @@ exports.signIn = async (req, res) => {
         if (!user) throw new Error('User with this email not found');
         const isMatch = await user.comparePasswords(password);
         if (!isMatch) throw new Error('Wrong password');
-        const token = await user.createJwtToken(isMatch, user, res);
+        const token = await user.createJwtToken();
         res.json({ success: true, message: 'Token created', token: 'Bearer ' + token });
     }
     catch (e) {
@@ -46,7 +47,6 @@ exports.signIn = async (req, res) => {
 
 exports.forgotPassword = async (req, res) => {
     const { email } = req.body;
-    console.log(email);
     try {
         const user = await User.findOne({ email });
         if (!user) throw new Error('User with this email not found');

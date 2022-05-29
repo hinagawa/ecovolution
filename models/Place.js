@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose');
 const PlaceSchema = new Schema({
     placeName: String,
     placeDescription: String,
-    placeLocation: String,
+    placeLocation: Array,
     firebasePath: String,
     placeTags: Array
 });

@@ -6,8 +6,6 @@ const { Schema, model } = require('mongoose');
 
 const keys = require('../config/keys');
 
-const issuer = keys.host_url;
-
 const UserSchema = new Schema({
     googleId: String,
     email: {
@@ -38,16 +36,12 @@ UserSchema.methods.comparePasswords = async function (password) {
     return await bcrypt.compare(password, this.password);
 };
 
-UserSchema.methods.createJwtToken = async function (user) {
-    const claims = {
-        sub: user.id,
-        email: user.email,
-        iss: issuer,
-        permissions: user.role
+UserSchema.methods.createJwtToken = async function () {
+    const data = {
+        id: this._id,
+        username: this.username
     };
-    return jwt.sign(claims, keys.jwt_secret, {
-        expiresIn: 60 * 15
-    });
+    return jwt.sign(data, keys.jwt_secret, { expiresIn: keys.jwt_expire });
 };
 
 

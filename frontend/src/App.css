@@ -1,8 +1,12 @@
 @font-face {
-    font-family: Raleway;
-    src: url('../src/assets/fonts/Raleway-Regular.ttf');
+  font-family: Raleway;
+  src: url('../src/assets/fonts/Raleway-Regular.ttf');
 }
 
 .global {
-    font-family: Raleway;
+  font-family: Raleway;
+}
+
+iframe {
+  pointer-events: none;
 }

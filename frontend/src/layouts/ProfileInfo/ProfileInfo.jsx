@@ -1,6 +1,5 @@
 import React from 'react'
-
-import { EnvironmentOutlined } from '@ant-design/icons'
+import { useSelector } from 'react-redux'
 
 import Button from '../../components/Button/Button'
 
@@ -9,6 +8,8 @@ import userAvatar from '../../assets/images/avatar.png'
 import styles from './styles.module.css'
 
 function ProfileInfo() {
+  const user = useSelector((state) => state.user.user)
+
   return (
     <div className={styles.profileInfoContainer}>
       <img
@@ -16,11 +17,7 @@ function ProfileInfo() {
         alt='user avatar'
         className={styles.userAvatar}
       />
-      <h3>Polina Salimullina</h3>
-      <div className={styles.locationInfo}>
-        <EnvironmentOutlined />
-        <p>Kazan, Russia</p>
-      </div>
+      <h3>{`${user.name} ${user.lastname}`}</h3>
       <Button onClick={undefined}>Edit Profile</Button>
     </div>
   )
