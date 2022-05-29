@@ -1,5 +1,7 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Routes,
+  Route,
+  useNavigate } from 'react-router-dom'
 
 import img from '../../assets/images/Img.png'
 
@@ -9,6 +11,11 @@ import SignInForm from '../../layouts/AuthLayouts/SignInForm'
 import styles from './styles.module.css'
 
 function AuthPage() {
+  const navigate = useNavigate()
+  useEffect(() => {
+    const token = localStorage.getItem('Authorization')
+    if (!token) navigate('/articles')
+  })
   return (
     <div className={styles.rowContainer}>
       <div className={styles.logoContainer}>

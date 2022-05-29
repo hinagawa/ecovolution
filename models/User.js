@@ -29,7 +29,8 @@ const UserSchema = new Schema({
     firebasePath: String,
     resetPasswordToken: String,
     resetPasswordExpire: Date,
-    likedPosts: Array,
+    likedArticles: [{ type: Schema.Types.ObjectId, ref: 'Article' }],
+    likedPlaces: [{ type: Schema.Types.ObjectId, ref: 'Place' }],
 });
 
 UserSchema.methods.comparePasswords = async function (password) {
