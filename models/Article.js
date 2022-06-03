@@ -1,3 +1,4 @@
+const ObjectId = require('mongoose').ObjectId;
 const { Schema, model } = require('mongoose');
 
 const ArticleSchema = new Schema({
@@ -5,7 +6,7 @@ const ArticleSchema = new Schema({
     articleText: String,
     firebasePath: String,
     tagsArray: Array,
-    authorId : String,
+    articleAuthorId : ObjectId,
     likesCount: Number
 });
 

@@ -3,3 +3,16 @@
   flex-direction: column;
   padding: 0 20px;
 }
+
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}

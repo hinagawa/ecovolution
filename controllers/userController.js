@@ -1,5 +1,3 @@
-const ObjectId = require('mongodb').ObjectId;
-
 const User = require('../models/User');
 
 exports.getUsers = async (req, res) => {
@@ -32,11 +30,28 @@ exports.addLikedArticle = async (req, res) => {
     try {
         const articleId = req.query.articleId;
         const userId = req.query.userId;
-        console.log(ObjectId(articleId));
-        User.updateMany(
-            { _id: userId },
-            { $addToSet: { 'likedArticles' : ObjectId(articleId) } }
-        );
+        const user = await User.findById(userId);
+        if (!user) {
+            throw new Error('no user');
+        }
+        user.likedArticles = [...user.likedArticles, articleId ]; 
+        await user.save();
+        res.status(200).json({ success: true, message: 'Create' });
+    }
+    catch (e) {
+        return res.status(500).json({ success: false, message: `Something went wrong! ${e.message}` });
+    }
+};
+exports.addLikedPlace = async (req, res) => {
+    try {
+        const articleId = req.query.articleId;
+        const userId = req.query.userId;
+        const user = await User.findById(userId);
+        if (!user) {
+            throw new Error('no user');
+        }
+        user.likedArticles = [...user.likedPlaces, articleId ]; 
+        await user.save();
         res.status(200).json({ success: true, message: 'Create' });
     }
     catch (e) {

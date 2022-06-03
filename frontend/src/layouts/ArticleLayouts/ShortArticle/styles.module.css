@@ -7,6 +7,13 @@
   border-radius: 5px;
 }
 
+.noImageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
 .article:hover {
   box-shadow: 1px 1px 10px hsla(0, 0%, 0%, 0.435);
 }

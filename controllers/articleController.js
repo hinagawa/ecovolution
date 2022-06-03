@@ -10,6 +10,7 @@ exports.createArticle = async (req, res) => {
         if (articleImgPath) {
             firebasePath = await firebaseService.uploadFile(articleImgPath);
         }
+        console.log(articleAuthorId);
         const article = new Article({ articleName, articleText, firebasePath, articleTags, articleAuthorId });
         await article.save();
         res.status(200).json({ success: true, message: 'Article has been created' });

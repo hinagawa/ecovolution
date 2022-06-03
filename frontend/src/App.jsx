@@ -14,6 +14,8 @@ import Article from './pages/Articles/Article'
 import Map from './pages/Map/MapView'
 import PrivateRoute from './components/PrivateRoute'
 
+import './App.css'
+
 function App() {
   return (
     <Router>
@@ -66,11 +68,7 @@ function App() {
           />
         </Route>
         <Route exact element={<PrivateRoute />}>
-          <Route
-            exact
-            path='/map'
-            element={<Map />}
-          />
+          <Route exact path='/map' element={<Map />} />
         </Route>
       </Routes>
     </Router>
