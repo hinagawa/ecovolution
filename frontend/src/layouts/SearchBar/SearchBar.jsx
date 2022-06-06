@@ -1,8 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Switch } from 'antd'
 
-import { FilterOutlined,
-  SearchOutlined } from '@ant-design/icons'
+import { SearchOutlined } from '@ant-design/icons'
 
 import Input from '../../components/Input/Input'
 
@@ -13,22 +13,21 @@ function SearchBar() {
   return (
     <div className={styles.searchBarContainer}>
       <select onChange={(e) => navigate(e.target.value)}>
+        <option>Выберите нужный раздел</option>
         <option value='/articles'>Статьи</option>
         <option value='/places'>Места</option>
         <option value='/map'>Карта</option>
       </select>
-      <div className={styles.imgContainer}>
+      <div className={styles.searchContainer}>
         <Input
           className={styles.searchInput}
           placeholder='Type to search'
         />
         <SearchOutlined />
       </div>
-      <div className={styles.imgContainer}>
-        {/* <Select
-          optionArray={['Сначала новые', 'Сначала старые']}
-        /> */}
-        <FilterOutlined />
+      <div className={styles.switchContainer}>
+        <Switch />
+        <p>Показать только подписки</p>
       </div>
     </div>
   )

@@ -14,6 +14,7 @@ import Article from './pages/Articles/Article'
 import Map from './pages/Map/MapView'
 import PrivateRoute from './components/PrivateRoute'
 
+import 'antd/dist/antd.css'
 import './App.css'
 
 function App() {

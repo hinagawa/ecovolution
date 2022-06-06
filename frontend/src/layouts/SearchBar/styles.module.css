@@ -2,7 +2,7 @@
   margin: 20px 0;
   padding: 10px;
   display: inline-grid;
-  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-columns: 1fr 4fr 1fr;
   background-color: #ffffff;
   column-gap: 10px;
 }
@@ -10,11 +10,20 @@
   border: none;
   border-bottom: 1px solid #000000;
   border-radius: 0;
+  margin: 0;
+  width: 80%;
 }
 
-.imgContainer {
+.searchContainer {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.switchContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 10px;
 }

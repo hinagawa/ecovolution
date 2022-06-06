@@ -1,7 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
 import { PlusOutlined } from '@ant-design/icons'
 
 import { addArticle } from '../../store/slices/articleSlice'
@@ -51,6 +50,7 @@ function Articles() {
           variant='primary'
           shape='circle'
           onClick={() => setIsOpen(true)}
+          data-tip='Создать статью'
         >
           <PlusOutlined />
         </Button>

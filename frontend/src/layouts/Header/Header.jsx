@@ -5,6 +5,7 @@ import { HeartOutlined,
   TeamOutlined,
   ReadOutlined,
   CompassOutlined } from '@ant-design/icons'
+import ReactTooltip from 'react-tooltip'
 
 import avatar from '../../assets/images/avatar.png'
 
@@ -36,23 +37,24 @@ function Header() {
   console.log(error)
   return (
     <div className={styles.header}>
-      <h1 className={styles.headerLogo}>Ecovolution</h1>
+      <h1 className={styles.headerLogo}>EcoRevolution</h1>
       <div className={styles.linkGroup}>
-        <Link href='/profile/liked-articles'>
+        <Link href='/profile/liked-articles' data-tip='Лайки'>
           <HeartOutlined style={{ color: '#ffffff' }} />
-          <p>Favourite</p>
+          <p>Лайки</p>
         </Link>
+        <ReactTooltip />
         <Link href='/'>
           <TeamOutlined style={{ color: '#ffffff' }} />
-          <p>Friends</p>
+          <p>Друзья</p>
         </Link>
         <Link href='/articles'>
           <ReadOutlined style={{ color: '#ffffff' }} />
-          <p>Articles</p>
+          <p>Статьи</p>
         </Link>
         <Link href='/places'>
           <CompassOutlined style={{ color: '#ffffff' }} />
-          <p>Places</p>
+          <p>Места</p>
         </Link>
         {!loading && !!user && (
           <Link href='/profile'>
