@@ -10,7 +10,8 @@ import avatar from '../../assets/images/avatar.png'
 
 import Link from '../../components/Link/Link'
 
-import customFetch from '../../services/api/fetchWrapper'
+import api from '../../services/api/fetchWrapper'
+
 import { addUserInfo } from '../../store/slices/userSlice'
 
 import styles from './styles.module.css'
@@ -25,7 +26,7 @@ function Header() {
     setLoading(true)
     const token = localStorage.getItem('Authorization')
     const userId = jwt_decode(token)
-    customFetch
+    api
       .get(`api/user/getById?userId=${userId.id}`)
       .then((data) => (data.success
         ? dispatch(addUserInfo(data.message))

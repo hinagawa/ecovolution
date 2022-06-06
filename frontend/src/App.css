@@ -3,7 +3,7 @@
   src: url('../src/assets/fonts/Raleway-Regular.ttf');
 }
 
-.global {
+.global, *, html{
   font-family: Raleway;
 }
 

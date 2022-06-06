@@ -2,7 +2,7 @@ module.exports = {
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'Ecovolution API',
+            title: 'EcoRevolution API',
             version: '1.0.0',
             description: 'Ecology web-platform'
         },

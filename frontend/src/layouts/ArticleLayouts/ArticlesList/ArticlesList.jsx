@@ -7,7 +7,7 @@ import styles from './styles.module.css'
 
 function ArticlesList() {
   const articles = useSelector(
-    (state) => state.articles.articles[0],
+    (state) => state.articles.articles,
   )
   return (
     !!articles && (

@@ -4,6 +4,7 @@ const userSlice = createSlice({
   name: 'user',
   initialState: {
     user: '',
+    likedArticles: [],
   },
   reducers: {
     addUserInfo(state, action) {
@@ -12,9 +13,13 @@ const userSlice = createSlice({
         user: action.payload,
       }
     },
+    addLikedArticles(state, action) {
+      console.log(action)
+      state.likedArticles[0].push(action.payload)
+    },
   },
 })
 
-export const { addUserInfo } = userSlice.actions
+export const { addUserInfo, addLikedArticles } = userSlice.actions
 
 export default userSlice.reducer

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import customFetch from '../../services/api/fetchWrapper'
+import { GoogleOutlined } from '@ant-design/icons'
+import api from '../../services/api/fetchWrapper'
 
 import Input from '../../components/Input/Input'
 import Button from '../../components/Button/Button'
+import Link from '../../components/Link/Link'
 import Form from '../../components/Form/Form'
 import Error from '../../components/Error/Error'
 
@@ -14,17 +16,24 @@ function SignInForm() {
   const { register, handleSubmit, setValue } = useForm()
   const [error, setError] = useState('')
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const { email, password } = data
-    customFetch
+    await api
       .post('api/sign-in', {
         email,
         password,
       })
       .then((res) => res.json())
       .then((resJson) => (resJson.success
-        ? localStorage.setItem('Authorization', resJson.token)
+        ? localStorage.setItem(
+          'Authorization',
+          resJson.token,
+        )
         : setError(resJson.message)))
+  }
+
+  const handleGoogle = async () => {
+    await api.get('api/auth/google')
   }
 
   useEffect(() => {
@@ -36,7 +45,7 @@ function SignInForm() {
   }, [])
   return (
     <>
-      <legend className={styles.legendFont}>Sign In</legend>
+      <legend className={styles.legendFont}>Войти</legend>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Input
           type='email'
@@ -48,20 +57,28 @@ function SignInForm() {
         />
         <Input
           type='password'
-          placeholder='Password'
+          placeholder='Пароль'
           name='password'
           onChange={(e) => {
             setValue('password', e.target.value)
           }}
         />
-        <Button> Sign In </Button>
-        {error && <Error message={error} />}
+        <Button> Войти </Button>
       </Form>
-      <div className={styles.inlineContainer}>
-        <p>Do not have an account?</p>
-        <a href='/auth/sign-up'>Sign Up</a>
+
+      <div className={styles.buttonGroup}>
+        <form action='/auth/google' method='GET'>
+          <Button onClick={handleGoogle}>
+            <GoogleOutlined />
+          </Button>
+        </form>
       </div>
-      <a href='/forgot-password'>Forgot password?</a>
+      {error && <Error message={error} />}
+      <div className={styles.inlineContainer}>
+        <p>У вас нет аккаунта?</p>
+        <Link href='/auth/sign-up'>Зарегистрироваться</Link>
+      </div>
+      <Link href='/forgot-password'>Забыли пароль?</Link>
     </>
   )
 }

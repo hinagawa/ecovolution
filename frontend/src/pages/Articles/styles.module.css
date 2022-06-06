@@ -5,10 +5,11 @@
 }
 
 .buttonContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
   padding: 10px;
+  z-index: 10;
 }
 
 .mainContainer {

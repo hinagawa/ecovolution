@@ -1,10 +1,10 @@
 .rowContainer {
   display: flex;
   flex-direction: row;
+  height: 90vh;
 }
 
 .logoContainer {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,10 +24,11 @@
 
 .formContainer {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #ffffff;
+  border-radius: 10px;
+  margin: 50px;
   flex: 1;
 }
 
@@ -43,12 +44,14 @@ body {
 
 .gridContainer {
   height: 100vh;
+  background-color: #039c52;
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
 }
 
-.formContainer {
+.formPasswordContainer {
   grid-row: 2 / 3;
   grid-column: 2 / 3;
   background-color: #ffffff;

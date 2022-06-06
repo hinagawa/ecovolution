@@ -12,7 +12,6 @@ function Article() {
     await api
       .get(`api/article/getArticleById?articleId=${id}`)
       .then((data) => setArticle(data.message))
-    console.log(article)
   })
   return (
     <div>

@@ -15,7 +15,6 @@ exports.signUp = async (req, res) => {
         }
         const hashedPassword = await bcrypt.hash(password, +SALT);
         const user = new User({ name, lastname, email, password: hashedPassword });
-        console.log(user);
         await user.save();
         res.status(200).json({ success: true, message: 'User has been created' });
     }

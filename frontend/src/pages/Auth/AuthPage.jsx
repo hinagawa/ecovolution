@@ -14,12 +14,12 @@ function AuthPage() {
   const navigate = useNavigate()
   useEffect(() => {
     const token = localStorage.getItem('Authorization')
-    if (!token) navigate('/articles')
+    if (token) navigate('/articles')
   })
   return (
     <div className={styles.rowContainer}>
       <div className={styles.logoContainer}>
-        <h1>Ecovolution</h1>
+        <h1>EcoRevolution</h1>
         <img src={img} alt='Girl with horse' />
       </div>
       <div className={styles.formContainer}>

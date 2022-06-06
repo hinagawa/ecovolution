@@ -6,6 +6,7 @@ import customFetch from '../../services/api/fetchWrapper'
 
 import Input from '../../components/Input/Input'
 import Button from '../../components/Button/Button'
+import Link from '../../components/Link/Link'
 import Form from '../../components/Form/Form'
 import Error from '../../components/Error/Error'
 
@@ -17,7 +18,7 @@ function SignUpForm() {
   const navigate = useNavigate()
   // TODO check password onChange
   const onSubmit = (data) => {
-    const { name, lastName, email, password } = data
+    const { name, lastname, email, password } = data
     if (data.password !== data.confirmPassword) {
       return setError(
         'Password and confirm password do not match',
@@ -26,7 +27,7 @@ function SignUpForm() {
     customFetch
       .post('api/sign-up', {
         name,
-        lastName,
+        lastname,
         email,
         password,
       })
@@ -40,7 +41,7 @@ function SignUpForm() {
     register('name', {
       required: 'Please, provide your name',
     })
-    register('lastName')
+    register('lastname')
     register('email', {
       required: 'Please, provide your email',
     })
@@ -56,11 +57,11 @@ function SignUpForm() {
 
   return (
     <>
-      <legend className={styles.legendFont}>Sign Up</legend>
+      <legend className={styles.legendFont}>Регистрация</legend>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Input
           type='text'
-          placeholder='Name'
+          placeholder='Имя'
           name='name'
           onChange={(e) => {
             setValue('name', e.target.value)
@@ -68,10 +69,10 @@ function SignUpForm() {
         />
         <Input
           type='text'
-          placeholder='Last Name'
-          name='lastName'
+          placeholder='Фамилия'
+          name='lastname'
           onChange={(e) => {
-            setValue('lastName', e.target.value)
+            setValue('lastname', e.target.value)
           }}
         />
         <Input
@@ -84,7 +85,7 @@ function SignUpForm() {
         />
         <Input
           type='password'
-          placeholder='Password'
+          placeholder='Пароль'
           name='password'
           onChange={(e) => {
             setValue('password', e.target.value)
@@ -92,20 +93,20 @@ function SignUpForm() {
         />
         <Input
           type='password'
-          placeholder='Confirm password'
+          placeholder='Повторите пароль'
           name='confirmPassword'
           onChange={(e) => {
             setValue('confirmPassword', e.target.value)
           }}
         />
         <Button>
-          Sign Up
+          Зарегистрироваться
         </Button>
         {error && <Error message={error} />}
       </Form>
       <div className={styles.inlineContainer}>
-        <p>Already have an account?</p>
-        <a href='/auth/sign-in'>Sign In</a>
+        <p>Уже есть аккаунт?</p>
+        <Link href='/auth/sign-in'>Войти</Link>
       </div>
     </>
   )

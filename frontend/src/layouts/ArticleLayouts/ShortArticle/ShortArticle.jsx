@@ -3,11 +3,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { HeartOutlined,
+import { HeartTwoTone,
   DeleteOutlined,
-  FileImageTwoTone } from '@ant-design/icons'
+  FileImageTwoTone, HeartOutlined } from '@ant-design/icons'
 
-import { addLikedArticle } from '../../../store/slices/articleSlice'
+import { addLikedArticles } from '../../../store/slices/userSlice'
+
+import api from '../../../services/api/fetchWrapper'
 
 import Link from '../../../components/Link/Link'
 import Button from '../../../components/Button/Button'
@@ -19,9 +21,16 @@ function ShortArticle({ article }) {
   const currentUser = useSelector(
     (state) => state.user.user._id,
   )
+  const likedArticles = useSelector(
+    (state) => state.user.user.likedArticles,
+  )
   const dispatch = useDispatch()
-  const handleLike = (articleId) => {
-    dispatch(addLikedArticle(articleId))
+
+  const handleLike = async (articleId) => {
+    await api.get(
+      `api/user/addLikedArticle?articleId=${articleId}&userId=${currentUser}`,
+    )
+    dispatch(addLikedArticles(articleId))
   }
   const handleDelete = () => {}
   return (
@@ -45,8 +54,15 @@ function ShortArticle({ article }) {
               <Link href={`articles/${article._id}`}>
                 {article.articleName}
               </Link>
-              <Button variant='link' onClick={handleLike}>
-                <HeartOutlined />
+              <Button
+                variant='link'
+                onClick={() => handleLike(article._id)}
+              >
+                {likedArticles.includes(article._id) ? (
+                  <HeartTwoTone twoToneColor='#a13f3f' />
+                ) : (
+                  <HeartOutlined />
+                )}
               </Button>
               {currentUser === article?.articleAuthorId && (
                 <Button
@@ -68,14 +84,8 @@ function ShortArticle({ article }) {
 }
 
 ShortArticle.propTypes = {
-  article: PropTypes.shape({
-    _id: PropTypes.string,
-    articleName: PropTypes.string,
-    text: PropTypes.string,
-    firebasePath: PropTypes.string,
-    articleAuthorId: String,
-    tagsArray: PropTypes.arrayOf(PropTypes.string),
-  }).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  article: PropTypes.objectOf(PropTypes.any).isRequired,
 }
 
 export default ShortArticle

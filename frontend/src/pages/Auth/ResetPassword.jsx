@@ -45,25 +45,25 @@ function ResetPassword() {
   }, [])
   return (
     <div className={styles.gridContainer}>
-      <div className={styles.formContainer}>
-        <h1>Ecovolution</h1>
+      <div className={styles.formPasswordContainer}>
+        <h1>EcoRevolution</h1>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <h5> Reset password</h5>
+          <h5>Сброс пароля</h5>
           <Input
             name='newPassword'
-            placeholder='New password'
+            placeholder='Новый пароль'
             type='password'
             onChange={(e) => setValue('newPassword', e.target.value)}
           />
           {errors.newPassword && <Error message={errors.newPassword.message} /> }
           <Input
             name='confirmPassword'
-            placeholder='Confirm password'
+            placeholder='Подтвердите пароль'
             type='password'
             onChange={(e) => setValue('confirmPassword', e.target.value)}
           />
           {errors.confirmPassword && <Error message={errors.confirmPassword.message} /> }
-          <Button text='Reset pasword' />
+          <Button>Сбросить пароль</Button>
         </Form>
         {error && <Error message={error} />}
       </div>

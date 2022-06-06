@@ -20,8 +20,14 @@ const UserSchema = new Schema({
         minlength: 8,
         select: false
     },
-    name: String,
-    lastname: String,
+    name: {
+        type: String,
+        required: [true, 'You should provide a name']
+    },
+    lastname: {
+        type: String,
+        required: [true, 'You should provide a lastname']
+    },
     role: {
         type: String,
         default: 'User'
