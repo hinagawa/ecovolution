@@ -14,6 +14,10 @@
   align-items: center;
 }
 
+.locationContainer p {
+  margin: 0;
+}
+
 .placeFooter {
   width: 90%;
   display: flex;

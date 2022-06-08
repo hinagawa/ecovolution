@@ -15,10 +15,6 @@ module.exports = (app) => {
     successRedirect: '/articles',
     failureRedirect: '/auth/sign-in'
  }));
-
-  app.route('/api/current_user').get((req, res) => {
-    res.send(req.session);
-  });
   app.route('/api/sign-up').post(signUp);
   app.route('/api/sign-in').post(signIn);
   app.route('/api/forgot-password').post(forgotPassword);

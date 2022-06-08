@@ -1,10 +1,12 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+
 import { PlusOutlined } from '@ant-design/icons'
+import { Spin } from 'antd'
 
 import { addArticle } from '../../store/slices/articleSlice'
-import { addLikedArticles } from '../../store/slices/userSlice'
+// import { addLikedArticles } from '../../store/slices/userSlice'
 
 import Button from '../../components/Button/Button'
 import Modal from '../../layouts/Modal/Modal'
@@ -22,28 +24,28 @@ function Articles() {
   const [isOpen, setIsOpen] = useState(false)
   const [loading, setLoading] = useState()
 
-  const currentUser = useSelector(
-    (state) => state.user.user._id,
-  )
+  // const currentUser = useSelector(
+  //   (state) => state.user.user._id,
+  // )
 
   useEffect(async () => {
     setLoading(true)
     await api
       .get('api/article/getArticles')
-      .then((data) => dispatch(addArticle(data)))
-      .then(setLoading(false))
-    await api
-      .get(`api/user/getLikedArticle?userId=${currentUser}`)
-      .then((data) => {
-        dispatch(addLikedArticles(data[0].likedArticles))
-      })
+      .then((data) => dispatch(addArticle(data))).then(setLoading(false))
+    // await api
+    //   .get(`api/user/getLikedArticle?userId=${currentUser}`)
+    //   .then((data) => {
+    //     dispatch(addLikedArticles(data[0]?.likedArticles))
+    //   })
+    //   .then(setLoading(false))
   })
   return (
     <div className={styles.mainContainer}>
       <Header />
       <div className={styles.articlesContainer}>
         <SearchBar />
-        {loading ? 'Loading' : <ArticlesList />}
+        {loading ? <Spin /> : <ArticlesList />}
       </div>
       <div className={styles.buttonContainer}>
         <Button

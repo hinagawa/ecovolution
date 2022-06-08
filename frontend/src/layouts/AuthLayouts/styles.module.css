@@ -10,12 +10,11 @@
 }
 
 .legendFont {
-  font-size: 30px;
+  font-size: 40px;
 }
 
 .buttonGroup {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  width: 100%;
 }

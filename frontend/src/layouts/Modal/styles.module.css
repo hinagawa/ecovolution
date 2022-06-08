@@ -1,7 +1,6 @@
-/* src/components/Modal/modalStyles.css */
 .modalContainer {
     position: fixed;
-    inset: 0; /* inset sets all 4 values (top right bottom left) much like how we set padding, margin etc., */
+    inset: 0;
     background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
@@ -13,11 +12,11 @@
   
   .modalContent {
     width: 70%;
-    height: 70%;
+    height: 80%;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 0 20px;
   }
 
   .buttonContainer {

@@ -2,7 +2,8 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Switch } from 'antd'
 
-import { SearchOutlined } from '@ant-design/icons'
+import { SearchOutlined,
+  FilterOutlined } from '@ant-design/icons'
 
 import Input from '../../components/Input/Input'
 
@@ -19,6 +20,8 @@ function SearchBar() {
         <option value='/map'>Карта</option>
       </select>
       <div className={styles.searchContainer}>
+        <FilterOutlined />
+
         <Input
           className={styles.searchInput}
           placeholder='Type to search'

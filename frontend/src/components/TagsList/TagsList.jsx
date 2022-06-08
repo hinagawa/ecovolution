@@ -8,7 +8,7 @@ import styles from './styles.module.css'
 function TagsList({ tagsArray }) {
   return (
     <div className={styles.tagsList}>
-      <p>Tags:</p>
+      <p>Теги:</p>
       {tagsArray.map((tag) => (
         <Label variant={tag} />
       ))}

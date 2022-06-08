@@ -7,4 +7,5 @@
 .tagsList > p {
   opacity: 50%;
   margin-right: 10px;
+  margin: 0;
 }

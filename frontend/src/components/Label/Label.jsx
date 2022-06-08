@@ -5,7 +5,7 @@ import styles from './styles.module.css'
 
 function Label({ variant }) {
   return (
-    <span className={`${styles[variant]} ${styles.label}`}>
+    <span className={`${styles.label}`}>
       {variant}
     </span>
   )
@@ -13,11 +13,13 @@ function Label({ variant }) {
 
 Label.propTypes = {
   variant: PropTypes.oneOf([
-    'recipe',
-    'tutorial',
-    'places',
-    'events',
-    'lifehack',
+    'Рецепт',
+    'Туториал',
+    'Место',
+    'Событие',
+    'Лайфхак',
+    'Утилизация и переработка отходов',
+    'Экология',
   ]).isRequired,
 }
 export default Label

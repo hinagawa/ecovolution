@@ -58,7 +58,7 @@ function ShortArticle({ article }) {
                 variant='link'
                 onClick={() => handleLike(article._id)}
               >
-                {likedArticles.includes(article._id) ? (
+                {likedArticles?.includes(article._id) ? (
                   <HeartTwoTone twoToneColor='#a13f3f' />
                 ) : (
                   <HeartOutlined />
@@ -73,7 +73,6 @@ function ShortArticle({ article }) {
                 </Button>
               )}
             </div>
-
             <p>{article.text}</p>
           </div>
           <TagsList tagsArray={article.tagsArray} />

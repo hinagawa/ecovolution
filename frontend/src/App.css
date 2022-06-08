@@ -3,8 +3,14 @@
   src: url('../src/assets/fonts/Raleway-Regular.ttf');
 }
 
-.global, *, html{
+.global,
+*,
+html {
   font-family: Raleway;
+}
+
+body {
+  background-color: #039c52;
 }
 
 iframe {

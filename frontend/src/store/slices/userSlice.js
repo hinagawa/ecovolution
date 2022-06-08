@@ -14,8 +14,8 @@ const userSlice = createSlice({
       }
     },
     addLikedArticles(state, action) {
-      console.log(action)
-      state.likedArticles[0].push(action.payload)
+      if (state.likedArticles[0]) state.likedArticles[0].push(action.payload)
+      else state.likedArticles.push(action.payload)
     },
   },
 })
