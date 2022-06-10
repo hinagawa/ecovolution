@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { PlusOutlined } from '@ant-design/icons'
 import { Spin } from 'antd'
@@ -24,21 +24,21 @@ function Articles() {
   const [isOpen, setIsOpen] = useState(false)
   const [loading, setLoading] = useState()
 
-  // const currentUser = useSelector(
-  //   (state) => state.user.user._id,
-  // )
+  const currentUser = useSelector(
+    (state) => state.user.user._id,
+  )
 
   useEffect(async () => {
     setLoading(true)
     await api
       .get('api/article/getArticles')
       .then((data) => dispatch(addArticle(data))).then(setLoading(false))
-    // await api
-    //   .get(`api/user/getLikedArticle?userId=${currentUser}`)
-    //   .then((data) => {
-    //     dispatch(addLikedArticles(data[0]?.likedArticles))
-    //   })
-    //   .then(setLoading(false))
+    await api
+      .get(`api/user/getLikedArticle?userId=${currentUser}`)
+      .then((data) => {
+        console.log(data)
+      })
+      .then(setLoading(false))
   })
   return (
     <div className={styles.mainContainer}>

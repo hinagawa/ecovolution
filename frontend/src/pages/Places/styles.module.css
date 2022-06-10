@@ -1,4 +1,99 @@
 .pageContainer {
-   display: flex;
-   flex-direction: column;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonContainer {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  z-index: 10;
+}
+
+.placeContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 30px;
+  height: 80vh;
+}
+
+.listMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.listMenu li {
+  list-style: none;
+}
+
+.eventContainer,
+.placeInfo {
+  background-color: white;
+  border-radius: 10px;
+}
+
+.eventContainer {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.placeInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 35%;
+  background-color: transparent;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+.placeImage {
+  height: 300px;
+}
+
+.placeText {
+  font-size: 30px;
+}
+
+.flipCardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.placeInfo:hover .flipCardInner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flipCardFront, .flipCardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.flipCardFront {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.flipCardBack {
+  border-radius: 10px;
+  background-color: #ffffff;
+  transform: rotateY(180deg);
+}
+
+.active {
+  border-bottom: solid 2px green;
 }

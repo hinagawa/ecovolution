@@ -3,6 +3,7 @@
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
+  margin-bottom: 10px;
 }
 .tagsList > p {
   opacity: 50%;

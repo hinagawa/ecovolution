@@ -11,8 +11,10 @@
 .link {
   background-color: transparent;
   border: none;
-  margin-top: 5px;
   cursor: pointer;
+  font-size: 20px;
+  color: darkgreen;
+  margin: 0 0 5px 10px;
 }
 
 .primary:hover {

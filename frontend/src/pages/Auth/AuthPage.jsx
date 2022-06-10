@@ -14,7 +14,10 @@ function AuthPage() {
   const navigate = useNavigate()
   useEffect(() => {
     const token = localStorage.getItem('Authorization')
-    if (token) navigate('/articles')
+    if (token) {
+      navigate('/articles')
+      window.location.reload(false)
+    }
   })
   return (
     <div className={styles.rowContainer}>

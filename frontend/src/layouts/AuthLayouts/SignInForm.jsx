@@ -65,7 +65,6 @@ function SignInForm() {
         />
         <Button> Войти </Button>
       </Form>
-
       <div className={styles.buttonGroup}>
         <form action='/auth/google' method='GET'>
           <Button onClick={handleGoogle}>

@@ -13,7 +13,12 @@ function SearchBar() {
   const navigate = useNavigate()
   return (
     <div className={styles.searchBarContainer}>
-      <select onChange={(e) => navigate(e.target.value)}>
+      <select
+        onChange={(e) => {
+          navigate(e.target.value)
+          window.location.reload(false)
+        }}
+      >
         <option>Выберите нужный раздел</option>
         <option value='/articles'>Статьи</option>
         <option value='/places'>Места</option>

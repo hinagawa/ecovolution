@@ -10,9 +10,5 @@ html {
 }
 
 body {
-  background-color: #039c52;
-}
-
-iframe {
-  pointer-events: none;
+  background-color: #c4c4c4;
 }

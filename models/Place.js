@@ -5,7 +5,8 @@ const PlaceSchema = new Schema({
     placeDescription: String,
     placeLocation: Array,
     firebasePath: String,
-    placeTags: Array
+    placeTags: Array,
+    events: [{ type: Schema.Types.ObjectId, ref: 'event' }],
 });
 
 module.exports = model('place', PlaceSchema);

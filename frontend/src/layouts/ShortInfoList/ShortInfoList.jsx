@@ -1,34 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import friendAvatar from '../../assets/images/friendAvatar.jpg'
+// import friendAvatar from '../../assets/images/friendAvatar.jpg'
 
-import Link from '../../components/Link/Link'
+// import Link from '../../components/Link/Link'
 
 import styles from './styles.module.css'
 
-function ShortInfoList({ type, count }) {
+function ShortInfoList({ type, data }) {
+  const count = data?.length
+  console.log(data)
   return (
     <div className={styles.mainContainer}>
       <p>{`${type} ${count}`}</p>
       <div className={styles.listOfCircles}>
-        <Link href='/'>
-          <img src={friendAvatar} alt='friends_img' />
-        </Link>
-        <Link href='/'>
-          <img src={friendAvatar} alt='friends_img' />
-        </Link>
-        <Link href='/'>
-          <img src={friendAvatar} alt='friends_img' />
-        </Link>
-        <Link href='/'>
-          <img src={friendAvatar} alt='friends_img' />
-        </Link>
-        <Link href='/'>
-          <div className={styles.otherFriends}>
-            <p>+6</p>
-          </div>
-        </Link>
+        {count === 0 ? <p>No data</p> : count}
       </div>
     </div>
   )
@@ -36,6 +22,6 @@ function ShortInfoList({ type, count }) {
 
 ShortInfoList.propTypes = {
   type: PropTypes.string.isRequired,
-  count: PropTypes.number.isRequired,
+  data: PropTypes.arrayOf(Object).isRequired,
 }
 export default ShortInfoList

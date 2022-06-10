@@ -1,49 +1,19 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 import ProfileSidebar from '../../layouts/ProfileSidebar/ProfileSidebar'
 import PageNav from '../../layouts/PageNav/PageNav'
 import Header from '../../layouts/Header/Header'
-import ArticleList from '../../layouts/ArticleLayouts/ArticlesList/ArticlesList'
+import Article from '../../layouts/ArticleLayouts/ShortArticle/ShortArticle'
 
 import styles from './styles.module.css'
 
-const articleObj = [
-  {
-    header: 'Header',
-    text: 'Text',
-    src: 'src',
-    tags: ['recipe', 'tutorial'],
-  },
-  {
-    header: 'Header',
-    text: 'Text',
-    src: 'src',
-    tags: ['recipe', 'tutorial'],
-  },
-]
-const likeObj = [
-  {
-    header: 'Header',
-    text: 'Text',
-    src: 'src',
-    tags: ['recipe', 'tutorial'],
-  },
-  {
-    header: 'Header',
-    text: 'Text',
-    src: 'src',
-    tags: ['recipe', 'tutorial'],
-  },
-  {
-    header: 'Header',
-    text: 'Text',
-    src: 'src',
-    tags: ['recipe', 'tutorial'],
-  },
-]
-
 function Profile() {
+  const likedArticles = useSelector(
+    (state) => state.user.likedArticles,
+  )
+  console.log(likedArticles)
   return (
     <div className={styles.profileContainer}>
       <Header />
@@ -52,23 +22,30 @@ function Profile() {
         <div className={styles.articlesContainer}>
           <PageNav />
           <Routes>
-            <Route
-              path='/user-articles'
+            {/* <Route
+              path='/user-likedArticles'
               element={(
                 <ArticleList
-                  articles={articleObj}
+                  likedArticles={s}
                   articlesCount='2'
                 />
               )}
-            />
+            /> */}
             <Route
               path='/liked-articles'
-              element={(
-                <ArticleList
-                  articles={likeObj}
-                  articlesCount='3'
-                />
-              )}
+              element={
+                !!likedArticles && (
+                  <div className={styles.listOfArticles}>
+                    {Object.keys(likedArticles).map(
+                      (key) => (
+                        <Article
+                          article={likedArticles[key]}
+                        />
+                      ),
+                    )}
+                  </div>
+                )
+              }
             />
           </Routes>
         </div>

@@ -9,7 +9,10 @@ import styles from './styles.module.css'
 
 function ProfileInfo() {
   const user = useSelector((state) => state.user.user)
-
+  const logout = () => {
+    localStorage.clear()
+    window.location.reload(false)
+  }
   return (
     <div className={styles.profileInfoContainer}>
       <img
@@ -18,7 +21,10 @@ function ProfileInfo() {
         className={styles.userAvatar}
       />
       <h3>{`${user.name} ${user.lastname}`}</h3>
-      <Button onClick={undefined}>Edit Profile</Button>
+      <Button onClick={undefined}>
+        Редактировать профиль
+      </Button>
+      <Button onClick={logout}>Выйти</Button>
     </div>
   )
 }

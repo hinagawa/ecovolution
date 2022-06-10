@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { PlusOutlined } from '@ant-design/icons'
 
 import Button from '../../components/Button/Button'
+import PlaceForm from '../../layouts/PlaceLayouts/PlaceForm/PlaceForm'
 import SearchBar from '../../layouts/SearchBar/SearchBar'
 import Modal from '../../layouts/Modal/Modal'
 import Header from '../../layouts/Header/Header'
@@ -49,7 +50,7 @@ function Places() {
       )}
       {isOpen && (
         <Modal onClose={() => setIsOpen(false)}>
-          <h1>sdd</h1>
+          <PlaceForm />
         </Modal>
       )}
     </div>

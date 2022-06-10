@@ -9,6 +9,7 @@ import ResetPassword from './pages/Auth/ResetPassword'
 import ForgotPassword from './pages/Auth/ForgotPassword'
 import Profile from './pages/Profile/Profile'
 import Places from './pages/Places/Places'
+import Place from './pages/Places/Place'
 import Articles from './pages/Articles/Articles'
 import Article from './pages/Articles/Article'
 import Map from './pages/Map/MapView'
@@ -67,6 +68,13 @@ function App() {
             exact
             path='/articles/:id'
             element={<Article />}
+          />
+        </Route>
+        <Route exact element={<PrivateRoute />}>
+          <Route
+            exact
+            path='/places/:id'
+            element={<Place />}
           />
         </Route>
         <Route exact element={<PrivateRoute />}>
