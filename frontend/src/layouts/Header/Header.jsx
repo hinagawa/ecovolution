@@ -1,13 +1,11 @@
 import { React, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import jwt_decode from 'jwt-decode'
-import { HeartOutlined,
+import { GlobalOutlined,
   TeamOutlined,
   ReadOutlined,
   CompassOutlined } from '@ant-design/icons'
 import ReactTooltip from 'react-tooltip'
-
-import avatar from '../../assets/images/avatar.png'
 
 import Link from '../../components/Link/Link'
 
@@ -49,8 +47,8 @@ function Header() {
           href='/profile/liked-articles'
           data-tip='Лайки'
         >
-          <HeartOutlined style={{ color: '#ffffff' }} />
-          <p>Лайки</p>
+          <GlobalOutlined style={{ color: '#ffffff' }} />
+          <p>Баллы</p>
         </Link>
         <ReactTooltip />
         <Link href='/'>
@@ -68,8 +66,8 @@ function Header() {
         {!loading && !!user && (
           <Link href='/profile'>
             <div className={styles.profileInfo}>
-              <img src={avatar} alt='User avatar' />
-              <p>{user.name}</p>
+              <img src={user?.firebasePath} alt='User avatar' className={styles.profileImg} />
+              <p>{user?.name}</p>
             </div>
           </Link>
         )}

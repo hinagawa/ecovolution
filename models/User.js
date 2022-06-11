@@ -37,6 +37,8 @@ const UserSchema = new Schema({
     resetPasswordExpire: Date,
     likedArticles: [{ type: Schema.Types.ObjectId, ref: 'articles' }],
     likedPlaces: [{ type: Schema.Types.ObjectId, ref: 'place' }],
+    events:  [{ type: Schema.Types.ObjectId, ref: 'event' }],
+    friends:  [{ type: Schema.Types.ObjectId, ref: 'users' }]
 });
 
 UserSchema.methods.comparePasswords = async function (password) {

@@ -7,13 +7,19 @@ import ShortInfoList from '../ShortInfoList/ShortInfoList'
 import styles from './styles.module.css'
 
 function ProfileSidebar() {
-  const likedPlaces = useSelector((state) => state.user.user.likedPlaces)
-  console.log(likedPlaces)
+  const likedPlaces = useSelector(
+    (state) => state.user.user.likedPlaces,
+  )
+  const friends = useSelector(
+    (state) => state.user.user.friends,
+  )
   return (
     <div className={styles.sideContainer}>
       <ProfileInfo />
-      <ShortInfoList type='Friends' />
-      <ShortInfoList type='Places' data={likedPlaces} />
+      <div>
+        <ShortInfoList type='Friends' data={friends} />
+        <ShortInfoList type='Places' data={likedPlaces} />
+      </div>
     </div>
   )
 }

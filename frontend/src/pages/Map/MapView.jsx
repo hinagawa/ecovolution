@@ -22,7 +22,6 @@ function MapView() {
       .then((data) => setPlaces(data))
       .then(setLoading(false))
   })
-  console.log(places)
   return (
     <>
       <Header />

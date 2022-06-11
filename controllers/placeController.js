@@ -22,7 +22,6 @@ exports.createPlace = async (req, res) => {
 exports.getPlaces = async (req, res) => {
     try {
         const places = await Place.find({}).populate('events');
-        console.log(places);
         var placeMap = {};
         places.forEach(function (place) {
             placeMap[place._id] = place;

@@ -3,8 +3,6 @@ import { useSelector } from 'react-redux'
 
 import Button from '../../components/Button/Button'
 
-import userAvatar from '../../assets/images/avatar.png'
-
 import styles from './styles.module.css'
 
 function ProfileInfo() {
@@ -16,11 +14,11 @@ function ProfileInfo() {
   return (
     <div className={styles.profileInfoContainer}>
       <img
-        src={userAvatar}
+        src={user?.firebasePath}
         alt='user avatar'
         className={styles.userAvatar}
       />
-      <h3>{`${user.name} ${user.lastname}`}</h3>
+      <h3>{`${user?.name} ${user?.lastname}`}</h3>
       <Button onClick={undefined}>
         Редактировать профиль
       </Button>

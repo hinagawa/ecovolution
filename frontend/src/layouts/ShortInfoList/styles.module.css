@@ -4,6 +4,7 @@
   justify-content: center;
   border-top: 2px solid rgba(0, 0, 0, 0.1);
   padding-top: 30px;
+  margin-bottom: 10px;
 }
 
 .listOfCircles a {
@@ -11,8 +12,9 @@
 }
 
 .listOfCircles a > img {
-  border-radius: 80%;
-  width: 80%;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
 }
 
 .otherFriends p {

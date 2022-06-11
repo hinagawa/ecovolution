@@ -49,9 +49,12 @@ function Place() {
           </div>
         </div>
         <div className={styles.eventContainer}>
-          <h1>События</h1>
           <div className={styles.listMenu}>
-            <li className={isCalendar ? null : 'active'}>
+            <h1>События</h1>
+
+            <li
+              className={isCalendar ? null : styles.active}
+            >
               <Button
                 variant='link'
                 onClick={() => setIsCalendar(false)}
@@ -59,7 +62,9 @@ function Place() {
                 Список
               </Button>
             </li>
-            <li className={isCalendar ? 'active' : null}>
+            <li
+              className={isCalendar ? styles.active : null}
+            >
               <Button
                 variant='link'
                 onClick={() => setIsCalendar(true)}
@@ -69,10 +74,12 @@ function Place() {
             </li>
           </div>
           {isCalendar && (
-            <FullCalendar
-              plugins={[dayGridPlugin]}
-              initialView='dayGridMonth'
-            />
+            <div className={styles.calendarContainer}>
+              <FullCalendar
+                plugins={[dayGridPlugin]}
+                initialView='dayGridMonth'
+              />
+            </div>
           )}
           {!isCalendar && <EventList />}
         </div>

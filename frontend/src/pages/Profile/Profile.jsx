@@ -13,7 +13,6 @@ function Profile() {
   const likedArticles = useSelector(
     (state) => state.user.likedArticles,
   )
-  console.log(likedArticles)
   return (
     <div className={styles.profileContainer}>
       <Header />

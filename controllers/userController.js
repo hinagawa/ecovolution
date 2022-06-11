@@ -18,7 +18,7 @@ exports.getUsers = async (req, res) => {
 exports.getUserById = async (req, res) => {
     try {
         const userId = req.query.userId;
-        const user = await User.findById(userId);
+        const user = await User.findById(userId).populate('likedPlaces likedArticles events friends');
         res.status(200).json({ success: true, message: user });
     }
     catch (e) {

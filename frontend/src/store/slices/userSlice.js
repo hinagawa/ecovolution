@@ -4,7 +4,6 @@ const userSlice = createSlice({
   name: 'user',
   initialState: {
     user: '',
-    likedArticles: [],
   },
   reducers: {
     addUserInfo(state, action) {
@@ -12,10 +11,6 @@ const userSlice = createSlice({
         ...state,
         user: action.payload,
       }
-    },
-    addLikedArticles(state, action) {
-      if (state.likedArticles[0]) state.likedArticles[0].push(action.payload)
-      else state.likedArticles.push(action.payload)
     },
   },
 })
