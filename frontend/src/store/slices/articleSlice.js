@@ -3,12 +3,14 @@ import { createSlice } from '@reduxjs/toolkit'
 const articleSlice = createSlice({
   name: 'articles',
   initialState: {
-    articles: {},
+    articles: '',
   },
   reducers: {
     addArticle(state, action) {
-      // eslint-disable-next-line no-param-reassign
-      state.articles = action.payload
+      return {
+        ...state,
+        articles: action.payload,
+      }
     },
   },
 })

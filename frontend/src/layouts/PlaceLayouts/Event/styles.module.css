@@ -1,0 +1,13 @@
+.eventImage {
+  width: 50%;
+}
+
+.eventContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin: 10px;
+}

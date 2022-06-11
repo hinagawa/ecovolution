@@ -1,4 +1,5 @@
 const Place = require('../models/Place.js');
+const Event = require('../models/Event.js');
 
 const firebaseService = require('../services/firebase');
 
@@ -20,13 +21,13 @@ exports.createPlace = async (req, res) => {
 
 exports.getPlaces = async (req, res) => {
     try {
-        Place.find({}, function (err, places) {
-            var placeMap = {};
-            places.forEach(function (place) {
-                placeMap[place._id] = place;
-            });
-            return res.status(200).json(placeMap);
+        const places = await Place.find({}).populate('events');
+        console.log(places);
+        var placeMap = {};
+        places.forEach(function (place) {
+            placeMap[place._id] = place;
         });
+        return res.status(200).json(placeMap);
     }
     catch (e) {
         return res.status(500).json({ success: false, message: `Something went wrong! ${e.message}` });
@@ -52,7 +53,7 @@ exports.getCoordinates = async (req, res) => {
 exports.getPlaceById = async (req, res) => {
     try {
         const placeId = req.query.placeId;
-        const place = await Place.findById(placeId);
+        const place = await Place.findById(placeId).populate('events');
         res.json({ success: true, message: place });
     }
     catch (e) {
@@ -71,3 +72,24 @@ exports.deletePlaceById = async (req, res) => {
     }
 };
 
+exports.addEvent = async (req, res) => {
+    try {
+        const { eventName, eventDescription, imgPath, eventDate, placeId } = req.body;
+        let firebasePath = '';
+        if (imgPath) {
+            firebasePath = await firebaseService.uploadFile(imgPath);
+        }
+        const event = new Event({ eventName, eventDescription, firebasePath, eventDate });
+        await event.save();
+        res.status(200).json({ success: true, message: 'Event has been created' });
+        const place = await Place.findById(placeId);
+        if (!place) {
+            throw new Error('no place');
+        }
+        place.events = [...place.events, event._id];
+        await place.save();
+    }
+    catch (e) {
+        return res.status(500).json({ success: false, message: `Something went wrong! ${e.message}` });
+    }
+};

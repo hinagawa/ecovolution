@@ -4,6 +4,7 @@ import FullCalendar from '@fullcalendar/react' // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 
 import Header from '../../layouts/Header/Header'
+import EventList from '../../layouts/PlaceLayouts/EventList/EventList'
 import Button from '../../components/Button/Button'
 
 import api from '../../services/api/fetchWrapper'
@@ -15,12 +16,11 @@ function Place() {
   const [isCalendar, setIsCalendar] = useState(false)
   const location = useLocation()
 
-  useEffect(async () => {
+  useEffect(() => {
     const id = location.pathname.split('/')[2]
-    await api
+    api
       .get(`api/place/getPlaceById?placeId=${id}`)
       .then((data) => setPlace(data.message))
-    console.log(place)
   })
   return (
     <>
@@ -74,6 +74,7 @@ function Place() {
               initialView='dayGridMonth'
             />
           )}
+          {!isCalendar && <EventList />}
         </div>
       </div>
     </>

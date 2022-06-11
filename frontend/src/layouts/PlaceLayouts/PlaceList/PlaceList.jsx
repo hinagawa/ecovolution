@@ -7,7 +7,7 @@ import styles from './styles.module.css'
 
 function PlaceList() {
   const places = useSelector(
-    (state) => state.places.places[0],
+    (state) => state.places.places,
   )
   return (
     !!places && (

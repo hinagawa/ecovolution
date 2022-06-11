@@ -3,11 +3,14 @@ import { createSlice } from '@reduxjs/toolkit'
 const placeSlice = createSlice({
   name: 'places',
   initialState: {
-    places: [],
+    places: '',
   },
   reducers: {
     addPlace(state, action) {
-      state.places.push(action.payload)
+      return {
+        ...state,
+        places: action.payload,
+      }
     },
   },
 })

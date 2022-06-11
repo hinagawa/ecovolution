@@ -14,6 +14,7 @@ import Link from '../../components/Link/Link'
 import api from '../../services/api/fetchWrapper'
 
 import { addUserInfo } from '../../store/slices/userSlice'
+import { addPlace } from '../../store/slices/placeSlice'
 
 import styles from './styles.module.css'
 
@@ -32,6 +33,11 @@ function Header() {
       .then((data) => (data.success
         ? dispatch(addUserInfo(data.message))
         : setError(data.message)))
+    api
+      .get('api/place/getPlaces')
+      .then((data) => (data
+        ? dispatch(addPlace(data))
+        : setError(data.message)))
       .then(setLoading(false))
   }, [])
   console.log(error)
@@ -39,7 +45,10 @@ function Header() {
     <div className={styles.header}>
       <h1 className={styles.headerLogo}>EcoRevolution</h1>
       <div className={styles.linkGroup}>
-        <Link href='/profile/liked-articles' data-tip='Лайки'>
+        <Link
+          href='/profile/liked-articles'
+          data-tip='Лайки'
+        >
           <HeartOutlined style={{ color: '#ffffff' }} />
           <p>Лайки</p>
         </Link>
