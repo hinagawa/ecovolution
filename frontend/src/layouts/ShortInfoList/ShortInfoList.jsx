@@ -18,7 +18,7 @@ function ShortInfoList({ type, data }) {
             {Object.keys(data).map((key) => (
               <Link
                 href={
-                  type === 'Places'
+                  type === 'Места'
                     ? `/places/${data[key]?._id}`
                     : `/${data[key]?._id}`
                 }

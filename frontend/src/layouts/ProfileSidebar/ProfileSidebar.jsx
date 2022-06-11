@@ -17,8 +17,8 @@ function ProfileSidebar() {
     <div className={styles.sideContainer}>
       <ProfileInfo />
       <div>
-        <ShortInfoList type='Friends' data={friends} />
-        <ShortInfoList type='Places' data={likedPlaces} />
+        <ShortInfoList type='Друзья' data={friends} />
+        <ShortInfoList type='Места' data={likedPlaces} />
       </div>
     </div>
   )

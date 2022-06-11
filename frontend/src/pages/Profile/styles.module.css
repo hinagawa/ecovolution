@@ -18,3 +18,9 @@
   margin-left: 20px;
   width: 100%;
 }
+
+.listOfArticles {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

@@ -5,6 +5,7 @@
   align-items: flex-start;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
+  margin: 20px;
 }
 
 .noImageContainer {

@@ -11,7 +11,7 @@ import styles from './styles.module.css'
 
 function Profile() {
   const likedArticles = useSelector(
-    (state) => state.user.likedArticles,
+    (state) => state.user.user.likedArticles,
   )
   return (
     <div className={styles.profileContainer}>
@@ -21,15 +21,6 @@ function Profile() {
         <div className={styles.articlesContainer}>
           <PageNav />
           <Routes>
-            {/* <Route
-              path='/user-likedArticles'
-              element={(
-                <ArticleList
-                  likedArticles={s}
-                  articlesCount='2'
-                />
-              )}
-            /> */}
             <Route
               path='/liked-articles'
               element={

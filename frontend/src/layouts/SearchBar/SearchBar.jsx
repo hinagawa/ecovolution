@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Switch } from 'antd'
 
@@ -11,6 +11,11 @@ import styles from './styles.module.css'
 
 function SearchBar() {
   const navigate = useNavigate()
+  const [follows, setFollows] = useState(true)
+  const handleChange = () => {
+    setFollows(!follows)
+    console.log(follows)
+  }
   return (
     <div className={styles.searchBarContainer}>
       <select
@@ -26,7 +31,6 @@ function SearchBar() {
       </select>
       <div className={styles.searchContainer}>
         <FilterOutlined />
-
         <Input
           className={styles.searchInput}
           placeholder='Type to search'
@@ -34,7 +38,7 @@ function SearchBar() {
         <SearchOutlined />
       </div>
       <div className={styles.switchContainer}>
-        <Switch />
+        <Switch onChange={handleChange} />
         <p>Показать только подписки</p>
       </div>
     </div>
