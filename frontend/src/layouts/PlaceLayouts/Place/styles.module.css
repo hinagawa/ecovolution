@@ -16,6 +16,7 @@
 
 .locationContainer p {
   margin: 0;
+  margin-left: 10px;
 }
 
 .placeFooter {
@@ -29,5 +30,19 @@
 
 .imgPlace {
   width: 90%;
+  height: 300px;
   margin: 20px;
+}
+
+.placeDescription {
+  margin-left: 20px;
+}
+
+.buttonGroup {
+  display: flex;
+  flex-direction: row;
+}
+
+.buttonGroup span {
+  margin-left: 10px;
 }

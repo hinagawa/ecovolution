@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { AddressSuggestions } from 'react-dadata'
 
-import { UploadOutlined, CheckCircleTwoTone } from '@ant-design/icons'
+import { UploadOutlined,
+  CheckCircleTwoTone } from '@ant-design/icons'
 import { Upload, Button } from 'antd'
 
 import Input from '../../../components/Input/Input'
@@ -10,6 +12,7 @@ import MyButton from '../../../components/Button/Button'
 import { storage } from '../../../services/firebase'
 import api from '../../../services/api/fetchWrapper'
 
+import 'react-dadata/dist/react-dadata.css'
 import styles from './styles.module.css'
 
 function ArticleForm() {
@@ -17,6 +20,7 @@ function ArticleForm() {
   const [placeDescription, setPlaceDescription] = useState()
   const [fileUrl, setFileUrl] = useState()
   const [error, setError] = useState()
+  const [address, setAddress] = useState()
 
   const handleChange = async ({ file }) => {
     const fileName = file.size + file.name
@@ -39,7 +43,7 @@ function ArticleForm() {
       .post('api/place/create', {
         placeName,
         placeDescription,
-        placeLocation: ['14', '23'],
+        placeLocation: address.value,
         firebasePath: fileUrl,
         placeTags: ['Vegan'],
       })
@@ -56,28 +60,33 @@ function ArticleForm() {
         />
         <h3>Описание</h3>
         <textarea
+          className={styles.textarea}
           placeholder='Описание места'
           onChange={(e) => setPlaceDescription(e.target.value)}
         />
         <h3>Адрес</h3>
-        <h3>Загрузите фотографии</h3>
+        <AddressSuggestions token='' value={address} onChange={setAddress} />
+        <h3>Загрузите фотографию</h3>
         <Upload
           defaultFileList={[]}
           beforeUpload={() => false}
           listType='picture'
+          maxCount={1}
           onChange={(e) => handleChange(e)}
         >
           <Button icon={<UploadOutlined />}>
             Загрузить
           </Button>
         </Upload>
-        <MyButton variant='primary'>Создать</MyButton>
+        <div className={styles.createButton}>
+          <MyButton variant='primary'>Создать</MyButton>
+        </div>
       </Form>
       {!!error !== false && (
-        <>
-          <CheckCircleTwoTone />
+        <div className={styles.placeDone}>
+          <CheckCircleTwoTone twoToneColor='#10BC69' />
           <p>Место создано</p>
-        </>
+        </div>
       )}
     </div>
   )

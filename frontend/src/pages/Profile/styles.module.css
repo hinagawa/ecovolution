@@ -9,6 +9,7 @@
   flex-direction: row;
   margin: 50px;
   border-radius: 10px;
+  height: 80vh;
   justify-content: space-around;
 }
 

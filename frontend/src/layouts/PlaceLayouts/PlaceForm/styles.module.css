@@ -1,3 +1,30 @@
 .formContainer {
-    width: 100%;
+  width: 100%;
+}
+
+.formContainer h3 {
+    margin: 10px;
+}
+
+.createButton {
+    margin-top: 20px;
+}
+
+.placeDone {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.placeDone p {
+    margin-left: 10px;
+}
+
+.placeDone span {
+    margin-top: 3px;
+}
+
+.textarea {
+    resize: none;
 }
