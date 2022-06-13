@@ -44,7 +44,7 @@ function Header() {
       <h1 className={styles.headerLogo}>EcoRevolution</h1>
       <div className={styles.linkGroup}>
         <Link
-          href='/profile/liked-articles'
+          href='/points'
           data-tip='Лайки'
         >
           <GlobalOutlined style={{ color: '#ffffff' }} />

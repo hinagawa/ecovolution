@@ -1,7 +1,11 @@
 import { React, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
+import Header from '../../layouts/Header/Header'
+
 import api from '../../services/api/fetchWrapper'
+
+import styles from './styles.module.css'
 
 function Article() {
   const [article, setArticle] = useState()
@@ -14,10 +18,18 @@ function Article() {
       .then((data) => setArticle(data.message))
   })
   return (
-    <div>
-      <h1>{article?.articleName}</h1>
-      <h1>{article?.articleText}</h1>
-    </div>
+    <>
+      <Header />
+      <div className={styles.articleContainer}>
+        <h1>{article?.articleName}</h1>
+        <p>{article?.articleText}</p>
+        <img
+          src={article?.firebasePath}
+          alt='Article'
+          className={styles.articleImage}
+        />
+      </div>
+    </>
   )
 }
 

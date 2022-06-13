@@ -11,7 +11,7 @@ function Event({ events }) {
       <h1>{event?.eventName}</h1>
       <p>{event?.eventDescription}</p>
       <div>
-        <p>{event?.eventDate}</p>
+        <p>{event?.eventDate.split('T')[0]}</p>
       </div>
     </div>
   ))

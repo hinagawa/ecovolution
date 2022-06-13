@@ -4,10 +4,9 @@
 }
 
 .buttonContainer {
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   right: 20px;
-  padding: 10px;
   z-index: 10;
 }
 
@@ -22,7 +21,7 @@
 .listMenu {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -55,6 +54,7 @@
 }
 
 .placeImage {
+  margin: 20px;
   width: 90%;
 }
 

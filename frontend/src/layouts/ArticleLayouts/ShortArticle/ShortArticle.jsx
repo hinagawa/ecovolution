@@ -47,7 +47,6 @@ function ShortArticle({ article }) {
             className={styles.articleImg}
           />
         )}
-
         <div className={styles.articleText}>
           <div className={styles.textGroup}>
             <div className={styles.articleHeader}>

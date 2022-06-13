@@ -13,6 +13,7 @@ import Place from './pages/Places/Place'
 import Articles from './pages/Articles/Articles'
 import Article from './pages/Articles/Article'
 import Map from './pages/Map/MapView'
+import Points from './pages/Points/Points'
 import PrivateRoute from './components/PrivateRoute'
 
 import 'antd/dist/antd.css'
@@ -54,6 +55,13 @@ function App() {
             exact
             path='/places'
             element={<Places />}
+          />
+        </Route>
+        <Route exact element={<PrivateRoute />}>
+          <Route
+            exact
+            path='/points'
+            element={<Points />}
           />
         </Route>
         <Route exact element={<PrivateRoute />}>

@@ -33,7 +33,7 @@ function MapView() {
               width='100%'
               height='70vh'
               defaultState={{
-                center: [55.75, 37.57],
+                center: [55.7879, 49.1233],
                 zoom: 9,
                 controls: [],
               }}

@@ -5,11 +5,7 @@ const firebaseService = require('../services/firebase');
 
 exports.createPlace = async (req, res) => {
     try {
-        const { placeName, placeDescription, placeLocation, placeImgPath, placeTags } = req.body;
-        let firebasePath = '';
-        if (placeImgPath) {
-            firebasePath = await firebaseService.uploadFile(placeImgPath);
-        }
+        const { placeName, placeDescription, placeLocation, firebasePath, placeTags } = req.body;
         const place = new Place({ placeName, placeDescription, placeLocation, firebasePath, placeTags });
         await place.save();
         res.status(200).json({ success: true, message: 'Place has been created' });
@@ -87,6 +83,17 @@ exports.addEvent = async (req, res) => {
         }
         place.events = [...place.events, event._id];
         await place.save();
+    }
+    catch (e) {
+        return res.status(500).json({ success: false, message: `Something went wrong! ${e.message}` });
+    }
+};
+
+exports.getEventByArticleId = async (req, res) => {
+    try {
+        const { placeId } = req.body;
+        const place = await Place.findById(placeId).populate('events');
+        return res.status(200).json({ success: true, message: place.events });
     }
     catch (e) {
         return res.status(500).json({ success: false, message: `Something went wrong! ${e.message}` });

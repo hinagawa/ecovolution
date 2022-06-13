@@ -13,14 +13,21 @@ import styles from './styles.module.css'
 
 function Place() {
   const [place, setPlace] = useState()
+  const [eventList, setEventList] = useState()
   const [isCalendar, setIsCalendar] = useState(false)
   const location = useLocation()
 
-  useEffect(() => {
+  useEffect(async () => {
     const id = location.pathname.split('/')[2]
-    api
+    await api
       .get(`api/place/getPlaceById?placeId=${id}`)
       .then((data) => setPlace(data.message))
+    await api
+      .post('api/place/getEventByArticleId', {
+        placeId: id,
+      })
+      .then((data) => setEventList(data.message))
+    console.log(eventList)
   })
   return (
     <>
@@ -51,7 +58,6 @@ function Place() {
         <div className={styles.eventContainer}>
           <div className={styles.listMenu}>
             <h1>События</h1>
-
             <li
               className={isCalendar ? null : styles.active}
             >
@@ -78,6 +84,22 @@ function Place() {
               <FullCalendar
                 plugins={[dayGridPlugin]}
                 initialView='dayGridMonth'
+                initialEvents={[
+                  {
+                    title: 'event1',
+                    start: '2022-01-01',
+                  },
+                  {
+                    title: 'event2',
+                    start: '2022-01-05',
+                    end: '2022-01-07',
+                  },
+                  {
+                    title: 'event3',
+                    start: '2022-01-09T12:30:00',
+                    allDay: false, // will make the time show
+                  },
+                ]}
               />
             </div>
           )}

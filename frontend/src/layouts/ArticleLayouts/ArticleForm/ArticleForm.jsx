@@ -20,6 +20,7 @@ function ArticleForm() {
   ])
 
   const [nextStep, setNextStep] = useState(false)
+  const [headerInput, setHeaderInput] = useState('')
   const onChange = ({ fileList: newFileList }) => {
     setFileList(newFileList)
   }
@@ -40,13 +41,17 @@ function ArticleForm() {
     const imgWindow = window.open(src)
     imgWindow?.document.write(image.outerHTML)
   }
+  console.log(headerInput)
   return (
     <>
       {!nextStep && (
         <div className={styles.formContainer}>
           <div>
             <h3>Заголовок</h3>
-            <Input placeholder='Заголовок статьи' />
+            <Input
+              placeholder='Заголовок статьи'
+              onChange={(e) => setHeaderInput(e.target.value)}
+            />
             <h3>Текст статьи</h3>
             <Editor />
           </div>

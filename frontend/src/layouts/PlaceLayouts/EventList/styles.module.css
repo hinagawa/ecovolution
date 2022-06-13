@@ -3,7 +3,7 @@
   grid-template-columns: repeat(
     auto-fill,
   );
-  height: 50vh;
+  height: 70vh;
   overflow-y: auto;
-  margin: 20px;
+  margin: 10px;
 }

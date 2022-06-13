@@ -9,6 +9,6 @@ html {
   font-family: Raleway;
 }
 
-body {
+html, body {
   background-color: #c4c4c4;
 }
