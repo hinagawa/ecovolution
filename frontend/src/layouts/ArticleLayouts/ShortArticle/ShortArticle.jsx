@@ -21,6 +21,9 @@ function ShortArticle({ article }) {
   const currentUser = useSelector(
     (state) => state.user.user._id,
   )
+  const currentRole = useSelector(
+    (state) => state.user.user.role,
+  )
   const likedArticles = useSelector(
     (state) => state.user.user.likedArticles,
   )
@@ -32,7 +35,13 @@ function ShortArticle({ article }) {
     )
     dispatch(addLikedArticles(articleId))
   }
-  const handleDelete = () => {}
+  const handleDelete = async () => {
+    await api
+      .delete(
+        `api/article/deleteArticleById?articleId=${article._id}`,
+      )
+      .then((data) => console.log(data.message))
+  }
   return (
     <div className={styles.article} key={article._id}>
       <div className={styles.mainContent}>
@@ -63,7 +72,7 @@ function ShortArticle({ article }) {
                   <HeartOutlined />
                 )}
               </Button>
-              {currentUser === article?.articleAuthorId && (
+              {(currentUser === article?.articleAuthorId || currentRole === 'Admin') && (
                 <Button
                   variant='link'
                   onClick={handleDelete}

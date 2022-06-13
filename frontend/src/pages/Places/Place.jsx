@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { React, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import FullCalendar from '@fullcalendar/react' // must go before plugins
@@ -13,7 +14,6 @@ import styles from './styles.module.css'
 
 function Place() {
   const [place, setPlace] = useState()
-  const [eventList, setEventList] = useState()
   const [isCalendar, setIsCalendar] = useState(false)
   const location = useLocation()
 
@@ -22,12 +22,6 @@ function Place() {
     await api
       .get(`api/place/getPlaceById?placeId=${id}`)
       .then((data) => setPlace(data.message))
-    await api
-      .post('api/place/getEventByArticleId', {
-        placeId: id,
-      })
-      .then((data) => setEventList(data.message))
-    console.log(eventList)
   })
   return (
     <>
@@ -103,7 +97,7 @@ function Place() {
               />
             </div>
           )}
-          {!isCalendar && <EventList />}
+          {!isCalendar && <EventList events={place?._id} />}
         </div>
       </div>
     </>

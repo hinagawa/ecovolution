@@ -61,6 +61,7 @@ exports.getArticlesByAuthorId = async (req, res) => {
 exports.deleteArticleById = async (req, res) => {
     try {
         const articleId = req.query.articleId;
+        console.log(articleId);
         await Article.deleteOne({ '_id': articleId });
         res.json({ success: true, message: 'Article has been deleted' });
     }

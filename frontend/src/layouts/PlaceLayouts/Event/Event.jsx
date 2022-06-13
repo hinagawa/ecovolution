@@ -4,17 +4,18 @@ import PropTypes from 'prop-types'
 import styles from './styles.module.css'
 
 function Event({ events }) {
-  return events.map((event) => (
+  console.log(events)
+  return (
     // eslint-disable-next-line no-underscore-dangle
-    <div key={event?._id} className={styles.eventContainer}>
-      <img src={event?.firebasePath} alt='Place' className={styles.eventImage} />
-      <h1>{event?.eventName}</h1>
-      <p>{event?.eventDescription}</p>
+    <div key={events?._id} className={styles.eventContainer}>
+      <img src={events?.firebasePath} alt='Place' className={styles.eventImage} />
+      <h1>{events?.eventName}</h1>
+      <p>{events?.eventDescription}</p>
       <div>
-        <p>{event?.eventDate.split('T')[0]}</p>
+        <p>{events?.eventDate.split('T')[0]}</p>
       </div>
     </div>
-  ))
+  )
 }
 
 Event.propTypes = {

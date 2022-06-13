@@ -89,9 +89,9 @@ exports.addEvent = async (req, res) => {
     }
 };
 
-exports.getEventByArticleId = async (req, res) => {
+exports.getEventByPlaceId = async (req, res) => {
     try {
-        const { placeId } = req.body;
+        const placeId = req.query.placeId;
         const place = await Place.findById(placeId).populate('events');
         return res.status(200).json({ success: true, message: place.events });
     }
