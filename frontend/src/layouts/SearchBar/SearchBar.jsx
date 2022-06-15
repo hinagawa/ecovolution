@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
 import { Switch } from 'antd'
 
@@ -9,13 +10,15 @@ import Input from '../../components/Input/Input'
 
 import styles from './styles.module.css'
 
-function SearchBar() {
+function SearchBar({ showSubscriptionFilter, placeholder, onSearch, onSubscriptionFilter }) {
   const navigate = useNavigate()
+  const [search, setSearch] = useState('')
   const [follows, setFollows] = useState(true)
   const handleChange = () => {
     setFollows(!follows)
     console.log(follows)
   }
+  console.log(onSubscriptionFilter)
   return (
     <div className={styles.searchBarContainer}>
       <select
@@ -32,17 +35,40 @@ function SearchBar() {
       <div className={styles.searchContainer}>
         <FilterOutlined />
         <Input
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              onSearch(search)
+            }
+          }}
           className={styles.searchInput}
-          placeholder='Type to search'
+          placeholder={placeholder}
         />
-        <SearchOutlined />
+        <SearchOutlined onClick={() => onSearch(search)} />
       </div>
-      <div className={styles.switchContainer}>
-        <Switch onChange={handleChange} />
-        <p>Показать только подписки</p>
-      </div>
+      {showSubscriptionFilter && (
+        <div className={styles.switchContainer}>
+          <Switch onChange={handleChange} />
+          <span>Показать только подписки</span>
+        </div>
+      )}
     </div>
   )
+}
+
+SearchBar.propTypes = {
+  showSubscriptionFilter: PropTypes.bool,
+  placeholder: PropTypes.string,
+  onSearch: PropTypes.func,
+  onSubscriptionFilter: PropTypes.func,
+}
+
+SearchBar.defaultProps = {
+  showSubscriptionFilter: false,
+  placeholder: 'Поиск...',
+  onSearch: () => {},
+  onSubscriptionFilter: () => {},
 }
 
 export default SearchBar

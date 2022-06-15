@@ -21,8 +21,10 @@ exports.createArticle = async (req, res) => {
 // TODO check if article with this id exist -> 404
 
 exports.getArticles = async (req, res) => {
+    const { search } = req?.params ?? {};
+
     try {
-        Article.find({}, function (err, articles) {
+        Article.find({ ...(search && { articleName: { $regex: search, $options: 'i' } }) }, function (err, articles) {
             var articleMap = {};
             articles.forEach(function (article) {
                 articleMap[article._id] = article;

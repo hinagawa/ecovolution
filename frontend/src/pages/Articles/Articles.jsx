@@ -28,23 +28,32 @@ function Articles() {
     (state) => state.user.user._id,
   )
 
-  useEffect(async () => {
-    setLoading(true)
-    await api
-      .get('api/article/getArticles')
-      .then((data) => dispatch(addArticle(data))).then(setLoading(false))
-    await api
-      .get(`api/user/getLikedArticle?userId=${currentUser}`)
-      .then((data) => {
-        console.log(data)
-      })
-      .then(setLoading(false))
-  })
+  const fetchArticles = async (search = null) => {
+    try {
+      setLoading(true)
+      const data = await api.get(`api/article/getArticles${search ? `/${search}` : ''}`)
+      dispatch(addArticle(data))
+      const likedArticles = await api.get(`api/user/getLikedArticle?userId=${currentUser}`)
+      console.log(likedArticles)
+      setLoading(false)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchArticles()
+  }, [])
+
+  const handleSearch = (search) => {
+    fetchArticles(search)
+  }
+
   return (
     <div className={styles.mainContainer}>
       <Header />
       <div className={styles.articlesContainer}>
-        <SearchBar />
+        <SearchBar showSubscriptionFilter onSearch={handleSearch} />
         {loading ? <Spin /> : <ArticlesList />}
       </div>
       <div className={styles.buttonContainer}>

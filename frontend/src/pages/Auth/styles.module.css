@@ -1,7 +1,7 @@
 .rowContainer {
   display: flex;
   flex-direction: row;
-  height: 90vh;
+  height: 100vh;
   background-color: #039c52;
 }
 
@@ -46,7 +46,6 @@ body, html {
 .gridContainer {
   height: 100vh;
   background-color: #039c52;
-
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);

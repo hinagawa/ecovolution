@@ -3,6 +3,7 @@ const { createPlace, getPlaces, getPlaceById, deletePlaceById, getCoordinates, a
 module.exports = (app) => {
     app.route('/api/place/create').post(createPlace);
     app.route('/api/place/getPlaces').get(getPlaces);
+    app.route('/api/place/getPlaces/:search').get(getPlaces);
     app.route('/api/place/getPlaceById').get(getPlaceById);
     app.route('/api/place/deletePlaceById').delete(deletePlaceById);
     app.route('/api/place/getAllCoordinates').get(getCoordinates);
