@@ -46,3 +46,7 @@
 .buttonGroup span {
   margin-left: 10px;
 }
+
+body {
+  background-color: #c4c4c4 !important;
+}

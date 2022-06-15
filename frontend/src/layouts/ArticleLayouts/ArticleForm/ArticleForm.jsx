@@ -127,7 +127,7 @@ function ArticleForm() {
       {!!error !== false && (
         <div className={styles.placeDone}>
           <CheckCircleTwoTone twoToneColor='#10BC69' />
-          <p>Место создано</p>
+          <p>Статья создана</p>
         </div>
       )}
     </>

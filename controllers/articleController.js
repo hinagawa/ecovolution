@@ -41,7 +41,7 @@ exports.getArticles = async (req, res) => {
 exports.getArticleById = async (req, res) => {
     try {
         const articleId = req.query.articleId;
-        const article = await Article.findById(articleId);
+        const article = await Article.findById(articleId).populate('articleAuthorId');
         res.json({ success: true, message: article });
     }
     catch (e) {
