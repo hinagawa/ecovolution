@@ -17,7 +17,6 @@ import Points from './pages/Points/Points'
 import PrivateRoute from './components/PrivateRoute'
 
 import 'antd/dist/antd.css'
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import './App.css'
 
 function App() {

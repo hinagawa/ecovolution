@@ -21,13 +21,18 @@ function Article() {
     <>
       <Header />
       <div className={styles.articleContainer}>
-        <h1>{article?.articleName}</h1>
-        <p>{article?.articleText}</p>
-        <img
-          src={article?.firebasePath}
-          alt='Article'
-          className={styles.articleImage}
-        />
+        <div>
+          <h1>{article?.articleName}</h1>
+          <p>{article?.articleText}</p>
+          <img
+            src={article?.firebasePath}
+            alt='Article'
+            className={styles.articleImage}
+          />
+        </div>
+        <div className={styles.authorInfo}>
+          <h1>{article?.articleName}</h1>
+        </div>
       </div>
     </>
   )

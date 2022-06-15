@@ -21,11 +21,7 @@
 .articleContainer {
   background-color: #ffffff;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 10px;
-  margin: 50px;
-  padding: 50px;
+  flex-direction:row;
 }
 
 .articleImage {
