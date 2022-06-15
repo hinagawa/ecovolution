@@ -11,6 +11,7 @@ function Input({
   onChange,
   type,
   name,
+  ...rest
 }) {
   return (
     <input
@@ -21,6 +22,7 @@ function Input({
       value={value}
       className={`${styles.input} ${className}`}
       onChange={onChange}
+      {...rest}
     />
   )
 }

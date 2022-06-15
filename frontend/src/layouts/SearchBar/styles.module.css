@@ -1,6 +1,6 @@
 .searchBarContainer {
   margin: 20px 0;
-  padding: 10px;
+  padding: 16px 10px;
   display: inline-grid;
   grid-template-columns: 1fr 4fr 1fr;
   background-color: #ffffff;
@@ -13,6 +13,7 @@
   margin: 0;
   width: 80%;
   margin-left: 50px;
+  outline: none;
 }
 
 .searchContainer {
@@ -25,6 +26,21 @@
 .switchContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  margin-top: 10px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.switchContainer span {
+  margin-left: 8px;
+}
+
+@media screen and (max-width: 900px) {
+  .switchContainer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .switchContainer span {
+    margin-left: 0;
+  }  
 }

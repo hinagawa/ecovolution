@@ -10,7 +10,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 25%;
+}
+
+.linkGroup a {
+  margin-right: 16px;
 }
 
 .linkGroup p {
@@ -46,10 +49,23 @@
   .profileInfo p {
     display: none;
   }
+
   .linkGroup p {
     display: none;
   }
   .linkGroup span {
     margin: 10px 10px 0 0;
   }
+}
+
+@media screen and (min-width: 500px) and (max-width: 900px) {
+  .linkGroup a {
+    margin-right: 8px;
+  }  
+}
+
+@media screen and (max-width: 499px) {
+  .linkGroup a {
+    margin-right: 4px;
+  }  
 }
