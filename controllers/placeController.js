@@ -16,8 +16,12 @@ exports.createPlace = async (req, res) => {
 };
 
 exports.getPlaces = async (req, res) => {
+    const { search = null } = req?.params || {};
     try {
-        const places = await Place.find({}).populate('events');
+        const places = await Place.find({ ...(search && { placeName: { $regex: search, $options: 'i' }}) }).populate({
+            path: 'events',
+            select: 'eventName eventDescription firebasePath eventDate'
+        });
         var placeMap = {};
         places.forEach(function (place) {
             placeMap[place._id] = place;

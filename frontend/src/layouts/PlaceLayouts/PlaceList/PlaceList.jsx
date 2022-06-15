@@ -13,7 +13,8 @@ function PlaceList() {
     !!places && (
       <div className={styles.placeContainer}>
         {Object.keys(places).map((key) => (
-          <Place place={places[key]} />
+          // eslint-disable-next-line no-underscore-dangle
+          <Place key={places[key]._id} place={places[key]} />
         ))}
       </div>
     )

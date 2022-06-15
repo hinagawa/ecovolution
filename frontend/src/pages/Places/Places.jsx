@@ -22,23 +22,31 @@ function Places() {
   )
   const dispatch = useDispatch()
   const [loading, setLoading] = useState()
-  const [error, setError] = useState()
 
-  useEffect(async () => {
-    setLoading(true)
-    await api
-      .get('api/place/getPlaces')
-      .then((data) => (data
-        ? dispatch(addPlace(data))
-        : setError(data.message)))
-      .then(setLoading(false))
-    console.log(error)
-  })
+  const fetchPlaces = async (search = null) => {
+    try {
+      setLoading(true)
+      const data = await api.get(`api/place/getPlaces${search ? `/${search}` : ''}`)
+      dispatch(addPlace(data))
+      setLoading(false)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchPlaces()
+  }, [])
+
+  const handleSearch = async (search) => {
+    fetchPlaces(search)
+  }
+
   return (
     <div>
       <Header />
       <div className={styles.pageContainer}>
-        <SearchBar />
+        <SearchBar onSearch={handleSearch} />
         {loading ? 'Loading' : <PlaceList />}
       </div>
       {userRole === 'Admin' && (

@@ -20,14 +20,11 @@ function Place({ place }) {
   )
 
   const handleDelete = async () => {
-    await api
-      .delete(
-        `api/place/deletePlaceById?placeId=${place._id}`,
-      )
-      .then((data) => console.log(data.message))
+    const data = await api.delete(`api/place/deletePlaceById?placeId=${place._id}`)
+    console.log(data.message)
   }
   return (
-    <div className={styles.placeContainer} key={place._id}>
+    <div className={styles.placeContainer}>
       <img
         src={place.firebasePath}
         alt='Place'
