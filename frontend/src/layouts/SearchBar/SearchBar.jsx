@@ -18,7 +18,7 @@ function SearchBar({ showSubscriptionFilter, placeholder, onSearch, onSubscripti
     setFollows(!follows)
     console.log(follows)
   }
-
+  console.log(onSubscriptionFilter)
   return (
     <div className={styles.searchBarContainer}>
       <select
