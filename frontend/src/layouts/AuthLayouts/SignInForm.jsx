@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
 import { GoogleOutlined } from '@ant-design/icons'
@@ -14,6 +15,8 @@ import Error from '../../components/Error/Error'
 import styles from './styles.module.css'
 
 function SignInForm() {
+  const navigate = useNavigate()
+
   const { register, handleSubmit, setValue } = useForm()
   const [error, setError] = useState('')
 
@@ -25,12 +28,14 @@ function SignInForm() {
         password,
       })
       .then((res) => res.json())
-      .then((resJson) => (resJson.success
-        ? localStorage.setItem(
-          'Authorization',
-          resJson.token,
-        )
-        : setError(resJson.message)))
+      .then((resJson) => {
+        if (resJson.success) {
+          localStorage.setItem('Authorization', resJson.token)
+          navigate('/articles')
+        } else {
+          setError(resJson.message)
+        }
+      })
   }
 
   const handleGoogle = async () => {
@@ -67,7 +72,7 @@ function SignInForm() {
         <Button> Войти </Button>
       </Form>
       <div className={styles.buttonGroup}>
-        <form action='/auth/google' method='GET'>
+        <form action='/api/auth/google' method='GET' className={styles.buttonGroup}>
           <Button onClick={handleGoogle}>
             <GoogleOutlined />
           </Button>
