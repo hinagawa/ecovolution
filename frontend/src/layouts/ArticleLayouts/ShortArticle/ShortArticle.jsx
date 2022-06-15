@@ -43,7 +43,7 @@ function ShortArticle({ article }) {
       .then((data) => console.log(data.message))
   }
   return (
-    <div className={styles.article} key={article._id}>
+    <div className={styles.article}>
       <div className={styles.mainContent}>
         {article.firebasePath === '' ? (
           <div className={styles.noImageContainer}>

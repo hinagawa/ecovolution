@@ -27,6 +27,7 @@
     "react-tooltip": "^4.2.21",
     "react-yandex-maps": "^4.6.0",
     "sweetalert": "^2.1.2",
+    "use-query-params": "^1.2.3",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

@@ -10,6 +10,7 @@ import Article from '../../layouts/ArticleLayouts/ShortArticle/ShortArticle'
 import styles from './styles.module.css'
 
 function Profile() {
+  // const [path, setPath] = useState('')
   const likedArticles = useSelector(
     (state) => state.user.user.likedArticles,
   )

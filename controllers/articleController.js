@@ -1,5 +1,7 @@
 // const { findByIdAndUpdate } = require('../models/Article.js');
 const Article = require('../models/Article.js');
+const User = require('../models/User');
+const jwt_decode = require('jwt-decode');
 
 const firebaseService = require('../services/firebase');
 
@@ -21,10 +23,22 @@ exports.createArticle = async (req, res) => {
 // TODO check if article with this id exist -> 404
 
 exports.getArticles = async (req, res) => {
-    const { search } = req?.params ?? {};
-
+    const { search, follows } = req?.query ?? {};
+    const token = req.headers.authorization.split(' ')[1];
+    const { id: currentUserId } = jwt_decode(token);
+    
     try {
-        Article.find({ ...(search && { articleName: { $regex: search, $options: 'i' } }) }, function (err, articles) {
+        let friends = [];
+        if (token) {
+            const user = await User.findById(currentUserId);
+            friends = user.friends.map(f => f._id.toString());    
+        }
+        
+        Article.find({ 
+            ...(search && { articleName: { $regex: search, $options: 'i' } }),
+            ...(follows !== 'false' && { articleAuthorId: { $in: friends }})
+        }, function (err, articles) {
+            console.log(articles);
             var articleMap = {};
             articles.forEach(function (article) {
                 articleMap[article._id] = article;

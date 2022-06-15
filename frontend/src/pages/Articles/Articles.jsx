@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { BooleanParam, useQueryParam } from 'use-query-params'
 
 import { PlusOutlined } from '@ant-design/icons'
 import { Spin } from 'antd'
@@ -20,7 +21,9 @@ import api from '../../services/api/fetchWrapper'
 import styles from './styles.module.css'
 
 function Articles() {
+  const [follows] = useQueryParam('follows', BooleanParam)
   const dispatch = useDispatch()
+
   const [isOpen, setIsOpen] = useState(false)
   const [loading, setLoading] = useState()
 
@@ -28,10 +31,14 @@ function Articles() {
     (state) => state.user.user._id,
   )
 
-  const fetchArticles = async (search = null) => {
+  const fetchArticles = async (search) => {
     try {
       setLoading(true)
-      const data = await api.get(`api/article/getArticles${search ? `/${search}` : ''}`)
+      const data = await api
+        .get(
+          `api/article/getArticles?search=${search ?? ''}&follows=${follows ?? ''}`,
+          { Authorization: localStorage.getItem('Authorization') },
+        )
       dispatch(addArticle(data))
       const likedArticles = await api.get(`api/user/getLikedArticle?userId=${currentUser}`)
       console.log(likedArticles)
@@ -43,7 +50,7 @@ function Articles() {
 
   useEffect(() => {
     fetchArticles()
-  }, [])
+  }, [follows])
 
   const handleSearch = (search) => {
     fetchArticles(search)
@@ -53,7 +60,10 @@ function Articles() {
     <div className={styles.mainContainer}>
       <Header />
       <div className={styles.articlesContainer}>
-        <SearchBar showSubscriptionFilter onSearch={handleSearch} />
+        <SearchBar
+          showSubscriptionFilter
+          onSearch={handleSearch}
+        />
         {loading ? <Spin /> : <ArticlesList />}
       </div>
       <div className={styles.buttonContainer}>

@@ -13,7 +13,8 @@ function ArticlesList() {
     !!articles && (
       <div className={styles.listOfArticles}>
         {Object.keys(articles).map((key) => (
-          <Article article={articles[key]} />
+          // eslint-disable-next-line no-underscore-dangle
+          <Article key={articles[key]._id} article={articles[key]} />
         ))}
       </div>
     )
