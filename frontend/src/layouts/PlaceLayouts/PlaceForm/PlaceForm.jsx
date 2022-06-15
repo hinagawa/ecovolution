@@ -48,7 +48,6 @@ function ArticleForm() {
       })
       .then((data) => (data.success ? setError(false) : setError(true)))
   }
-  console.log(placeName, placeDescription)
   return (
     <div className={styles.formContainer}>
       <Form onSubmit={handleSubmit}>
