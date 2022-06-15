@@ -36,7 +36,6 @@ function ArticleForm() {
         .then((data) => setFileUrl(data))
     }
   }
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     await api
@@ -49,7 +48,6 @@ function ArticleForm() {
       })
       .then((data) => (data.success ? setError(false) : setError(true)))
   }
-  console.log(placeName, placeDescription)
   return (
     <div className={styles.formContainer}>
       <Form onSubmit={handleSubmit}>
@@ -79,7 +77,7 @@ function ArticleForm() {
           </Button>
         </Upload>
         <div className={styles.createButton}>
-          <MyButton variant='primary'>Создать</MyButton>
+          <MyButton variant='primary' disabled={!(placeName && placeDescription && fileUrl)}>Создать</MyButton>
         </div>
       </Form>
       {!!error !== false && (

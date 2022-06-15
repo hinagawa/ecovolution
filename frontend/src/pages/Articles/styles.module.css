@@ -19,15 +19,29 @@
 }
 
 .articleContainer {
-  background-color: #ffffff;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 10px;
-  margin: 50px;
+  flex-direction: row;
   padding: 50px;
+  margin: 20px;
 }
 
 .articleImage {
   width: 500px;
+}
+
+.articleContent {
+  margin-right: 20px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+.authorInfo {
+  margin-left: 20px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
 }

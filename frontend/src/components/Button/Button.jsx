@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 import styles from './styles.module.css'
 
-function Button({ children, variant, shape, onClick }) {
+function Button({ children, variant, shape, onClick, disabled }) {
   const resStyle = classNames({
     [styles.button]: true,
     [styles.primary]: variant === 'primary',
@@ -16,6 +16,7 @@ function Button({ children, variant, shape, onClick }) {
       type={onClick ? 'button' : 'submit'}
       className={resStyle}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>
@@ -27,12 +28,14 @@ Button.propTypes = {
   variant: PropTypes.oneOf(['primary', 'link']),
   shape: PropTypes.string,
   onClick: PropTypes.func,
+  disabled: PropTypes.bool,
 }
 
 Button.defaultProps = {
   variant: 'primary',
   shape: null,
   onClick: null,
+  disabled: null,
 }
 
 export default Button

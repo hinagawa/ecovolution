@@ -1,0 +1,23 @@
+.pointContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+}
+
+.point {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.score {
+  background-color: #ffffff;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
