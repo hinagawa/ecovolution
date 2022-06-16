@@ -5,7 +5,6 @@ import { YMaps,
   Placemark } from 'react-yandex-maps'
 
 import Header from '../../layouts/Header/Header'
-import SearchBar from '../../layouts/SearchBar/SearchBar'
 
 import api from '../../services/api/fetchWrapper'
 
@@ -26,12 +25,11 @@ function MapView() {
     <>
       <Header />
       <div className={styles.mainContainer}>
-        <SearchBar />
         {!loading && !!places && (
           <YMaps>
             <Map
               width='100%'
-              height='70vh'
+              height='85vh'
               defaultState={{
                 center: [55.7879, 49.1233],
                 zoom: 9,
@@ -39,18 +37,36 @@ function MapView() {
               }}
             >
               <SearchControl />
-              {Object.keys(places).map((key) => (
-                <Placemark
-                  geometry={places[key]?.placeLocation}
-                  options={{
-                    openBalloonOnClick: true,
-                    hasBallloon: true,
-                  }}
-                  properties={{
-                    balloonContent: places[key]?.placeName,
-                  }}
-                />
-              ))}
+              <Placemark
+                geometry={['55.782066', '49.131261']}
+                options={{
+                  openBalloonOnClick: true,
+                  hasBallloon: true,
+                }}
+                properties={{
+                  balloonContent: 'Surf coffee',
+                }}
+              />
+              <Placemark
+                geometry={['55.787983', '49.110304']}
+                options={{
+                  openBalloonOnClick: true,
+                  hasBallloon: true,
+                }}
+                properties={{
+                  balloonContent: 'Супстанция',
+                }}
+              />
+              <Placemark
+                geometry={['55.789795', '49.114247']}
+                options={{
+                  openBalloonOnClick: true,
+                  hasBallloon: true,
+                }}
+                properties={{
+                  balloonContent: 'Vegan Day',
+                }}
+              />
             </Map>
           </YMaps>
         )}

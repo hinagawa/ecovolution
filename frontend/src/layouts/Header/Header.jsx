@@ -55,7 +55,7 @@ function Header() {
           <TeamOutlined style={{ color: '#ffffff' }} />
           <p>Друзья</p>
         </Link>
-        <Link href='/articles'>
+        <Link href='/articles?follows=0'>
           <ReadOutlined style={{ color: '#ffffff' }} />
           <p>Статьи</p>
         </Link>

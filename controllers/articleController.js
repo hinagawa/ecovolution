@@ -3,16 +3,10 @@ const Article = require('../models/Article.js');
 const User = require('../models/User');
 const jwt_decode = require('jwt-decode');
 
-const firebaseService = require('../services/firebase');
-
 exports.createArticle = async (req, res) => {
     try {
-        const { articleName, articleText, articleImgPath, articleTags, articleAuthorId } = req.body;
-        let firebasePath = '';
-        if (articleImgPath) {
-            firebasePath = await firebaseService.uploadFile(articleImgPath);
-        }
-        const article = new Article({ articleName, articleText, firebasePath, articleTags, articleAuthorId });
+        const { articleName, articleText, firebasePath, tagsArray, articleAuthorId } = req.body;
+        const article = new Article({ articleName, articleText, firebasePath, tagsArray, articleAuthorId });
         await article.save();
         res.status(200).json({ success: true, message: 'Article has been created' });
     }
@@ -38,7 +32,6 @@ exports.getArticles = async (req, res) => {
             ...(search && { articleName: { $regex: search, $options: 'i' } }),
             ...(follows !== 'false' && { articleAuthorId: { $in: friends }})
         }, function (err, articles) {
-            console.log(articles);
             var articleMap = {};
             articles.forEach(function (article) {
                 articleMap[article._id] = article;
@@ -55,7 +48,10 @@ exports.getArticles = async (req, res) => {
 exports.getArticleById = async (req, res) => {
     try {
         const articleId = req.query.articleId;
-        const article = await Article.findById(articleId).populate('articleAuthorId');
+        const article = await Article.findById(articleId).populate({
+            path: 'articleAuthorId',
+            select: 'name lastname'
+        });
         res.json({ success: true, message: article });
     }
     catch (e) {
@@ -77,7 +73,6 @@ exports.getArticlesByAuthorId = async (req, res) => {
 exports.deleteArticleById = async (req, res) => {
     try {
         const articleId = req.query.articleId;
-        console.log(articleId);
         await Article.deleteOne({ '_id': articleId });
         res.json({ success: true, message: 'Article has been deleted' });
     }

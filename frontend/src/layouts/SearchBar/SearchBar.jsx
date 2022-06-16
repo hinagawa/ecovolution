@@ -25,7 +25,7 @@ function SearchBar({ showSubscriptionFilter, placeholder, onSearch }) {
         }}
       >
         <option>Выберите нужный раздел</option>
-        <option value='/articles'>Статьи</option>
+        <option value='/articles?follows=0'>Статьи</option>
         <option value='/places'>Места</option>
         <option value='/map'>Карта</option>
       </select>

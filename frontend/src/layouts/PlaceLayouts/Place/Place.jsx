@@ -2,6 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
+import swal from 'sweetalert'
 
 import { HeartOutlined,
   EnvironmentOutlined,
@@ -20,8 +21,26 @@ function Place({ place }) {
   )
 
   const handleDelete = async () => {
-    const data = await api.delete(`api/place/deletePlaceById?placeId=${place._id}`)
-    console.log(data.message)
+    swal({
+      title: 'Are you sure?',
+      text: 'Once deleted, you will not be able to recover this article!',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        api.delete(`api/place/deletePlaceById?placeId=${place._id}`)
+          .then((data) => console.log(data.message))
+        swal(
+          'Your article file has been deleted!',
+          {
+            icon: 'success',
+          },
+        )
+      } else {
+        swal('Your article is safe!')
+      }
+    })
   }
   return (
     <div className={styles.placeContainer}>

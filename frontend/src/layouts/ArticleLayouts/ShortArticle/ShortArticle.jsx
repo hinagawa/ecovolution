@@ -2,10 +2,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
+import swal from 'sweetalert'
 
 import { HeartTwoTone,
   DeleteOutlined,
-  FileImageTwoTone, HeartOutlined } from '@ant-design/icons'
+  FileImageTwoTone,
+  HeartOutlined } from '@ant-design/icons'
 
 import { addLikedArticles } from '../../../store/slices/userSlice'
 
@@ -36,11 +38,26 @@ function ShortArticle({ article }) {
     dispatch(addLikedArticles(articleId))
   }
   const handleDelete = async () => {
-    await api
-      .delete(
-        `api/article/deleteArticleById?articleId=${article._id}`,
-      )
-      .then((data) => console.log(data.message))
+    swal({
+      title: 'Вы уверены?',
+      text: 'Статью нельзя будет восставновить',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        api
+          .delete(
+            `api/article/deleteArticleById?articleId=${article._id}`,
+          )
+          .then((data) => console.log(data.message))
+        swal('Статья была удалена', {
+          icon: 'success',
+        })
+      } else {
+        swal('Удаление отменено')
+      }
+    })
   }
   return (
     <div className={styles.article}>
@@ -62,24 +79,26 @@ function ShortArticle({ article }) {
               <Link href={`articles/${article._id}`}>
                 {article.articleName}
               </Link>
-              <Button
-                variant='link'
-                onClick={() => handleLike(article._id)}
-              >
-                {likedArticles?.includes(article._id) ? (
-                  <HeartTwoTone twoToneColor='#a13f3f' />
-                ) : (
-                  <HeartOutlined />
-                )}
-              </Button>
-              {(currentUser === article?.articleAuthorId || currentRole === 'Admin') && (
+              <div>
                 <Button
                   variant='link'
-                  onClick={handleDelete}
+                  onClick={() => handleLike(article._id)}
                 >
-                  <DeleteOutlined />
+                  {likedArticles?.includes(article._id) ? (
+                    <HeartTwoTone twoToneColor='#a13f3f' />
+                  ) : (
+                    <HeartOutlined />
+                  )}
                 </Button>
-              )}
+                {(currentUser === article?.articleAuthorId || currentRole === 'Admin') && (
+                  <Button
+                    variant='link'
+                    onClick={handleDelete}
+                  >
+                    <DeleteOutlined />
+                  </Button>
+                )}
+              </div>
             </div>
             <p>{article.text}</p>
           </div>

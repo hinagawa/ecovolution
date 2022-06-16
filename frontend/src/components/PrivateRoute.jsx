@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 function PrivateRoute({ isAuthPage }) {
   const isAuth = !!localStorage.getItem('Authorization')
   if (isAuthPage) {
-    return isAuth ? <Navigate to='/articles' /> : <Outlet />
+    return isAuth ? <Navigate to='/articles?follows=0' /> : <Outlet />
   }
   return isAuth ? (
     <Outlet />

@@ -15,7 +15,7 @@ function AuthPage() {
   useEffect(() => {
     const token = localStorage.getItem('Authorization')
     if (token) {
-      navigate('/articles')
+      navigate('/articles?follows=0')
       window.location.reload(false)
     }
   })

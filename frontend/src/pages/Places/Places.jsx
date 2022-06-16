@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { PlusOutlined } from '@ant-design/icons'
+import { Spin } from 'antd'
 
 import Button from '../../components/Button/Button'
 import PlaceForm from '../../layouts/PlaceLayouts/PlaceForm/PlaceForm'
@@ -26,7 +27,9 @@ function Places() {
   const fetchPlaces = async (search = null) => {
     try {
       setLoading(true)
-      const data = await api.get(`api/place/getPlaces${search ? `/${search}` : ''}`)
+      const data = await api.get(
+        `api/place/getPlaces${search ? `/${search}` : ''}`,
+      )
       dispatch(addPlace(data))
       setLoading(false)
     } catch (error) {
@@ -47,7 +50,7 @@ function Places() {
       <Header />
       <div className={styles.pageContainer}>
         <SearchBar onSearch={handleSearch} />
-        {loading ? 'Loading' : <PlaceList />}
+        {loading ? <Spin /> : <PlaceList />}
       </div>
       {userRole === 'Admin' && (
         <div className={styles.buttonContainer}>

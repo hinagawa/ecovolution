@@ -31,7 +31,7 @@ function SignInForm() {
       .then((resJson) => {
         if (resJson.success) {
           localStorage.setItem('Authorization', resJson.token)
-          navigate('/articles')
+          navigate('/articles?follows=0')
         } else {
           setError(resJson.message)
         }
@@ -51,7 +51,7 @@ function SignInForm() {
   }, [])
   return (
     <>
-      <legend className={styles.legendFont}>Войти</legend>
+      <legend className={styles.legendFont}>Войти в аккаунт</legend>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Input
           type='email'

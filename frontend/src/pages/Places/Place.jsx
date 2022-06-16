@@ -1,8 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 import { React, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import FullCalendar from '@fullcalendar/react' // must go before plugins
-import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
 
 import Header from '../../layouts/Header/Header'
 import EventList from '../../layouts/PlaceLayouts/EventList/EventList'
@@ -80,18 +80,13 @@ function Place() {
                 initialView='dayGridMonth'
                 initialEvents={[
                   {
-                    title: 'event1',
-                    start: '2022-01-01',
+                    title: 'Гаражная распродажа',
+                    start: '2022-05-21',
                   },
                   {
-                    title: 'event2',
-                    start: '2022-01-05',
-                    end: '2022-01-07',
-                  },
-                  {
-                    title: 'event3',
-                    start: '2022-01-09T12:30:00',
-                    allDay: false, // will make the time show
+                    title: 'Фримаркет',
+                    start: '2022-07-03T12:00',
+                    end: '2022-07-03T17:00',
                   },
                 ]}
               />

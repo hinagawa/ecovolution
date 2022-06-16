@@ -9,4 +9,22 @@
     flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
+    margin-top: 200px;
+}
+
+.textarea {
+    margin-bottom: 10px;
+}
+
+.articleDone {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.articleDone span {
+margin-bottom: 15px;
+margin-right: 5px;
 }

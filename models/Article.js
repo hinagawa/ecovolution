@@ -1,4 +1,3 @@
-const ObjectId = require('mongoose').ObjectId;
 const { Schema, model } = require('mongoose');
 
 const ArticleSchema = new Schema({
@@ -6,8 +5,9 @@ const ArticleSchema = new Schema({
     articleText: String,
     firebasePath: String,
     tagsArray: Array,
-    articleAuthorId : ObjectId,
-    likesCount: Number
+    articleAuthorId :  [{ type: Schema.Types.ObjectId, ref: 'users' }],
+    likesCount: Number,
+    createDate: Date,
 });
 
 module.exports = model('articles', ArticleSchema);

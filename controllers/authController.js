@@ -11,7 +11,7 @@ exports.signUp = async (req, res) => {
         const { name, lastname, email, password } = req.body;
         const candidate = await User.findOne({ email });
         if (candidate) {
-            throw new Error('User with this email already exist');
+            throw new Error('Пользователь с такой почтой уже существует');
         }
         const hashedPassword = await bcrypt.hash(password, +SALT);
         const user = new User({ name, lastname, email, password: hashedPassword });
@@ -22,7 +22,7 @@ exports.signUp = async (req, res) => {
         if (e.message.includes('already exist')) {
             return res.status(409).json({ success: false, message: e.message });
         }
-        return res.status(500).json({ success: false, message: `Something went wrong! ${e.message}` });
+        return res.status(500).json({ success: false, message: `Что-то не так! ${e.message}` });
     }
 };
 
@@ -30,9 +30,9 @@ exports.signIn = async (req, res) => {
     const { email, password } = req.body;
     try {
         const user = await User.findOne({ email }).select('password');
-        if (!user) throw new Error('User with this email not found');
+        if (!user) throw new Error('Пользователь с такой почтой уже существует');
         const isMatch = await user.comparePasswords(password);
-        if (!isMatch) throw new Error('Wrong password');
+        if (!isMatch) throw new Error('Неверный пароль');
         const token = await user.createJwtToken();
         res.json({ success: true, message: 'Token created', token: 'Bearer ' + token });
     }
@@ -40,7 +40,7 @@ exports.signIn = async (req, res) => {
         if (e.message.includes('not found' || 'Wrong')) {
             return res.status(404).json({ success: false, message: e.message });
         }
-        return res.status(500).json({ success: false, message: `Something went wrong! ${e.message}` });
+        return res.status(500).json({ success: false, message: `Что-то не так! ${e.message}` });
     }
 };
 
@@ -48,7 +48,7 @@ exports.forgotPassword = async (req, res) => {
     const { email } = req.body;
     try {
         const user = await User.findOne({ email });
-        if (!user) throw new Error('User with this email not found');
+        if (!user) throw new Error('Пользователь с такой почтой не найден');
         const resetToken = await user.getResetPasswordToken();
         await user.save();
         const link = `${keys.host_url}/api/reset-password?userId=${user._id}&resetToken=${resetToken}`;
@@ -65,7 +65,7 @@ exports.forgotPassword = async (req, res) => {
         if (e.message.includes('email error')) {
             return res.status(502).json({ success: false, message: 'Server error! Failed connection to email' });
         }
-        return res.status(500).json({ success: false, message: `Something went wrong! ${e.message}` });
+        return res.status(500).json({ success: false, message: `Что-то не так! ${e.message}` });
 
     }
 };
@@ -89,6 +89,6 @@ exports.resetPassword = async (req, res) => {
         if (e.message.includes('Invalid')) {
             return res.status(404).json({ success: false, message: e.message });
         }
-        return res.status(500).json({ success: false, message: `Something went wrong! ${e.message}` });
+        return res.status(500).json({ success: false, message: `Что-то не так! ${e.message}` });
     }
 };
